@@ -1,0 +1,74 @@
+rooms.txt file
+
+Creator: Mabry Runnels
+
+Description: This is the "rooms" txt file, which explains the room designs for the game. The "ALL ROOMS" section
+             describes the rules that all rooms must follow. The following sections are different rooms that will
+			 generate. The base model will have at least 10-15 rooms that will generate. Nick's drawings and Ryan's
+			 enemy description will help to describe the enemies and room designs in a more technical way.
+
+
+
+ALL ROOMS:
+- must destroy all enemies before leaving/changing rooms, can leave from entrance afterwards and backtrack as well
+- Keep in mind, only working with a "base" difficulty for now, add more difficulties later, of which the enemy count is   scaled.
+- Room sizes are thought of as groups of "tiles" (aka 2 tiles by 2 tiles -> 2X2)
+- Rooms can generate in any orientation
+
+GLOB ROOM:
+- Room full of just globs
+- 2X2 room
+- strategy to beat room is to run in circles, destroying enemies
+- running in room slows down player (insinuates glob slowdown)
+- Base Difficulty: 4 Globs
+- One entrance, one exit (dead end), see Nick's Drawing
+
+SNIPER ROOM:
+- 3X4 (grand corridor)
+- lesser enemies surround snipers, which are located in the backend of the room
+- multiple demons, soldiers
+- Base Difficulty: 2 snipers, 4 demons, 2 soldiers
+- Player enters on 3 tile side
+- Up to four possible exits, one per side, see Nick's Drawing
+- Lights turn on and off, which reveal enemies "sometimes", which makes this room more difficult
+
+SHORT HALL:
+- 1X3 Room
+- Basic enemies spawn
+- Base Difficulty: only demons, six of them
+- Player enters on the 1 tile side, exits directly across
+- up to four possible exits, one per side, see Nick's Drawing
+
+HALL:
+- 1X4 Room
+- Three soldiers, two demons
+- Everything else the same as Short hall
+- three possible exits, only ONE will spawn
+- See Nick's Drawing
+
+LONG HALL:
+- 1X5 Room
+- 1 sniper, two soldiers, two demons
+- Everything else the same as Short hall
+- three possible exits, only ONE will spawn
+- See Nick's Drawing
+
+ARMORY ROOM:
+- 2X3 (corridor)
+- Consists of only soldiers
+- Base Difficulty: five soldiers per room
+- Player enters on any of four sides
+- One door per side, see Nick's Drawing
+
+BRUISER ROOM:
+- 3X4 Room (grand corridor)
+- Base Difficulty: consists of two bruisers, two globs
+- Player enters on the 4 tile side
+- Up to four possible exist, one per side, see Nick's Drawing
+
+BOSS ROOM:
+- 5X5 Room
+- Enemy is boss enemy, Wotan, Guardian of the Heavens
+- See Ryan's Description of the enemy
+- Enter on directly in middle of one side, exit directly across from it
+- Win game once you beat enemy and exit
