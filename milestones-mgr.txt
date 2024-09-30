@@ -1,0 +1,35 @@
+
+Student: Mabry Runnels
+
+TIME LOG: 2 hours group meeting, Saturday, September 28
+		  2 hours, rooms.txt and idea generation for it, Sunday, September 29
+		  1 hour, time log, in lab today, Monday, September 30
+		  1 hour, library group meeting to touch up challenge 5 and discuss future plans, Monday, September 30
+
+
+COMPLIABLE TASK:
+		  rooms.txt is my task. It is located in our repository, shown below.
+
+
+GROUP REPOSITORY:
+		  https://github.com/frozensriracha/CS302-Final-Project
+
+
+RUBRIC:
+		  20 points - dedication to project, proof of code, proof of time log, proof of multiple group meetings
+		  10 points - Uses data structure from CS302
+		  10 points - code/project works as intended, code is well commented
+
+REPORT:
+		  The most difficult dilemma our group ran into was generating an idea for the project. We finally decided to
+		  create a dungeon-style game, where a player moves through a maze that consists of "rooms" full of different
+		  kinds of enemies. Enemies must be destroyed before a player can move out of the room. Once the boss room is
+		  found and the boss is killed, the player wins the game. Apart from generating ideas for this project,
+		  Challenge Five went very well, and all group member greatly contributed to this challenge.
+
+PLANS: 
+		  My team plans on working with Unity next, because our plan is to make the game using this game engine.
+		  We plan on working on a base difficulty of the game with very basic maneuvers, before moving to add enemy
+		  drops, different difficulty levels, etc. We hope to complete our basic version of the game by the end of
+		  October/beginning of November.
+
