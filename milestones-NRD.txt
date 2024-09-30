@@ -1,0 +1,21 @@
+Nicholas Dawson - Milestones
+
+Time log:
+2 hrs - group meeting to develop premise
+2 hrs - collaboration with Mabry Runnels to brainstorm room designs, personally developed room_ideas.pdf with enemy placements
+1 hr  - lab period on 9/30/24
+1 hrs - group meeting to assign further tasks
+
+Rubric:
+15 pts - maze generation working in code with disjoint sets
+10 pts - dungeon generation working in unity
+10 pts - combat mechanics implemented with at least one enemy
+5  pts - multiple enemies and classes implemented 
+
+Report:
+We struggled to find a direction for this final project, and only decided on a development
+direction on Saturday. Now that we have a direction, we have quickly set off on the basic aspects
+of the game's design rather than focusing on the the code/technical aspects of the challenge since
+Unity is new to all of us and we did not have time to learn the environment together AND develop
+a deliverable aspect individually. After fall break, our next steps will be familiarizing ourselves
+with Unity as well as working on the basic aspects of room generation in cpp.
