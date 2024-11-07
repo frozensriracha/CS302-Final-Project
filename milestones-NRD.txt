@@ -1,5 +1,7 @@
 Nicholas Dawson - Milestones
 
+Github: https://github.com/frozensriracha/CS302-Final-Project
+
 Time log:
 2 hrs - group meeting to develop premise
 2 hrs - collaboration with Mabry Runnels to brainstorm room designs, personally developed room_ideas.pdf with enemy placements
