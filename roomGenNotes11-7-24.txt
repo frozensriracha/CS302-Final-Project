@@ -1,0 +1,13 @@
+1. Generate a chain of N rooms, place boss room at end
+2. Every empty door chance has an 10% chance to generate an extra "secondary" room
+3. every empty door chance in secondary rooms has a 5% chance to generate tertiary rooms
+4. Repeat for quartenary rooms on higher difficulties?
+
+
+To generate any room:
+1. choose a room size to connect
+2. check to see if the room conflicts with anny other rooms in the bool map
+3. if it does, return false
+4. if no conflict, add to graph and return true
+
+*ALL MEMBERS MET FOR ONE HOUR TODAY
