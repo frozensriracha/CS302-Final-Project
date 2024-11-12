@@ -1,0 +1,103 @@
+[gd_scene load_steps=10 format=3 uid="uid://dy06c2quh2uw6"]
+
+[ext_resource type="Script" path="res://room_1.gd" id="1_saet3"]
+[ext_resource type="Script" path="res://GlobRoom/Scripts/floor.gd" id="2_aomcv"]
+[ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="2_qq252"]
+[ext_resource type="Script" path="res://GlobRoom/Scripts/Door.gd" id="3_lsykc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipbq5"]
+size = Vector2(431, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7p6l"]
+size = Vector2(24, 431)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yg0e"]
+size = Vector2(23.5, 431.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o42s7"]
+size = Vector2(433, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rx3hb"]
+size = Vector2(54, 8)
+
+[node name="GlobRoom" type="Node2D"]
+script = ExtResource("1_saet3")
+
+[node name="Floor" type="ColorRect" parent="."]
+offset_left = 744.0
+offset_top = 324.0
+offset_right = 1176.0
+offset_bottom = 756.0
+color = Color(0, 0, 0, 0.835294)
+script = ExtResource("2_aomcv")
+
+[node name="Top Wall" type="ColorRect" parent="."]
+offset_left = 744.0
+offset_top = 324.0
+offset_right = 1176.0
+offset_bottom = 348.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Top Wall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top Wall/StaticBody2D"]
+position = Vector2(215.5, 12)
+shape = SubResource("RectangleShape2D_ipbq5")
+
+[node name="RightWall" type="ColorRect" parent="."]
+offset_left = 1152.0
+offset_top = 324.0
+offset_right = 1176.0
+offset_bottom = 745.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RightWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall/StaticBody2D"]
+position = Vector2(12, 215.5)
+shape = SubResource("RectangleShape2D_h7p6l")
+
+[node name="LeftWall" type="ColorRect" parent="."]
+offset_left = 744.0
+offset_top = 324.0
+offset_right = 768.0
+offset_bottom = 745.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall/StaticBody2D"]
+position = Vector2(12.25, 216.125)
+shape = SubResource("RectangleShape2D_1yg0e")
+
+[node name="BottomWall" type="ColorRect" parent="."]
+offset_left = 744.0
+offset_top = 732.0
+offset_right = 1176.0
+offset_bottom = 756.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BottomWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall/StaticBody2D"]
+position = Vector2(216.5, 12)
+shape = SubResource("RectangleShape2D_o42s7")
+
+[node name="Door" type="ColorRect" parent="."]
+offset_left = 1028.0
+offset_top = 724.0
+offset_right = 1082.0
+offset_bottom = 732.0
+color = Color(1, 0, 0, 1)
+
+[node name="DoorArea" type="Area2D" parent="Door"]
+script = ExtResource("3_lsykc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/DoorArea"]
+position = Vector2(27, 4)
+shape = SubResource("RectangleShape2D_rx3hb")
+
+[node name="Player" parent="." instance=ExtResource("2_qq252")]
+position = Vector2(949, 471)
+
+[connection signal="body_entered" from="Door/DoorArea" to="Door/DoorArea" method="_on_body_entered"]

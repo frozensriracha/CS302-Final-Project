@@ -1,0 +1,24 @@
+extends CharacterBody2D
+
+# Speed of the player (in pixels per second)
+var speed = 200
+
+# Velocity vector to store the movement direction
+var velocity = Vector2()
+
+# Called every frame to update the player's movement
+func _process(delta):
+	velocity = Vector2()  # Reset the velocity each frame
+
+	# Get input from the player
+	if Input.is_action_pressed("ui_right"):  # Right arrow or D key
+		velocity.x += speed
+	if Input.is_action_pressed("ui_left"):  # Left arrow or A key
+		velocity.x -= speed
+	if Input.is_action_pressed("ui_down"):  # Down arrow or S key
+		velocity.y += speed
+	if Input.is_action_pressed("ui_up"):  # Up arrow or W key
+		velocity.y -= speed
+
+	# Move the player using move_and_slide() to handle collisions
+	move_and_slide(velocity)
