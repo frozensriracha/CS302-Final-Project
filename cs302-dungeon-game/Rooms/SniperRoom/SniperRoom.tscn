@@ -1,0 +1,299 @@
+[gd_scene load_steps=23 format=3 uid="uid://cqch0sdgd1koe"]
+
+[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/sr_en_d_1.gd" id="1_4lagc"]
+[ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_cbijb"]
+[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/floor.gd" id="1_v76f1"]
+[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/right_wall.gd" id="2_kyfcx"]
+[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/sr_en_d_3.gd" id="2_vm2ss"]
+[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/left_wall.gd" id="3_1g2rk"]
+[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/top_wall.gd" id="4_sj6b0"]
+[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/bottom_wall.gd" id="5_k2ct3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tb15k"]
+size = Vector2(24, 864)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghoyl"]
+size = Vector2(22, 858)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdckx"]
+size = Vector2(650, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g67qr"]
+size = Vector2(649, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5l6i7"]
+size = Vector2(50, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwj5r"]
+size = Vector2(50, 10)
+
+[sub_resource type="GDScript" id="GDScript_qfvvg"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body):
+	print('exiting from Entrance Door 3...')
+	print(body)
+	print(' ')
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	pass # Replace with function body.
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvk0y"]
+size = Vector2(50, 10)
+
+[sub_resource type="GDScript" id="GDScript_csyha"]
+script/source = "extends Area2D
+
+
+func _on_body_entered(body):
+	print('exiting from Exit Door 1...')
+	print(body)
+	print(' ')
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqtvo"]
+size = Vector2(10, 50)
+
+[sub_resource type="GDScript" id="GDScript_q225j"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _on_body_entered(body):
+	print('exiting from Exit Door 2...')
+	print(body)
+	print(' ')
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6b6gk"]
+size = Vector2(47.9999, 10)
+
+[sub_resource type="GDScript" id="GDScript_nxfgo"]
+script/source = "extends Area2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _on_body_entered(body):
+	print('exiting from Exit door 3...')
+	print(body)
+	print(' ')
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ryue3"]
+size = Vector2(8.97157, 52)
+
+[node name="SniperRoom" type="Node2D"]
+
+[node name="Floor" type="Node2D" parent="."]
+
+[node name="Floor" type="ColorRect" parent="Floor"]
+offset_left = 636.0
+offset_top = 108.0
+offset_right = 1284.0
+offset_bottom = 972.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_v76f1")
+
+[node name="Borders" type="Node2D" parent="."]
+
+[node name="RightWall" type="ColorRect" parent="Borders"]
+offset_left = 1260.0
+offset_top = 108.0
+offset_right = 1284.0
+offset_bottom = 972.0
+color = Color(0, 1, 0, 1)
+script = ExtResource("2_kyfcx")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders/RightWall"]
+position = Vector2(-299, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/RightWall/StaticBody2D"]
+position = Vector2(311, 421)
+shape = SubResource("RectangleShape2D_tb15k")
+
+[node name="LeftWall" type="ColorRect" parent="Borders"]
+offset_left = 636.0
+offset_top = 108.0
+offset_right = 660.0
+offset_bottom = 972.0
+color = Color(0, 1, 0, 1)
+script = ExtResource("3_1g2rk")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders/LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/LeftWall/StaticBody2D"]
+position = Vector2(12, 427)
+shape = SubResource("RectangleShape2D_ghoyl")
+
+[node name="TopWall" type="ColorRect" parent="Borders"]
+offset_left = 636.0
+offset_top = 108.0
+offset_right = 1284.0
+offset_bottom = 132.0
+color = Color(0, 1, 0, 1)
+script = ExtResource("4_sj6b0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders/TopWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/TopWall/StaticBody2D"]
+position = Vector2(323, 11)
+shape = SubResource("RectangleShape2D_kdckx")
+
+[node name="BottomWall" type="ColorRect" parent="Borders"]
+offset_left = 636.0
+offset_top = 948.0
+offset_right = 1284.0
+offset_bottom = 972.0
+color = Color(0, 1, 0, 1)
+script = ExtResource("5_k2ct3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders/BottomWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BottomWall/StaticBody2D"]
+position = Vector2(325.5, 12.5)
+shape = SubResource("RectangleShape2D_g67qr")
+
+[node name="Entrances" type="Node2D" parent="."]
+position = Vector2(1250, 273)
+
+[node name="EntranceDoor1" type="Node2D" parent="Entrances"]
+position = Vector2(-1250, -273)
+
+[node name="EntranceDoor1" type="ColorRect" parent="Entrances/EntranceDoor1"]
+offset_left = 785.0
+offset_top = 938.0
+offset_right = 835.0
+offset_bottom = 948.0
+color = Color(0, 0, 1, 1)
+
+[node name="SR_EnD1" type="Area2D" parent="Entrances/EntranceDoor1/EntranceDoor1"]
+position = Vector2(-788, -941)
+script = ExtResource("1_4lagc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EntranceDoor1/EntranceDoor1/SR_EnD1"]
+position = Vector2(813, 947)
+shape = SubResource("RectangleShape2D_5l6i7")
+
+[node name="EntranceDoor2" type="Node2D" parent="Entrances"]
+position = Vector2(-1250, -273)
+
+[node name="EntranceDoor2" type="ColorRect" parent="Entrances/EntranceDoor2"]
+offset_left = 935.0
+offset_top = 938.0
+offset_right = 985.0
+offset_bottom = 948.0
+color = Color(0, 0, 1, 1)
+
+[node name="SR_EnD2" type="Area2D" parent="Entrances/EntranceDoor2/EntranceDoor2"]
+position = Vector2(-934, -932)
+script = ExtResource("2_vm2ss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EntranceDoor2/EntranceDoor2/SR_EnD2"]
+position = Vector2(959, 937)
+shape = SubResource("RectangleShape2D_jwj5r")
+
+[node name="EntranceDoor3" type="Node2D" parent="Entrances"]
+position = Vector2(-1250, -273)
+
+[node name="EntranceDoor3" type="ColorRect" parent="Entrances/EntranceDoor3"]
+offset_left = 1085.0
+offset_top = 938.0
+offset_right = 1135.0
+offset_bottom = 948.0
+color = Color(0, 0, 1, 1)
+
+[node name="SR_EnD3" type="Area2D" parent="Entrances/EntranceDoor3/EntranceDoor3"]
+script = SubResource("GDScript_qfvvg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EntranceDoor3/EntranceDoor3/SR_EnD3"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_wvk0y")
+
+[node name="Exits" type="Node2D" parent="."]
+position = Vector2(636, 948)
+
+[node name="ExitDoor1" type="Node2D" parent="Exits"]
+position = Vector2(-636, -948)
+
+[node name="ExitDoor1" type="ColorRect" parent="Exits/ExitDoor1"]
+offset_left = 660.0
+offset_top = 299.0
+offset_right = 670.0
+offset_bottom = 349.0
+color = Color(1, 0, 0, 1)
+
+[node name="SR_ED1" type="Area2D" parent="Exits/ExitDoor1/ExitDoor1"]
+position = Vector2(-660, -299)
+script = SubResource("GDScript_csyha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitDoor1/ExitDoor1/SR_ED1"]
+position = Vector2(665, 324)
+shape = SubResource("RectangleShape2D_qqtvo")
+
+[node name="ExitDoor2" type="Node2D" parent="Exits"]
+position = Vector2(28, -678)
+
+[node name="ExitDoor2" type="ColorRect" parent="Exits/ExitDoor2"]
+offset_left = 273.0
+offset_top = -138.0
+offset_right = 323.0
+offset_bottom = -128.0
+scale = Vector2(0.965747, 1)
+color = Color(1, 0, 0, 1)
+
+[node name="SR_ED2" type="Area2D" parent="Exits/ExitDoor2/ExitDoor2"]
+position = Vector2(-279.576, 132)
+scale = Vector2(1.03547, 1)
+script = SubResource("GDScript_q225j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitDoor2/ExitDoor2/SR_ED2"]
+position = Vector2(293.999, -127)
+shape = SubResource("RectangleShape2D_6b6gk")
+
+[node name="ExitDoor3" type="Node2D" parent="Exits"]
+position = Vector2(298, -810)
+scale = Vector2(0.965747, 1)
+
+[node name="ExitDoor3" type="ColorRect" parent="Exits/ExitDoor3"]
+offset_left = 328.243
+offset_top = 163.0
+offset_right = 338.243
+offset_bottom = 213.0
+color = Color(1, 0, 0, 1)
+
+[node name="SR_ED3" type="Area2D" parent="Exits/ExitDoor3/ExitDoor3"]
+position = Vector2(-327.208, -135)
+script = SubResource("GDScript_nxfgo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitDoor3/ExitDoor3/SR_ED3"]
+position = Vector2(332.041, 159)
+shape = SubResource("RectangleShape2D_ryue3")
+
+[node name="Player" parent="." instance=ExtResource("1_cbijb")]
+position = Vector2(963, 507)
+
+[connection signal="body_entered" from="Entrances/EntranceDoor1/EntranceDoor1/SR_EnD1" to="Entrances/EntranceDoor1/EntranceDoor1/SR_EnD1" method="_on_body_entered"]
+[connection signal="body_entered" from="Entrances/EntranceDoor2/EntranceDoor2/SR_EnD2" to="Entrances/EntranceDoor2/EntranceDoor2/SR_EnD2" method="_on_body_entered"]
+[connection signal="body_entered" from="Entrances/EntranceDoor3/EntranceDoor3/SR_EnD3" to="Entrances/EntranceDoor3/EntranceDoor3/SR_EnD3" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/ExitDoor1/ExitDoor1/SR_ED1" to="Exits/ExitDoor1/ExitDoor1/SR_ED1" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/ExitDoor2/ExitDoor2/SR_ED2" to="Entrances/EntranceDoor1/EntranceDoor1/SR_EnD1" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Exits/ExitDoor2/ExitDoor2/SR_ED2" to="Exits/ExitDoor2/ExitDoor2/SR_ED2" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/ExitDoor3/ExitDoor3/SR_ED3" to="Exits/ExitDoor1/ExitDoor1/SR_ED1" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Exits/ExitDoor3/ExitDoor3/SR_ED3" to="Exits/ExitDoor3/ExitDoor3/SR_ED3" method="_on_body_entered"]
