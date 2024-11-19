@@ -2,19 +2,19 @@
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_r2kog"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_euftm"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf0ua"]
 size = Vector2(18.25, 18.75)
 
-[node name="Player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_r2kog")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0.125001, -0.375)
-shape = SubResource("RectangleShape2D_euftm")
+shape = SubResource("RectangleShape2D_uf0ua")
 
-[node name="ColorRect" type="ColorRect" parent="CharacterBody2D"]
+[node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = 9.0
 offset_top = -10.0
 offset_right = 28.0
@@ -22,7 +22,7 @@ offset_bottom = 8.0
 rotation = 1.56766
 color = Color(1, 0, 1, 1)
 
-[node name="ColorRect" type="ColorRect" parent="CharacterBody2D/ColorRect"]
+[node name="ColorRect" type="ColorRect" parent="ColorRect2"]
 layout_mode = 0
 offset_left = 8.04074
 offset_top = -12.9748
