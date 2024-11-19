@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfblx7bpwdqqo"]
+
+[ext_resource type="Texture2D" uid="uid://3n0xeaqsuqj1" path="res://Bullet/cannon ball_1.png" id="1_xks3l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dtieu"]
+radius = 129.016
+
+[node name="Projectile" type="CharacterBody2D"]
+
+[node name="CannonBall1" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+texture = ExtResource("1_xks3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 5)
+shape = SubResource("CircleShape2D_dtieu")
