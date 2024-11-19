@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://5ois5wkuw1hv"]
+[gd_scene load_steps=18 format=3 uid="uid://5ois5wkuw1hv"]
 
-[ext_resource type="Script" path="res://Rooms/Hall/Scripts/en_d_1.gd" id="1_4b8x2"]
+[ext_resource type="Script" path="res://Hall/Scripts/en_d_1.gd" id="1_4b8x2"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_6scjd"]
-[ext_resource type="Script" path="res://Rooms/Hall/Scripts/en_d_2.gd" id="2_ov43w"]
-[ext_resource type="Script" path="res://Rooms/Hall/Scripts/en_d_3.gd" id="3_0oo0c"]
-[ext_resource type="Script" path="res://Rooms/Hall/Scripts/ed_1.gd" id="5_nv3w8"]
-
+[ext_resource type="Script" path="res://Hall/Scripts/en_d_2.gd" id="2_ov43w"]
+[ext_resource type="Script" path="res://Hall/Scripts/en_d_3.gd" id="3_0oo0c"]
+[ext_resource type="Script" path="res://Hall/Scripts/ed_1.gd" id="5_nv3w8"]
+[ext_resource type="Script" path="res://Hall/Scripts/ed_2.gd" id="6_nf8gj"]
+[ext_resource type="Script" path="res://Hall/Scripts/ed_3.gd" id="7_aq7w3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pun4"]
 size = Vector2(23, 216)
@@ -30,6 +31,12 @@ size = Vector2(50, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0dg2r"]
 size = Vector2(10, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjrrw"]
+size = Vector2(50, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arai2"]
+size = Vector2(50, 10)
 
 [node name="HallRoom" type="Node2D"]
 
@@ -135,9 +142,6 @@ script = ExtResource("3_0oo0c")
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_kisii")
 
-[node name="Player" parent="." instance=ExtResource("1_6scjd")]
-position = Vector2(924, 558)
-
 [node name="ExitDoor1" type="ColorRect" parent="."]
 offset_left = 1358.0
 offset_top = 515.0
@@ -152,7 +156,40 @@ script = ExtResource("5_nv3w8")
 position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_0dg2r")
 
+[node name="ExitDoor2" type="ColorRect" parent="."]
+offset_left = 1228.0
+offset_top = 456.0
+offset_right = 1278.0
+offset_bottom = 466.0
+color = Color(1, 0, 0, 1)
+
+[node name="ED_2" type="Area2D" parent="ExitDoor2"]
+script = ExtResource("6_nf8gj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor2/ED_2"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_jjrrw")
+
+[node name="ExitDoor3" type="ColorRect" parent="."]
+offset_left = 1229.0
+offset_top = 614.0
+offset_right = 1279.0
+offset_bottom = 624.0
+color = Color(1, 0, 0, 1)
+
+[node name="ED_3" type="Area2D" parent="ExitDoor3"]
+script = ExtResource("7_aq7w3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor3/ED_3"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_arai2")
+
+[node name="Player" parent="." instance=ExtResource("1_6scjd")]
+position = Vector2(924, 558)
+
 [connection signal="body_entered" from="EntranceDoor1/En_D1" to="EntranceDoor1/En_D1" method="_on_body_entered"]
 [connection signal="body_entered" from="EntranceDoor2/En_D2" to="EntranceDoor2/En_D2" method="_on_body_entered"]
 [connection signal="body_entered" from="EntranceDoor3/En_D3" to="EntranceDoor3/En_D3" method="_on_body_entered"]
 [connection signal="body_entered" from="ExitDoor1/ED_1" to="ExitDoor1/ED_1" method="_on_body_entered"]
+[connection signal="body_entered" from="ExitDoor2/ED_2" to="ExitDoor2/ED_2" method="_on_body_entered"]
+[connection signal="body_entered" from="ExitDoor3/ED_3" to="ExitDoor3/ED_3" method="_on_body_entered"]

@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=3 uid="uid://32wu2d8hcepi"]
+
+[ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_405yj"]
+[ext_resource type="Script" path="res://ShortHall/Scripts/en.gd" id="1_ond3e"]
+[ext_resource type="Script" path="res://ShortHall/Scripts/ed.gd" id="2_cmtrm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxkl4"]
+size = Vector2(23, 216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxjbh"]
+size = Vector2(646, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2nao"]
+size = Vector2(23, 216)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tio0"]
+size = Vector2(647, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u3i5y"]
+size = Vector2(10, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_525u3"]
+size = Vector2(10, 50)
+
+[node name="ShortHall" type="Node2D"]
+
+[node name="Floor" type="Node2D" parent="."]
+
+[node name="Floor" type="ColorRect" parent="Floor"]
+offset_left = 636.0
+offset_top = 432.0
+offset_right = 1284.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="LeftWall" type="ColorRect" parent="Walls"]
+offset_left = 636.0
+offset_top = 432.0
+offset_right = 660.0
+offset_bottom = 648.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall/StaticBody2D"]
+position = Vector2(11.5, 108)
+shape = SubResource("RectangleShape2D_uxkl4")
+
+[node name="TopWall" type="ColorRect" parent="Walls"]
+offset_left = 636.0
+offset_top = 432.0
+offset_right = 1284.0
+offset_bottom = 456.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/TopWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall/StaticBody2D"]
+position = Vector2(323, 11)
+shape = SubResource("RectangleShape2D_pxjbh")
+
+[node name="RightWall" type="ColorRect" parent="Walls"]
+offset_left = 1260.0
+offset_top = 432.0
+offset_right = 1284.0
+offset_bottom = 648.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/RightWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall/StaticBody2D"]
+position = Vector2(12.5, 108)
+shape = SubResource("RectangleShape2D_k2nao")
+
+[node name="BottomWall" type="ColorRect" parent="Walls"]
+offset_left = 636.0
+offset_top = 624.0
+offset_right = 1284.0
+offset_bottom = 648.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/BottomWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall/StaticBody2D"]
+position = Vector2(323.5, 12.5)
+shape = SubResource("RectangleShape2D_4tio0")
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="EntranceDoor" type="ColorRect" parent="Doors"]
+offset_left = 660.0
+offset_top = 515.0
+offset_right = 670.0
+offset_bottom = 565.0
+color = Color(0, 0, 1, 1)
+
+[node name="En" type="Area2D" parent="Doors/EntranceDoor"]
+script = ExtResource("1_ond3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor/En"]
+position = Vector2(5, 25)
+shape = SubResource("RectangleShape2D_u3i5y")
+
+[node name="ExitDoor" type="ColorRect" parent="Doors"]
+offset_left = 1250.0
+offset_top = 515.0
+offset_right = 1260.0
+offset_bottom = 565.0
+color = Color(1, 0, 0, 1)
+
+[node name="Ed" type="Area2D" parent="Doors/ExitDoor"]
+script = ExtResource("2_cmtrm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor/Ed"]
+position = Vector2(5, 25)
+shape = SubResource("RectangleShape2D_525u3")
+
+[node name="Player" parent="." instance=ExtResource("1_405yj")]
+position = Vector2(975, 547)
+
+[connection signal="body_entered" from="Doors/EntranceDoor/En" to="Doors/EntranceDoor/En" method="_on_body_entered"]
+[connection signal="body_entered" from="Doors/ExitDoor/Ed" to="Doors/ExitDoor/Ed" method="_on_body_entered"]

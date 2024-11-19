@@ -3,7 +3,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _on_body_entered(body):
-	print('exiting from Entrance door 1...')
+	print('Exiting from Exit Door 2...')
 	print(body)
 	print(' ')
 

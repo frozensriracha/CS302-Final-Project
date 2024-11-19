@@ -1,0 +1,238 @@
+[gd_scene load_steps=22 format=3 uid="uid://u84fi8o61ewj"]
+
+[ext_resource type="Script" path="res://BruiserRoom/Scripts/en_d_1.gd" id="1_e7lge"]
+[ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_gmsk7"]
+[ext_resource type="Script" path="res://BruiserRoom/Scripts/en_d_2.gd" id="2_cenpy"]
+[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_1.gd" id="3_t3k6q"]
+[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_2.gd" id="4_syccw"]
+[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_3.gd" id="5_q5xt6"]
+[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_4.gd" id="6_7b4pw"]
+[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_5.gd" id="7_jhf6h"]
+[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_6.gd" id="8_57bl8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ljf3g"]
+size = Vector2(863, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dhiwv"]
+size = Vector2(23, 647)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwymr"]
+size = Vector2(24, 649)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd67h"]
+size = Vector2(864, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yo8rr"]
+size = Vector2(50, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1awn5"]
+size = Vector2(50, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yrdpp"]
+size = Vector2(10, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h50ps"]
+size = Vector2(50, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73syp"]
+size = Vector2(50, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qu4wj"]
+size = Vector2(50, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ssf2f"]
+size = Vector2(50, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sw481"]
+size = Vector2(10, 50)
+
+[node name="BruiserRoom" type="Node2D"]
+
+[node name="Floor" type="Node2D" parent="."]
+
+[node name="Floor" type="ColorRect" parent="Floor"]
+offset_left = 528.0
+offset_top = 216.0
+offset_right = 1392.0
+offset_bottom = 864.0
+color = Color(0, 0, 0, 1)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="TopWall" type="ColorRect" parent="Walls"]
+offset_left = 528.0
+offset_top = 216.0
+offset_right = 1392.0
+offset_bottom = 240.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/TopWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall/StaticBody2D"]
+position = Vector2(431.5, 11.5)
+shape = SubResource("RectangleShape2D_ljf3g")
+
+[node name="LeftWall" type="ColorRect" parent="Walls"]
+offset_left = 528.0
+offset_top = 216.0
+offset_right = 552.0
+offset_bottom = 864.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall/StaticBody2D"]
+position = Vector2(10.5, 323.5)
+shape = SubResource("RectangleShape2D_dhiwv")
+
+[node name="RightWall" type="ColorRect" parent="Walls"]
+offset_left = 1368.0
+offset_top = 216.0
+offset_right = 1392.0
+offset_bottom = 864.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/RightWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall/StaticBody2D"]
+position = Vector2(14, 323.5)
+shape = SubResource("RectangleShape2D_pwymr")
+
+[node name="BottomWall" type="ColorRect" parent="Walls"]
+offset_left = 528.0
+offset_top = 840.0
+offset_right = 1392.0
+offset_bottom = 864.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/BottomWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall/StaticBody2D"]
+position = Vector2(433, 12.5)
+shape = SubResource("RectangleShape2D_jd67h")
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="EntranceDoor1" type="ColorRect" parent="Doors"]
+offset_left = 737.0
+offset_top = 240.0
+offset_right = 787.0
+offset_bottom = 250.0
+color = Color(0, 0, 1, 1)
+
+[node name="En_D1" type="Area2D" parent="Doors/EntranceDoor1"]
+script = ExtResource("1_e7lge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor1/En_D1"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_yo8rr")
+
+[node name="EntranceDoor2" type="ColorRect" parent="Doors"]
+offset_left = 1142.0
+offset_top = 240.0
+offset_right = 1192.0
+offset_bottom = 250.0
+color = Color(0, 0, 1, 1)
+
+[node name="En_D2" type="Area2D" parent="Doors/EntranceDoor2"]
+script = ExtResource("2_cenpy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor2/En_D2"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_1awn5")
+
+[node name="ExitDoor1" type="ColorRect" parent="Doors"]
+offset_left = 552.0
+offset_top = 688.0
+offset_right = 562.0
+offset_bottom = 738.0
+color = Color(1, 0, 0, 1)
+
+[node name="ED_1" type="Area2D" parent="Doors/ExitDoor1"]
+script = ExtResource("3_t3k6q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor1/ED_1"]
+position = Vector2(5, 25)
+shape = SubResource("RectangleShape2D_yrdpp")
+
+[node name="ExitDoor2" type="ColorRect" parent="Doors"]
+offset_left = 718.0
+offset_top = 830.0
+offset_right = 768.0
+offset_bottom = 840.0
+color = Color(1, 0, 0, 1)
+
+[node name="ED_2" type="Area2D" parent="Doors/ExitDoor2"]
+script = ExtResource("4_syccw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor2/ED_2"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_h50ps")
+
+[node name="ExitDoor3" type="ColorRect" parent="Doors"]
+offset_left = 869.0
+offset_top = 830.0
+offset_right = 919.0
+offset_bottom = 840.0
+color = Color(1, 0, 0, 1)
+
+[node name="ED_3" type="Area2D" parent="Doors/ExitDoor3"]
+script = ExtResource("5_q5xt6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor3/ED_3"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_73syp")
+
+[node name="ExitDoor4" type="ColorRect" parent="Doors"]
+offset_left = 1033.0
+offset_top = 830.0
+offset_right = 1083.0
+offset_bottom = 840.0
+color = Color(1, 0, 0, 1)
+
+[node name="ED_4" type="Area2D" parent="Doors/ExitDoor4"]
+script = ExtResource("6_7b4pw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor4/ED_4"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_qu4wj")
+
+[node name="ExitDoor5" type="ColorRect" parent="Doors"]
+offset_left = 1186.0
+offset_top = 831.0
+offset_right = 1236.0
+offset_bottom = 840.0
+color = Color(1, 0, 0, 1)
+
+[node name="ED_5" type="Area2D" parent="Doors/ExitDoor5"]
+script = ExtResource("7_jhf6h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor5/ED_5"]
+position = Vector2(25, 4.5)
+shape = SubResource("RectangleShape2D_ssf2f")
+
+[node name="ExitDoor6" type="ColorRect" parent="Doors"]
+offset_left = 1358.0
+offset_top = 688.0
+offset_right = 1368.0
+offset_bottom = 738.0
+color = Color(1, 0, 0, 1)
+
+[node name="ED_6" type="Area2D" parent="Doors/ExitDoor6"]
+script = ExtResource("8_57bl8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor6/ED_6"]
+position = Vector2(5, 25)
+shape = SubResource("RectangleShape2D_sw481")
+
+[node name="Player" parent="." instance=ExtResource("1_gmsk7")]
+position = Vector2(971, 521)
+
+[connection signal="body_entered" from="Doors/EntranceDoor1/En_D1" to="Doors/EntranceDoor1/En_D1" method="_on_body_entered"]
+[connection signal="body_entered" from="Doors/EntranceDoor2/En_D2" to="Doors/EntranceDoor2/En_D2" method="_on_body_entered"]
+[connection signal="body_entered" from="Doors/ExitDoor1/ED_1" to="Doors/ExitDoor1/ED_1" method="_on_body_entered"]
+[connection signal="body_entered" from="Doors/ExitDoor2/ED_2" to="Doors/ExitDoor2/ED_2" method="_on_body_entered"]
+[connection signal="body_entered" from="Doors/ExitDoor3/ED_3" to="Doors/ExitDoor3/ED_3" method="_on_body_entered"]
+[connection signal="body_entered" from="Doors/ExitDoor4/ED_4" to="Doors/ExitDoor4/ED_4" method="_on_body_entered"]
+[connection signal="body_entered" from="Doors/ExitDoor5/ED_5" to="Doors/ExitDoor5/ED_5" method="_on_body_entered"]
+[connection signal="body_entered" from="Doors/ExitDoor6/ED_6" to="Doors/ExitDoor6/ED_6" method="_on_body_entered"]
