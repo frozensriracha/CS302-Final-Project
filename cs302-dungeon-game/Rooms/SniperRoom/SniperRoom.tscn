@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/left_wall.gd" id="3_1g2rk"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/top_wall.gd" id="4_sj6b0"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/bottom_wall.gd" id="5_k2ct3"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="8_lrpcw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tb15k"]
 size = Vector2(24, 864)
@@ -26,20 +27,6 @@ size = Vector2(50, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jwj5r"]
 size = Vector2(50, 10)
-
-[sub_resource type="GDScript" id="GDScript_qfvvg"]
-script/source = "extends Area2D
-
-
-func _on_body_entered(body):
-	print('exiting from Entrance Door 3...')
-	print(body)
-	print(' ')
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvk0y"]
 size = Vector2(50, 10)
@@ -220,7 +207,7 @@ offset_bottom = 948.0
 color = Color(0, 0, 1, 1)
 
 [node name="SR_EnD3" type="Area2D" parent="Entrances/EntranceDoor3/EntranceDoor3"]
-script = SubResource("GDScript_qfvvg")
+script = ExtResource("8_lrpcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EntranceDoor3/EntranceDoor3/SR_EnD3"]
 position = Vector2(25, 5)

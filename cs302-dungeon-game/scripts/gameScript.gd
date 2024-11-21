@@ -5,12 +5,19 @@ var roomGen = RoomGen.new()
 
 # global variables for script
 var currentRoomName = "SniperRoom" # Should be the name of attached room at start
+var currentRoomID = 0 # The current room's index in the room instances vec
 
-func switchTo(roomName):
+func switchTo(roomID):	
 	# do nothing if already in desired room
-	if currentRoomName == roomName: 
-		print("already in " + roomName)
+	if currentRoomID == roomID: 
+		print("already in room " + roomID)
 		return 
+	
+	
+	# Get room instance
+	#var roomData = roomInstances[roomID]
+	#var roomName = roomData.type
+	var roomName = "TEMP"
 
 	# delete current room
 	var currNode = get_node(currentRoomName)
@@ -22,6 +29,12 @@ func switchTo(roomName):
 	instance.name = roomName
 	self.add_child(instance)
 	
+	# Deload any unlinked doors
+	
+	# Update the health of enemies
+	
+	# Place the player at the correct door
+	
 	# DEBUG - print all children of the roomManager and room switched into
 	#print("switched to " + roomName)
 	#for i in range(self.get_child_count(false)):
@@ -29,9 +42,14 @@ func switchTo(roomName):
 	
 	# update currentRoom
 	currentRoomName = roomName
+	currentRoomID = 5
 	
 	pass;
 
+
+func doorEntered(name):
+	print("Door " + name + " entered (message sent by gameScript.gd)")
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
