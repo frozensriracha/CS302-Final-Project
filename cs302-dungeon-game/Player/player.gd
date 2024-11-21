@@ -1,25 +1,24 @@
 extends CharacterBody2D
 
+#const bulletPath = preload('res://Bullet/player_bullet1.tscn')
 const max_speed = 10
 #get_global_mouse_position() just gets the current position of the mouse. "global_position" gets the
 #position of the CharacterBody2D object, which is the player
 var weapon_direction = get_global_mouse_position() - global_position
 var input = Vector2.ZERO
-var bullet = preload("res://Bullet/player_bullet1.tscn")
-var bullet_speed = 100
+var counter = 1
+
+@onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn")
+
 
 func _physics_process(delta):
 	move()
-	
-func _shoot():
-	look_at(get_global_mouse_position())
-	if Input.is_action_pressed("ShootBullet"):
-		var bullet_instance = bullet.instance()
-		bullet_instance.position = $BulletPoint.get_global_position()
-		bullet_instance.rotation_degrees = rotation_degrees
-		bullet_instance.apply_impulse(Vector2(), Vector2(bullet_speed, 0).rotated(rotation))
-		get_tree().get_root().add_child(bullet_instance)
-		
+	counter += counter + delta
+	if Input.is_action_just_pressed("ShootBullet"):
+		if counter > 100000:
+			shoot()
+			counter = 0
+
 	
 func get_XandY():
 	#x position is just dependent on right and left subtractive movements. Same with y position, just up and down
@@ -42,3 +41,18 @@ func move():
 		
 	
 	move_and_slide()
+
+func shoot():
+	var bullet = bullet_scene.instantiate()
+	bullet.position = position
+	
+	bullet.bullet_direction = (position - get_global_mouse_position()).normalized()
+	get_parent().add_child(bullet)
+
+
+
+#func shoot():
+	#var bullet = bulletPath.instance()
+	
+	#get_parent().add_child(bullet)
+	#bullet.position = $Position2D.global_position
