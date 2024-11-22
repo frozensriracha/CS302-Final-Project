@@ -1,8 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://32wu2d8hcepi"]
 
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_405yj"]
-[ext_resource type="Script" path="res://ShortHall/Scripts/en.gd" id="1_ond3e"]
-[ext_resource type="Script" path="res://ShortHall/Scripts/ed.gd" id="2_cmtrm"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="1_ond3e"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="2_cmtrm"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxkl4"]
 size = Vector2(23, 216)

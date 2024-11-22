@@ -1,10 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://cqch0sdgd1koe"]
+[gd_scene load_steps=18 format=3 uid="uid://cqch0sdgd1koe"]
 
-[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/sr_en_d_1.gd" id="1_4lagc"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_cbijb"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/floor.gd" id="1_v76f1"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/right_wall.gd" id="2_kyfcx"]
-[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/sr_en_d_3.gd" id="2_vm2ss"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/left_wall.gd" id="3_1g2rk"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/top_wall.gd" id="4_sj6b0"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/bottom_wall.gd" id="5_k2ct3"]
@@ -31,57 +29,11 @@ size = Vector2(50, 10)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wvk0y"]
 size = Vector2(50, 10)
 
-[sub_resource type="GDScript" id="GDScript_csyha"]
-script/source = "extends Area2D
-
-
-func _on_body_entered(body):
-	print('exiting from Exit Door 1...')
-	print(body)
-	print(' ')
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qqtvo"]
 size = Vector2(10, 50)
 
-[sub_resource type="GDScript" id="GDScript_q225j"]
-script/source = "extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _on_body_entered(body):
-	print('exiting from Exit Door 2...')
-	print(body)
-	print(' ')
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6b6gk"]
 size = Vector2(47.9999, 10)
-
-[sub_resource type="GDScript" id="GDScript_nxfgo"]
-script/source = "extends Area2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _on_body_entered(body):
-	print('exiting from Exit door 3...')
-	print(body)
-	print(' ')
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ryue3"]
 size = Vector2(8.97157, 52)
@@ -172,7 +124,7 @@ color = Color(0, 0, 1, 1)
 
 [node name="SR_EnD1" type="Area2D" parent="Entrances/EntranceDoor1/EntranceDoor1"]
 position = Vector2(-788, -941)
-script = ExtResource("1_4lagc")
+script = ExtResource("8_lrpcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EntranceDoor1/EntranceDoor1/SR_EnD1"]
 position = Vector2(813, 947)
@@ -190,7 +142,7 @@ color = Color(0, 0, 1, 1)
 
 [node name="SR_EnD2" type="Area2D" parent="Entrances/EntranceDoor2/EntranceDoor2"]
 position = Vector2(-934, -932)
-script = ExtResource("2_vm2ss")
+script = ExtResource("8_lrpcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/EntranceDoor2/EntranceDoor2/SR_EnD2"]
 position = Vector2(959, 937)
@@ -228,7 +180,7 @@ color = Color(1, 0, 0, 1)
 
 [node name="SR_ED1" type="Area2D" parent="Exits/ExitDoor1/ExitDoor1"]
 position = Vector2(-660, -299)
-script = SubResource("GDScript_csyha")
+script = ExtResource("8_lrpcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitDoor1/ExitDoor1/SR_ED1"]
 position = Vector2(665, 324)
@@ -248,7 +200,7 @@ color = Color(1, 0, 0, 1)
 [node name="SR_ED2" type="Area2D" parent="Exits/ExitDoor2/ExitDoor2"]
 position = Vector2(-279.576, 132)
 scale = Vector2(1.03547, 1)
-script = SubResource("GDScript_q225j")
+script = ExtResource("8_lrpcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitDoor2/ExitDoor2/SR_ED2"]
 position = Vector2(293.999, -127)
@@ -267,7 +219,7 @@ color = Color(1, 0, 0, 1)
 
 [node name="SR_ED3" type="Area2D" parent="Exits/ExitDoor3/ExitDoor3"]
 position = Vector2(-327.208, -135)
-script = SubResource("GDScript_nxfgo")
+script = ExtResource("8_lrpcw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/ExitDoor3/ExitDoor3/SR_ED3"]
 position = Vector2(332.041, 159)

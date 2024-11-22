@@ -8,7 +8,9 @@ var weapon_direction = get_global_mouse_position() - global_position
 var input = Vector2.ZERO
 var counter = 1
 
-@onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn")
+@onready var bullet_scene = preload("res://Bullet/player_bullet1.tscn") # Changed by ND 11/22 to let game run
+#@onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn") # Original line
+
 
 
 func _physics_process(delta):

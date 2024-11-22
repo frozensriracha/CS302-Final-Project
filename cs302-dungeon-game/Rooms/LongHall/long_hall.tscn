@@ -1,12 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://b2vus7mn7awn2"]
 
-[ext_resource type="Script" path="res://LongHall/Scripts/en_d_1.gd" id="1_03xcp"]
-[ext_resource type="Script" path="res://LongHall/Scripts/en_d_2.gd" id="2_x5rbx"]
-[ext_resource type="Script" path="res://LongHall/Scripts/en_d_3.gd" id="3_p1bct"]
-[ext_resource type="Script" path="res://LongHall/Scripts/e_d_1.gd" id="4_4qgvg"]
-[ext_resource type="Script" path="res://LongHall/Scripts/e_d_2.gd" id="5_rlqtm"]
-[ext_resource type="Script" path="res://LongHall/Scripts/e_d_3.gd" id="6_45syd"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="1_03xcp"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="2_x5rbx"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="3_p1bct"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="4_4qgvg"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="5_rlqtm"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="6_45syd"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="7_ud0w7"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpgy0"]
 size = Vector2(1080, 23)

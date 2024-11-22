@@ -1,14 +1,15 @@
 [gd_scene load_steps=22 format=3 uid="uid://u84fi8o61ewj"]
 
-[ext_resource type="Script" path="res://BruiserRoom/Scripts/en_d_1.gd" id="1_e7lge"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="1_e7lge"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_gmsk7"]
-[ext_resource type="Script" path="res://BruiserRoom/Scripts/en_d_2.gd" id="2_cenpy"]
-[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_1.gd" id="3_t3k6q"]
-[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_2.gd" id="4_syccw"]
-[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_3.gd" id="5_q5xt6"]
-[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_4.gd" id="6_7b4pw"]
-[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_5.gd" id="7_jhf6h"]
-[ext_resource type="Script" path="res://BruiserRoom/Scripts/ed_6.gd" id="8_57bl8"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="2_cenpy"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="3_t3k6q"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="4_syccw"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="5_q5xt6"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="6_7b4pw"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="7_jhf6h"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="8_57bl8"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljf3g"]
 size = Vector2(863, 23)

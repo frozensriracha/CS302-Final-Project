@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://88toafabhl3s"]
 
-[ext_resource type="Script" path="res://BossRoom/Scripts/en.gd" id="1_ahbau"]
-[ext_resource type="Script" path="res://BossRoom/Scripts/ed.gd" id="2_urkpi"]
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="1_gt0ui"]
+[ext_resource type="Script" path="res://Rooms/BossRoom/Scripts/gameWinDoor.gd" id="2_urkpi"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="3_uaqyl"]
 [ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="4_fgkex"]
 
@@ -96,7 +96,7 @@ offset_bottom = 34.0
 color = Color(0, 0, 1, 1)
 
 [node name="En" type="Area2D" parent="Doors/EntranceDoor"]
-script = ExtResource("1_ahbau")
+script = ExtResource("1_gt0ui")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor/En"]
 position = Vector2(25, 5)
