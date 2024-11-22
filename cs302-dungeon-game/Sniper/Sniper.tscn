@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3euy3kbn1tq1"]
+
+[ext_resource type="Script" path="res://Sniper/Scripts/sniper.gd" id="1_xq00d"]
+[ext_resource type="Script" path="res://Sniper/Scripts/area_2d.gd" id="2_xd0yw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipych"]
+size = Vector2(14, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0xq2"]
+size = Vector2(14, 15)
+
+[node name="Sniper" type="CharacterBody2D"]
+script = ExtResource("1_xq00d")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("2_xd0yw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ipych")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_m0xq2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -7.0
+offset_top = -7.0
+offset_right = 7.0
+offset_bottom = 8.0
+color = Color(1, 1, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 24.0
+offset_bottom = 9.0
+color = Color(1, 1, 0, 1)
