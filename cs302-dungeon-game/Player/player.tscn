@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://7w6kfg6jwe7l"]
+[gd_scene load_steps=10 format=3 uid="uid://7w6kfg6jwe7l"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_r2kog"]
 [ext_resource type="Script" path="res://Player/progress_bar.gd" id="2_h1gbm"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uf0ua"]
-size = Vector2(18.25, 18.75)
+[ext_resource type="Script" path="res://Player/indicator.gd" id="2_ynjsd"]
+[ext_resource type="Script" path="res://Player/player_collision.gd" id="3_thhf3"]
+[ext_resource type="Script" path="res://Player/damage_detection.gd" id="5_cet5a"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y0jn"]
 bg_color = Color(1, 1, 1, 1)
@@ -12,14 +12,16 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fx0j"]
 bg_color = Color(0.293837, 0.761286, 3.85046e-07, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiqjr"]
+size = Vector2(18.9998, 17.9999)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehfxs"]
+size = Vector2(20, 21)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_r2kog")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0.125001, -0.375)
-shape = SubResource("RectangleShape2D_uf0ua")
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 offset_left = 9.0
@@ -29,19 +31,11 @@ offset_bottom = 8.0
 rotation = 1.56766
 color = Color(1, 0, 1, 1)
 
-[node name="ColorRect" type="ColorRect" parent="ColorRect2"]
-layout_mode = 0
-offset_left = 8.04074
-offset_top = -12.9748
-offset_right = 11.0407
-offset_bottom = 0.0251627
-color = Color(1, 0, 1, 1)
-
 [node name="Player_Progress_Bar" type="ProgressBar" parent="."]
-offset_left = -38.0
-offset_top = -36.0
-offset_right = 38.0
-offset_bottom = -29.0
+offset_left = -19.0
+offset_top = -46.0
+offset_right = 19.0
+offset_bottom = -43.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_0y0jn")
@@ -49,3 +43,89 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_4fx0j")
 value = 50.0
 show_percentage = false
 script = ExtResource("2_h1gbm")
+
+[node name="Player_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0.00204664, -0.500009)
+rotation = 1.56469
+shape = SubResource("RectangleShape2D_kiqjr")
+script = ExtResource("3_thhf3")
+
+[node name="Indicator" type="ColorRect" parent="Player_collision"]
+offset_left = -1.66804
+offset_top = -24.9914
+offset_right = 1.33192
+offset_bottom = -11.9914
+rotation = 1.55847
+pivot_offset = Vector2(1.6543, 25.2409)
+script = ExtResource("2_ynjsd")
+
+[node name="ColorRect" type="ColorRect" parent="Player_collision/Indicator"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = 5.0
+
+[node name="ColorRect2" type="ColorRect" parent="Player_collision/Indicator"]
+layout_mode = 0
+offset_left = -0.993722
+offset_top = -2.00313
+offset_right = 0.00627804
+offset_bottom = -1.00313
+
+[node name="ColorRect3" type="ColorRect" parent="Player_collision/Indicator"]
+layout_mode = 0
+offset_left = 3.00626
+offset_top = -1.99058
+offset_right = 4.00626
+offset_bottom = -0.99058
+
+[node name="ColorRect4" type="ColorRect" parent="Player_collision/Indicator"]
+layout_mode = 0
+offset_left = 0.00940943
+offset_top = -2.99999
+offset_right = 1.00941
+offset_bottom = -1.99999
+
+[node name="ColorRect5" type="ColorRect" parent="Player_collision/Indicator"]
+layout_mode = 0
+offset_left = 2.0094
+offset_top = -2.99371
+offset_right = 3.0094
+offset_bottom = -1.99371
+
+[node name="ColorRect6" type="ColorRect" parent="Player_collision/Indicator"]
+layout_mode = 0
+offset_left = 1.01254
+offset_top = -3.99684
+offset_right = 2.01254
+offset_bottom = -2.99684
+
+[node name="ColorRect7" type="ColorRect" parent="Player_collision/Indicator"]
+layout_mode = 0
+offset_left = 1.0094
+offset_top = -2.99685
+offset_right = 2.0094
+offset_bottom = -1.99685
+
+[node name="ColorRect8" type="ColorRect" parent="Player_collision/Indicator"]
+layout_mode = 0
+offset_left = 0.00627315
+offset_top = -1.99999
+offset_right = 3.00627
+offset_bottom = -0.99999
+
+[node name="Camera2D" type="Camera2D" parent="."]
+rotation = -0.00764557
+zoom = Vector2(2, 2)
+
+[node name="Damage_Detection" type="Area2D" parent="."]
+script = ExtResource("5_cet5a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_Detection"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ehfxs")
+
+[connection signal="area_entered" from="Damage_Detection" to="." method="_on_damage_detection_area_entered"]
+[connection signal="area_exited" from="Damage_Detection" to="." method="_on_damage_detection_area_exited"]
+[connection signal="body_entered" from="Damage_Detection" to="." method="_on_damage_detection_body_entered"]
+[connection signal="body_exited" from="Damage_Detection" to="." method="_on_damage_detection_body_exited"]

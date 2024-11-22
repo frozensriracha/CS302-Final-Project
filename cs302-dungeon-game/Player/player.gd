@@ -7,10 +7,13 @@ const max_speed = 10
 var weapon_direction = get_global_mouse_position() - global_position
 var input = Vector2.ZERO
 var counter = 1
+var entered_body
+var bullet_body
+var exited_body
+var take_Sniper_Damage = false
+var take_Glob_Damage = false
 
-@onready var bullet_scene = preload("res://Bullet/player_bullet1.tscn") # Changed by ND 11/22 to let game run
-#@onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn") # Original line
-
+@onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn")
 
 
 func _physics_process(delta):
@@ -34,12 +37,12 @@ func move():
 	if input == Vector2.ZERO:
 			velocity = Vector2.ZERO
 			weapon_direction = get_global_mouse_position() - global_position
-			rotation = weapon_direction.angle()
+			#rotation = weapon_direction.angle()
 	
 	else:
 		velocity += (input * max_speed)
 		weapon_direction = get_global_mouse_position() - global_position
-		rotation = weapon_direction.angle()
+		#rotation = weapon_direction.angle()
 		
 	
 	move_and_slide()
@@ -52,9 +55,26 @@ func shoot():
 	get_parent().add_child(bullet)
 
 
-
-#func shoot():
-	#var bullet = bulletPath.instance()
+#Function to determine if body enters, which will make damage occur
+func _on_damage_detection_body_entered(body):
+	entered_body = body
+	print("Body entered")
+	print(entered_body.name)
+	if entered_body.name == "Glob":
+		print("Took Damage from Glob")
+		take_Glob_Damage = true
 	
-	#get_parent().add_child(bullet)
-	#bullet.position = $Position2D.global_position
+
+#Function to determine if body exits, which will make damage not occur
+func _on_damage_detection_body_exited(body):
+	print("Body Exited")
+	exited_body = body
+	if exited_body.name == "Glob":
+		take_Glob_Damage = false
+
+
+func _on_damage_detection_area_entered(area):
+	bullet_body = area
+	if bullet_body.type == "Sniper_Bullet":
+		print("Bullet Hit!")
+		bullet_body.queue_free()
