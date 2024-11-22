@@ -1,0 +1,159 @@
+[gd_scene load_steps=30 format=3 uid="uid://sodonqnoc4el"]
+
+[ext_resource type="Script" path="res://Bruiser/bruiser.gd" id="1_bja7l"]
+[ext_resource type="Texture2D" uid="uid://cjefqg8ggbc2i" path="res://Bruiser/2 Enemy/PNG/attack-B1.png" id="2_ls3pr"]
+[ext_resource type="Texture2D" uid="uid://u4ynaoqm0765" path="res://Bruiser/2 Enemy/PNG/attack-B2.png" id="3_gb2km"]
+[ext_resource type="Texture2D" uid="uid://7jdtd3o0gunv" path="res://Bruiser/2 Enemy/PNG/attack-B3.png" id="4_25ejx"]
+[ext_resource type="Texture2D" uid="uid://cwcpy62j7ik8t" path="res://Bruiser/2 Enemy/PNG/attack-B4.png" id="5_lq3oo"]
+[ext_resource type="Texture2D" uid="uid://bpi48l4u27ich" path="res://Bruiser/2 Enemy/PNG/attack-B5.png" id="6_umcbs"]
+[ext_resource type="Texture2D" uid="uid://d2barknretrim" path="res://Bruiser/2 Enemy/PNG/attack-B6.png" id="7_usfc1"]
+[ext_resource type="Texture2D" uid="uid://bbhl3m00gvft8" path="res://Bruiser/2 Enemy/PNG/attack-B7.png" id="8_0ntjx"]
+[ext_resource type="Texture2D" uid="uid://dv87sl5to2tg2" path="res://Bruiser/2 Enemy/PNG/dead-1.png" id="9_ddx1y"]
+[ext_resource type="Texture2D" uid="uid://c6hhshns8rdtr" path="res://Bruiser/2 Enemy/PNG/dead-2.png" id="10_qm8hd"]
+[ext_resource type="Texture2D" uid="uid://dbgbwvrbgmcjp" path="res://Bruiser/2 Enemy/PNG/dead-3.png" id="11_ypurv"]
+[ext_resource type="Texture2D" uid="uid://djx0bdcajoi0x" path="res://Bruiser/2 Enemy/PNG/dead-4.png" id="12_nbxfi"]
+[ext_resource type="Texture2D" uid="uid://d3jkuo5vpbkaa" path="res://Bruiser/2 Enemy/PNG/idle-1.png" id="13_nviee"]
+[ext_resource type="Texture2D" uid="uid://c61ls7f0phg3a" path="res://Bruiser/2 Enemy/PNG/idle-2.png" id="14_qusjq"]
+[ext_resource type="Texture2D" uid="uid://dudpu86y1iwlp" path="res://Bruiser/2 Enemy/PNG/idle-3.png" id="15_samyp"]
+[ext_resource type="Texture2D" uid="uid://drjfimhx6odn1" path="res://Bruiser/2 Enemy/PNG/idle-4.png" id="16_rcjhr"]
+[ext_resource type="Texture2D" uid="uid://b0ksdbmblr4kr" path="res://Bruiser/2 Enemy/PNG/walk-1.png" id="17_eleot"]
+[ext_resource type="Texture2D" uid="uid://bk0a4w3v84rvo" path="res://Bruiser/2 Enemy/PNG/walk-2.png" id="18_7fe8q"]
+[ext_resource type="Texture2D" uid="uid://idnjj486b8vh" path="res://Bruiser/2 Enemy/PNG/walk-3.png" id="19_n8rs1"]
+[ext_resource type="Texture2D" uid="uid://bng4rg66ehmyd" path="res://Bruiser/2 Enemy/PNG/walk-4.png" id="20_8dnon"]
+[ext_resource type="Texture2D" uid="uid://ckt5b02mdypw8" path="res://Bruiser/2 Enemy/PNG/walk-5.png" id="21_ybndf"]
+[ext_resource type="Texture2D" uid="uid://buc87507b8v6d" path="res://Bruiser/2 Enemy/PNG/walk-6.png" id="22_d3b2q"]
+[ext_resource type="Texture2D" uid="uid://rmavivm8f88j" path="res://Bruiser/2 Enemy/PNG/shield-block-1.png" id="23_pvu34"]
+[ext_resource type="Texture2D" uid="uid://paxmdhwbrjd8" path="res://Bruiser/2 Enemy/PNG/shield-block-2.png" id="24_801t2"]
+[ext_resource type="Texture2D" uid="uid://diic1x81duocp" path="res://Bruiser/2 Enemy/PNG/hit-1.png" id="25_fj4qp"]
+[ext_resource type="Texture2D" uid="uid://cqwfo2qslukpg" path="res://Bruiser/2 Enemy/PNG/hit-2.png" id="26_siasv"]
+[ext_resource type="Texture2D" uid="uid://bd8vedcjpcwjj" path="res://Bruiser/2 Enemy/PNG/hit-3.png" id="27_m5br6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1tj2v"]
+size = Vector2(30, 60)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1g7yq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ls3pr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gb2km")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_25ejx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lq3oo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_umcbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_usfc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0ntjx")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ddx1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qm8hd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ypurv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_nbxfi")
+}],
+"loop": true,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_nviee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qusjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_samyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rcjhr")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_eleot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_7fe8q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_n8rs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_8dnon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_ybndf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_d3b2q")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_pvu34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_801t2")
+}],
+"loop": true,
+"name": &"ShieldBlock",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_fj4qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_siasv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_m5br6")
+}],
+"loop": true,
+"name": &"TakeDamage",
+"speed": 5.0
+}]
+
+[node name="Bruiser" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_bja7l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(9, -30)
+shape = SubResource("RectangleShape2D_1tj2v")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(25, -48)
+sprite_frames = SubResource("SpriteFrames_1g7yq")
+animation = &"ShieldBlock"
+autoplay = "Idle"
+frame_progress = 0.353618
