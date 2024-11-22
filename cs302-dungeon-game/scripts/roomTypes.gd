@@ -1,7 +1,7 @@
 class_name Rooms
 
-# Main array with all room types TODO: SWITCH TO DICT
-var roomsArray: Array[room]
+# Main dict with all room types
+var roomsDict = {}
 
 # generic room class
 class room:
@@ -9,7 +9,7 @@ class room:
 	var enterences: Array[Vector3]
 	var exits: Array[Vector3]
 
-# Example for defining a room
+# Room Definitions
 func longHall():
 	var longHall = room.new()
 	
@@ -51,11 +51,56 @@ func shortHall():
 	shortHall.exits.append(Vector3(2,0,1))
 
 	
-	return normalHall
+	return shortHall
+
+func globRoom():
+	var globRoom = room.new()
+	
+	globRoom.size = Vector2(2,2)
+	
+	globRoom.enterences.append(Vector3(1,1,2)) 
+	
+	return globRoom
+
+func sniperRoom():
+	var sniperRoom = room.new()
+	
+	sniperRoom.size = Vector2(3,4)
+	
+	sniperRoom.enterences.append(Vector3(0,3,2)) 
+	sniperRoom.enterences.append(Vector3(1,3,2))
+	sniperRoom.enterences.append(Vector3(2,3,2))
+	
+	sniperRoom.exits.append(Vector3(0,0,3))
+	sniperRoom.exits.append(Vector3(1,0,0))
+	sniperRoom.exits.append(Vector3(2,0,1))
+	
+	return sniperRoom
+
+func bruiserRoom():
+	var bruiserRoom = room.new()
+	
+	bruiserRoom.size = Vector2(3,4)
+	
+	bruiserRoom.enterences.append(Vector3(1,0,2))
+	bruiserRoom.enterences.append(Vector3(2,0,2))
+	
+	bruiserRoom.exits.append(Vector3(0,2,3))
+	bruiserRoom.exits.append(Vector3(0,2,2))
+	bruiserRoom.exits.append(Vector3(1,2,2))
+	bruiserRoom.exits.append(Vector3(2,2,2))
+	bruiserRoom.exits.append(Vector3(3,2,2))
+	bruiserRoom.exits.append(Vector3(3,2,1))
+	
+	return bruiserRoom
 
 
 func _init():
 	# append all rooms to main array in init function
-	roomsArray.append(longHall())
-	roomsArray.append(normalHall())
-	roomsArray.append(shortHall())
+	roomsDict["longHall"] = longHall()
+	roomsDict["normalHall"] = normalHall()
+	roomsDict["shortHall"] = shortHall()
+	roomsDict["globRoom"] = globRoom()
+	roomsDict["sniperRoom"] = sniperRoom()
+	roomsDict["bruiserRoom"] = bruiserRoom()
+	

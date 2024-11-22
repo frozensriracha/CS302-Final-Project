@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqch0sdgd1koe"]
+[gd_scene load_steps=19 format=3 uid="uid://cqch0sdgd1koe"]
 
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_cbijb"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/floor.gd" id="1_v76f1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/top_wall.gd" id="4_sj6b0"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/bottom_wall.gd" id="5_k2ct3"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="8_lrpcw"]
+[ext_resource type="PackedScene" uid="uid://b3euy3kbn1tq1" path="res://Sniper/Sniper.tscn" id="8_u3is1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tb15k"]
 size = Vector2(24, 864)
@@ -227,6 +228,9 @@ shape = SubResource("RectangleShape2D_ryue3")
 
 [node name="Player" parent="." instance=ExtResource("1_cbijb")]
 position = Vector2(963, 507)
+
+[node name="Sniper" parent="." instance=ExtResource("8_u3is1")]
+position = Vector2(801, 198)
 
 [connection signal="body_entered" from="Entrances/EntranceDoor1/EntranceDoor1/SR_EnD1" to="Entrances/EntranceDoor1/EntranceDoor1/SR_EnD1" method="_on_body_entered"]
 [connection signal="body_entered" from="Entrances/EntranceDoor2/EntranceDoor2/SR_EnD2" to="Entrances/EntranceDoor2/EntranceDoor2/SR_EnD2" method="_on_body_entered"]

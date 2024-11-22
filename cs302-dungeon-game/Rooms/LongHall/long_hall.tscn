@@ -1,13 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2vus7mn7awn2"]
+[gd_scene load_steps=13 format=3 uid="uid://b2vus7mn7awn2"]
 
-[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="1_03xcp"]
-[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="2_x5rbx"]
-[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="3_p1bct"]
-[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="4_4qgvg"]
-[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="5_rlqtm"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="6_45syd"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="7_ud0w7"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpgy0"]
 size = Vector2(1080, 23)
@@ -114,7 +108,7 @@ offset_bottom = 565.0
 color = Color(0, 0, 1, 1)
 
 [node name="En_D1" type="Area2D" parent="Doors/EntranceDoor1"]
-script = ExtResource("1_03xcp")
+script = ExtResource("6_45syd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor1/En_D1"]
 position = Vector2(5, 25)
@@ -128,7 +122,7 @@ offset_bottom = 624.0
 color = Color(0, 0, 1, 1)
 
 [node name="En_D2" type="Area2D" parent="Doors/EntranceDoor2"]
-script = ExtResource("2_x5rbx")
+script = ExtResource("6_45syd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor2/En_D2"]
 position = Vector2(25, 5)
@@ -142,7 +136,7 @@ offset_bottom = 466.0
 color = Color(0, 0, 1, 1)
 
 [node name="En_D3" type="Area2D" parent="Doors/EntranceDoor3"]
-script = ExtResource("3_p1bct")
+script = ExtResource("6_45syd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor3/En_D3"]
 position = Vector2(25, 5)
@@ -156,7 +150,7 @@ offset_bottom = 624.0
 color = Color(1, 0, 0, 1)
 
 [node name="E_D1" type="Area2D" parent="Doors/ExitDoor1"]
-script = ExtResource("4_4qgvg")
+script = ExtResource("6_45syd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor1/E_D1"]
 position = Vector2(25, 5)
@@ -170,7 +164,7 @@ offset_bottom = 466.0
 color = Color(1, 0, 0, 1)
 
 [node name="E_D2" type="Area2D" parent="Doors/ExitDoor2"]
-script = ExtResource("5_rlqtm")
+script = ExtResource("6_45syd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor2/E_D2"]
 position = Vector2(25, 5)

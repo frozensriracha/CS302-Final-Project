@@ -2,6 +2,7 @@ extends Node2D
 
 # import scripts
 var roomGen = RoomGen.new()
+var roomTypes = Rooms.new()
 
 # global variables for script
 var currentRoomName = "SniperRoom" # Should be the name of attached room at start
@@ -46,7 +47,6 @@ func switchTo(roomID):
 	
 	pass;
 
-
 func doorEntered(name):
 	print("Door " + name + " entered (message sent by gameScript.gd)")
 	pass
@@ -54,7 +54,8 @@ func doorEntered(name):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	roomGen.checkInit()
-	roomGen.checkRoomArray()
+	print(roomTypes.roomsDict.get("globRoom").size)
+	
 	pass # Replace with function body.
 
 

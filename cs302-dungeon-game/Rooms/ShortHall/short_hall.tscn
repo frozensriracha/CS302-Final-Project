@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://32wu2d8hcepi"]
+[gd_scene load_steps=9 format=3 uid="uid://32wu2d8hcepi"]
 
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_405yj"]
-[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="1_ond3e"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="2_cmtrm"]
-
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxkl4"]
 size = Vector2(23, 216)
@@ -98,7 +96,7 @@ offset_bottom = 565.0
 color = Color(0, 0, 1, 1)
 
 [node name="En" type="Area2D" parent="Doors/EntranceDoor"]
-script = ExtResource("1_ond3e")
+script = ExtResource("2_cmtrm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor/En"]
 position = Vector2(5, 25)
