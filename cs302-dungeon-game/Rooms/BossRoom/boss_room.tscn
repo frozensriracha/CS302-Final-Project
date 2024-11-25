@@ -1,0 +1,126 @@
+[gd_scene load_steps=11 format=3 uid="uid://88toafabhl3s"]
+
+[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="1_gt0ui"]
+[ext_resource type="Script" path="res://Rooms/BossRoom/Scripts/gameWinDoor.gd" id="2_urkpi"]
+[ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="3_uaqyl"]
+[ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="4_fgkex"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8j2k"]
+size = Vector2(1078, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xg8ax"]
+size = Vector2(23, 1076)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r047p"]
+size = Vector2(22, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02jhh"]
+size = Vector2(1080, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vih74"]
+size = Vector2(50, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qpjki"]
+size = Vector2(50, 10)
+
+[node name="BossRoom" type="Node2D"]
+
+[node name="Floor" type="Node2D" parent="."]
+
+[node name="Floor" type="ColorRect" parent="Floor"]
+offset_left = 420.0
+offset_right = 1500.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="Walls" type="Node2D" parent="."]
+
+[node name="TopWall" type="ColorRect" parent="Walls"]
+offset_left = 420.0
+offset_right = 1500.0
+offset_bottom = 24.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/TopWall"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall/StaticBody2D"]
+position = Vector2(539, 11)
+shape = SubResource("RectangleShape2D_o8j2k")
+
+[node name="LeftWall" type="ColorRect" parent="Walls"]
+offset_left = 420.0
+offset_right = 444.0
+offset_bottom = 1080.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/LeftWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall/StaticBody2D"]
+position = Vector2(11.5, 537)
+shape = SubResource("RectangleShape2D_xg8ax")
+
+[node name="RightWall" type="ColorRect" parent="Walls"]
+offset_left = 1476.0
+offset_right = 1500.0
+offset_bottom = 1080.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/RightWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall/StaticBody2D"]
+position = Vector2(13, 539)
+shape = SubResource("RectangleShape2D_r047p")
+
+[node name="BottomWall" type="ColorRect" parent="Walls"]
+offset_left = 420.0
+offset_top = 1056.0
+offset_right = 1500.0
+offset_bottom = 1080.0
+color = Color(0, 1, 0, 1)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls/BottomWall"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall/StaticBody2D"]
+position = Vector2(540, 12)
+shape = SubResource("RectangleShape2D_02jhh")
+
+[node name="Doors" type="Node2D" parent="."]
+
+[node name="EntranceDoor" type="ColorRect" parent="Doors"]
+offset_left = 935.0
+offset_top = 24.0
+offset_right = 985.0
+offset_bottom = 34.0
+color = Color(0, 0, 1, 1)
+
+[node name="En" type="Area2D" parent="Doors/EntranceDoor"]
+script = ExtResource("1_gt0ui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor/En"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_vih74")
+
+[node name="ExitDoor" type="ColorRect" parent="Doors"]
+offset_left = 935.0
+offset_top = 1046.0
+offset_right = 985.0
+offset_bottom = 1056.0
+color = Color(1, 0, 0, 1)
+
+[node name="ED" type="Area2D" parent="Doors/ExitDoor"]
+script = ExtResource("2_urkpi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor/ED"]
+position = Vector2(25, 5)
+shape = SubResource("RectangleShape2D_qpjki")
+
+[node name="Glob" parent="." instance=ExtResource("4_fgkex")]
+position = Vector2(781, 340)
+
+[node name="Player" parent="." instance=ExtResource("3_uaqyl")]
+position = Vector2(1287, 946)
+
+[connection signal="body_entered" from="Doors/EntranceDoor/En" to="Doors/EntranceDoor/En" method="_on_body_entered"]
+[connection signal="body_entered" from="Doors/ExitDoor/ED" to="Doors/ExitDoor/ED" method="_on_body_entered"]
