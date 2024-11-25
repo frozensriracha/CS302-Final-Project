@@ -15,7 +15,7 @@ var take_Glob_Damage = false
 var player_health = 100
 
 @onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn")
-@onready var game_over = preload("res://Rooms/GameOver/game_over.tscn")
+#@onready var game_over = preload("res://Rooms/GameOver/game_over.tscn")
 @onready var scene = get_parent()
 
 
@@ -25,8 +25,8 @@ func _physics_process(delta):
 	
 	if player_health == 0:
 		#scene.queue_free()
-		var end = game_over.instantiate()
-		get_parent().get_parent().add_child(end)
+		#var end = game_over.instantiate()
+		#get_parent().get_parent().add_child(end)
 		
 		#get_tree().paused = true
 		scene.queue_free()

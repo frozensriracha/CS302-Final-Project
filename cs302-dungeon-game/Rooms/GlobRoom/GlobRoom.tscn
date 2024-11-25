@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://dy06c2quh2uw6"]
 
-[ext_resource type="Script" path="res://Rooms/GlobRoom/room_1.gd" id="1_saet3"]
 [ext_resource type="Script" path="res://Rooms/GlobRoom/Scripts/floor.gd" id="2_aomcv"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="2_qq252"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="3_7i7dy"]
+[ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="4_eualq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yg0e"]
 size = Vector2(23.5, 431.75)
@@ -21,7 +21,6 @@ size = Vector2(433, 24)
 size = Vector2(54, 8)
 
 [node name="GlobRoom" type="Node2D"]
-script = ExtResource("1_saet3")
 
 [node name="Floor" type="Node2D" parent="."]
 
@@ -87,23 +86,32 @@ color = Color(0, 1, 0, 1)
 position = Vector2(216.5, 12)
 shape = SubResource("RectangleShape2D_o42s7")
 
-[node name="Doors" type="Node2D" parent="."]
+[node name="Enterances" type="Node2D" parent="."]
 
-[node name="Door" type="ColorRect" parent="Doors"]
+[node name="0" type="ColorRect" parent="Enterances"]
 offset_left = 1028.0
 offset_top = 724.0
 offset_right = 1082.0
 offset_bottom = 732.0
 color = Color(1, 0, 0, 1)
 
-[node name="DoorArea" type="Area2D" parent="Doors/Door"]
+[node name="0" type="Area2D" parent="Enterances/0"]
 script = ExtResource("3_7i7dy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/Door/DoorArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enterances/0/0"]
 position = Vector2(27, 4)
 shape = SubResource("RectangleShape2D_rx3hb")
 
 [node name="Player" parent="." instance=ExtResource("2_qq252")]
 position = Vector2(949, 471)
 
-[connection signal="body_entered" from="Doors/Door/DoorArea" to="Doors/Door/DoorArea" method="_on_body_entered"]
+[node name="Glob" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(859, 570)
+
+[node name="Glob2" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(1034, 602)
+
+[node name="Glob3" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(1053, 500)
+
+[connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
