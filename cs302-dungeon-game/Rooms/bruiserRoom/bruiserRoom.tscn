@@ -104,128 +104,130 @@ color = Color(0, 1, 0, 1)
 position = Vector2(433, 12.5)
 shape = SubResource("RectangleShape2D_jd67h")
 
-[node name="Doors" type="Node2D" parent="."]
+[node name="Enterances" type="Node2D" parent="."]
 
-[node name="EntranceDoor1" type="ColorRect" parent="Doors"]
+[node name="0" type="ColorRect" parent="Enterances"]
 offset_left = 737.0
 offset_top = 240.0
 offset_right = 787.0
 offset_bottom = 250.0
 color = Color(0, 0, 1, 1)
 
-[node name="En_D1" type="Area2D" parent="Doors/EntranceDoor1"]
+[node name="0" type="Area2D" parent="Enterances/0"]
 script = ExtResource("8_57bl8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor1/En_D1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enterances/0/0"]
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_yo8rr")
 
-[node name="EntranceDoor2" type="ColorRect" parent="Doors"]
+[node name="1" type="ColorRect" parent="Enterances"]
 offset_left = 1142.0
 offset_top = 240.0
 offset_right = 1192.0
 offset_bottom = 250.0
 color = Color(0, 0, 1, 1)
 
-[node name="En_D2" type="Area2D" parent="Doors/EntranceDoor2"]
+[node name="1" type="Area2D" parent="Enterances/1"]
 script = ExtResource("8_57bl8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor2/En_D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enterances/1/1"]
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_1awn5")
 
-[node name="ExitDoor1" type="ColorRect" parent="Doors"]
+[node name="Exits" type="Node2D" parent="."]
+
+[node name="2" type="ColorRect" parent="Exits"]
 offset_left = 552.0
 offset_top = 688.0
 offset_right = 562.0
 offset_bottom = 738.0
 color = Color(1, 0, 0, 1)
 
-[node name="ED_1" type="Area2D" parent="Doors/ExitDoor1"]
+[node name="2" type="Area2D" parent="Exits/2"]
 script = ExtResource("8_57bl8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor1/ED_1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/2/2"]
 position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_yrdpp")
 
-[node name="ExitDoor2" type="ColorRect" parent="Doors"]
+[node name="3" type="ColorRect" parent="Exits"]
 offset_left = 718.0
 offset_top = 830.0
 offset_right = 768.0
 offset_bottom = 840.0
 color = Color(1, 0, 0, 1)
 
-[node name="ED_2" type="Area2D" parent="Doors/ExitDoor2"]
+[node name="3" type="Area2D" parent="Exits/3"]
 script = ExtResource("8_57bl8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor2/ED_2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/3/3"]
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_h50ps")
 
-[node name="ExitDoor3" type="ColorRect" parent="Doors"]
+[node name="4" type="ColorRect" parent="Exits"]
 offset_left = 869.0
 offset_top = 830.0
 offset_right = 919.0
 offset_bottom = 840.0
 color = Color(1, 0, 0, 1)
 
-[node name="ED_3" type="Area2D" parent="Doors/ExitDoor3"]
+[node name="4" type="Area2D" parent="Exits/4"]
 script = ExtResource("8_57bl8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor3/ED_3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/4/4"]
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_73syp")
 
-[node name="ExitDoor4" type="ColorRect" parent="Doors"]
+[node name="5" type="ColorRect" parent="Exits"]
 offset_left = 1033.0
 offset_top = 830.0
 offset_right = 1083.0
 offset_bottom = 840.0
 color = Color(1, 0, 0, 1)
 
-[node name="ED_4" type="Area2D" parent="Doors/ExitDoor4"]
+[node name="5" type="Area2D" parent="Exits/5"]
 script = ExtResource("8_57bl8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor4/ED_4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/5/5"]
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_qu4wj")
 
-[node name="ExitDoor5" type="ColorRect" parent="Doors"]
+[node name="6" type="ColorRect" parent="Exits"]
 offset_left = 1186.0
 offset_top = 831.0
 offset_right = 1236.0
 offset_bottom = 840.0
 color = Color(1, 0, 0, 1)
 
-[node name="ED_5" type="Area2D" parent="Doors/ExitDoor5"]
+[node name="6" type="Area2D" parent="Exits/6"]
 script = ExtResource("8_57bl8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor5/ED_5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/6/6"]
 position = Vector2(25, 4.5)
 shape = SubResource("RectangleShape2D_ssf2f")
 
-[node name="ExitDoor6" type="ColorRect" parent="Doors"]
+[node name="7" type="ColorRect" parent="Exits"]
 offset_left = 1358.0
 offset_top = 688.0
 offset_right = 1368.0
 offset_bottom = 738.0
 color = Color(1, 0, 0, 1)
 
-[node name="ED_6" type="Area2D" parent="Doors/ExitDoor6"]
+[node name="7" type="Area2D" parent="Exits/7"]
 script = ExtResource("8_57bl8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor6/ED_6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/7/7"]
 position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_sw481")
 
 [node name="Player" parent="." instance=ExtResource("1_gmsk7")]
 position = Vector2(971, 521)
 
-[connection signal="body_entered" from="Doors/EntranceDoor1/En_D1" to="Doors/EntranceDoor1/En_D1" method="_on_body_entered"]
-[connection signal="body_entered" from="Doors/EntranceDoor2/En_D2" to="Doors/EntranceDoor2/En_D2" method="_on_body_entered"]
-[connection signal="body_entered" from="Doors/ExitDoor1/ED_1" to="Doors/ExitDoor1/ED_1" method="_on_body_entered"]
-[connection signal="body_entered" from="Doors/ExitDoor2/ED_2" to="Doors/ExitDoor2/ED_2" method="_on_body_entered"]
-[connection signal="body_entered" from="Doors/ExitDoor3/ED_3" to="Doors/ExitDoor3/ED_3" method="_on_body_entered"]
-[connection signal="body_entered" from="Doors/ExitDoor4/ED_4" to="Doors/ExitDoor4/ED_4" method="_on_body_entered"]
-[connection signal="body_entered" from="Doors/ExitDoor5/ED_5" to="Doors/ExitDoor5/ED_5" method="_on_body_entered"]
-[connection signal="body_entered" from="Doors/ExitDoor6/ED_6" to="Doors/ExitDoor6/ED_6" method="_on_body_entered"]
+[connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
+[connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/2/2" to="Exits/2/2" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/3/3" to="Exits/3/3" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/4/4" to="Exits/4/4" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/5/5" to="Exits/5/5" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/6/6" to="Exits/6/6" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/7/7" to="Exits/7/7" method="_on_body_entered"]

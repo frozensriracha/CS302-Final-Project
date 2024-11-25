@@ -86,38 +86,39 @@ color = Color(0, 1, 0, 1)
 position = Vector2(323.5, 12.5)
 shape = SubResource("RectangleShape2D_4tio0")
 
-[node name="Doors" type="Node2D" parent="."]
+[node name="Enterances" type="Node2D" parent="."]
 
-[node name="EntranceDoor" type="ColorRect" parent="Doors"]
+[node name="0" type="ColorRect" parent="Enterances"]
 offset_left = 660.0
 offset_top = 515.0
 offset_right = 670.0
 offset_bottom = 565.0
 color = Color(0, 0, 1, 1)
 
-[node name="En" type="Area2D" parent="Doors/EntranceDoor"]
+[node name="0" type="Area2D" parent="Enterances/0"]
 script = ExtResource("2_cmtrm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/EntranceDoor/En"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enterances/0/0"]
 position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_u3i5y")
 
-[node name="ExitDoor" type="ColorRect" parent="Doors"]
-offset_left = 1250.0
-offset_top = 515.0
-offset_right = 1260.0
-offset_bottom = 565.0
+[node name="Exits" type="Node2D" parent="."]
+position = Vector2(1250, 515)
+
+[node name="1" type="ColorRect" parent="Exits"]
+offset_right = 10.0
+offset_bottom = 50.0
 color = Color(1, 0, 0, 1)
 
-[node name="Ed" type="Area2D" parent="Doors/ExitDoor"]
+[node name="1" type="Area2D" parent="Exits/1"]
 script = ExtResource("2_cmtrm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Doors/ExitDoor/Ed"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/1/1"]
 position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_525u3")
 
 [node name="Player" parent="." instance=ExtResource("1_405yj")]
 position = Vector2(975, 547)
 
-[connection signal="body_entered" from="Doors/EntranceDoor/En" to="Doors/EntranceDoor/En" method="_on_body_entered"]
-[connection signal="body_entered" from="Doors/ExitDoor/Ed" to="Doors/ExitDoor/Ed" method="_on_body_entered"]
+[connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/1/1" to="Exits/1/1" method="_on_body_entered"]

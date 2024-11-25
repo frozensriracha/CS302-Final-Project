@@ -1,11 +1,11 @@
 extends Area2D
 
+var type = null
+
 func _on_body_entered(body):
-	# Area2D -> ColorRect -> Door Node2D -> Enterences/Exits Node2D -> Room -> Game
-	# 5 Jumps
-	var masterNode: Node = self.get_parent().get_parent().get_parent().get_parent().get_parent()
-	print("Area")
-	masterNode.call("doorEntered", self.name)
-	#print('exiting from Exit Door 1...')
-	#print(body)
-	#print(' ')
+	print(self.name + " was touched by " + body.name)
+	if body.name == "Player": # Only players should trigger doors
+		# Area2D -> ColorRect -> Enterences/Exits "Folder" -> Room -> Game
+		# 5 Jumps
+		var masterNode: Node = self.get_parent().get_parent().get_parent().get_parent()
+		masterNode.call("doorEntered", self.name.to_int())

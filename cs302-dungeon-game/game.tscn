@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ktbn3svmen8n"]
 
 [ext_resource type="Script" path="res://scripts/gameScript.gd" id="1_fixe7"]
-[ext_resource type="PackedScene" uid="uid://cqch0sdgd1koe" path="res://Rooms/SniperRoom/SniperRoom.tscn" id="2_t5and"]
+[ext_resource type="PackedScene" uid="uid://cqch0sdgd1koe" path="res://Rooms/sniperRoom/sniperRoom.tscn" id="2_t5and"]
 
 [node name="roomManager" type="Node2D"]
 script = ExtResource("1_fixe7")
