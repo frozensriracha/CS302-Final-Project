@@ -26,20 +26,23 @@ func _physics_process(delta):
 		queue_free()
 	
 	if attack == true:
+		position -= ((player.position - position).normalized()) * (speed)
 		if counter > 10000:
 			#print("HERE2")
 			player.player_health = player.player_health - 1 
 			counter = 0
 		#if player.name == "Player":
 		
-	position += ((player.position - position).normalized()) * (speed)
-	randf
+	else:
+		position += ((player.position - position).normalized()) * (speed)
+	
 	move_and_slide()
 
 
 
 
 func _on_area_2d_body_entered(body):
+	
 	if body.name == "Player":
 		#print("ENTERED")
 		#player.health = player.health - 1

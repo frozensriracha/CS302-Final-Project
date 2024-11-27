@@ -1,25 +1,77 @@
 extends CharacterBody2D
+@onready var player = $"../Player"
+@onready var heart_scene = preload("res://Consumables/heart.tscn")
+@onready var sprite_animation = get_node("AnimatedSprite2D")
+
+var speed = 1
+#var player_chase = false
+var counter = 0
+var attack = false
+var health = 100
+var random
+var temporary
+var keep_position
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+#func _ready():
+	#var player = get_node("/root/GlobRoom/Player")
 
-
-func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+func _physics_process(delta):
+	
+	counter += counter + delta
+	#print(player.player_health)
+	
+	if health == 0:
+		sprite_animation.play("Death")
+		#wait for some time to let the animation above play out
+		await get_tree().create_timer(0.50).timeout
+		random = randf()
+		if random > 0.8:
+			var heart = heart_scene.instantiate()
+			heart.position = position
+			get_parent().add_child(heart)
+			
+		queue_free()
+		
+	
+	if attack == true:
+		position = keep_position
+		sprite_animation.play("Attack")
+		if counter > 10000000:
+			#print("HERE2")
+			
+			player.player_health = player.player_health - 1
+			counter = 0
+		#if player.name == "Player":
+		
+	
+	
+	
+	temporary = position.x
+	position += ((player.position - position).normalized()) * (speed)
+	if temporary > position.x:
+		sprite_animation.flip_h = true
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		sprite_animation.flip_h = false
+		
+	#move_and_slide()
 
-	move_and_slide()
+
+
+
+
+func _on_bruiser_area_body_entered(body):
+	keep_position = position
+	if body.name == "Player":
+		print("ENTERED")
+		#player.health = player.health - 1
+		attack = true
+
+
+
+func _on_bruiser_area_body_exited(body):
+	if body.name == "Player":
+		keep_position = position
+		#print("EXITED")
+		attack = false
+		sprite_animation.play("Idle")

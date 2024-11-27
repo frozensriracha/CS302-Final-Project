@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://sodonqnoc4el"]
+[gd_scene load_steps=34 format=3 uid="uid://sodonqnoc4el"]
 
 [ext_resource type="Script" path="res://Bruiser/bruiser.gd" id="1_bja7l"]
 [ext_resource type="Texture2D" uid="uid://edp5680wb2e6" path="res://Bruiser/Images/attack-B1.png" id="2_ls3pr"]
@@ -27,9 +27,10 @@
 [ext_resource type="Texture2D" uid="uid://ctarc4ym7glrl" path="res://Bruiser/Images/hit-1.png" id="25_fj4qp"]
 [ext_resource type="Texture2D" uid="uid://bj6pa4yuiqmm1" path="res://Bruiser/Images/hit-2.png" id="26_siasv"]
 [ext_resource type="Texture2D" uid="uid://b73ja8m14g152" path="res://Bruiser/Images/hit-3.png" id="27_m5br6"]
+[ext_resource type="Script" path="res://Bruiser/progress_bar.gd" id="28_nkpwo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tj2v"]
-size = Vector2(30, 60)
+size = Vector2(15, 23)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1g7yq"]
 animations = [{
@@ -142,17 +143,46 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oy4jh"]
+size = Vector2(18, 26.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xi2ma"]
+bg_color = Color(0.6, 0.6, 0.239216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3kce"]
+bg_color = Color(0.6, 0, 0, 1)
+
 [node name="Bruiser" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_bja7l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(9, -30)
+position = Vector2(1.5, -10.5)
 shape = SubResource("RectangleShape2D_1tj2v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(25, -48)
+position = Vector2(9, -18)
+scale = Vector2(0.489258, 0.395833)
 sprite_frames = SubResource("SpriteFrames_1g7yq")
-animation = &"Attack"
+animation = &"Run"
 autoplay = "Idle"
+
+[node name="Bruiser_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bruiser_Area"]
+position = Vector2(1.5, -11.25)
+shape = SubResource("RectangleShape2D_oy4jh")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -9.0
+offset_top = -54.0
+offset_right = 36.0
+offset_bottom = -50.0
+theme_override_styles/background = SubResource("StyleBoxFlat_xi2ma")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f3kce")
+show_percentage = false
+script = ExtResource("28_nkpwo")
+
+[connection signal="body_entered" from="Bruiser_Area" to="." method="_on_bruiser_area_body_entered"]
+[connection signal="body_exited" from="Bruiser_Area" to="." method="_on_bruiser_area_body_exited"]

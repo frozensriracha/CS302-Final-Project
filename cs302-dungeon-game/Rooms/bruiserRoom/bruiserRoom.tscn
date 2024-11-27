@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://u84fi8o61ewj"]
+[gd_scene load_steps=16 format=3 uid="uid://u84fi8o61ewj"]
 
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_gmsk7"]
+[ext_resource type="PackedScene" uid="uid://sodonqnoc4el" path="res://Bruiser/bruiser.tscn" id="3_c8vcu"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="8_57bl8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljf3g"]
@@ -222,6 +223,9 @@ shape = SubResource("RectangleShape2D_sw481")
 
 [node name="Player" parent="." instance=ExtResource("1_gmsk7")]
 position = Vector2(971, 521)
+
+[node name="Bruiser" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(709, 438)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
 [connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]
