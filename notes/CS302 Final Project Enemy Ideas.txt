@@ -1,0 +1,57 @@
+CS302 Final Project Enemy Ideas
+
+Official enemy names are TBD
+
+Light Enemy - Demon?
+	- Small, skeleton-like figure
+ 	- Low health, deals decent damage
+	- melee attacks only
+	- Moves faster than all other enemies
+	- Can jump and lunge at the player (might be tough to implement but I'll leave it in for now as a concept)
+	- Can blow off their legs to restrict movement
+	- Drops a small amount of experience/money on kill (if we choose to implement these)
+	
+Medium Enemy - Soldier?
+	- Human man or woman dressed in soldier's clothes
+	- Moderate amount of health and damage
+	- Attacks with a gun/crossbow
+	- Average movement speed
+	- Drops a medium amount of experience/money
+	- Has a chance to heal for 50% of damage taken
+		- Stretch goal: "Healing aura" stays on ground and can heal other enemies for up to 50% of damage taken
+
+Heavy Enemy - Bruiser?
+	- Large, hulk-like figure
+	- Large amount of health, deals high damage
+	- Powerful melee attacks
+	- Moves very slowly
+	- Drops large amount of experience/health, has a chance to drop a healing item on kill
+	- Can spawn small beetle enemies that chase the player
+		- Beetles have very low health, move decently fast do not drop experience/money, deal average damage
+
+Long Range Enemy - Huntsman?
+	- Shadowy, silhouetted figure
+	- Moderate amount of health, deals very high damage
+	- Low movement speed but stays as far away from the player as possible
+	- Attacks with a sniper rifle/bow
+	- Can be critically struck for 50% more damage if hit in the head
+	- Drops a decent amount of experience/money
+
+Alternate Enemy - Glob
+	- A big green blob with eyes
+	- Decent health (between medium and heavy), deals average damage
+	- Moves by jumping around
+	- Attacks by jumping into player
+	- Drops decent amount of experience/money
+	- Stretch goal: splits into two smaller Globs on kill
+
+Boss Enemy - Wotan, Guardian of the Heavens
+	- A giant monkey that jumps and runs around
+	- Most health in the game, deals high damage
+	- Can attack with fists or shoulder mounted cannon
+	- Has a shield. The shield takes damage before his HP.
+	- Shield regenerates after he has not taken damage for a period of time
+	- Stretch goal: When the boss's HP pool is 50% depleted, his HP becomes invulnerable and he begins rapidly recharging shields. 
+		- During this phase, beetles will spawn and chase the player.
+	- Player wins the game upon killing the boss
+	
