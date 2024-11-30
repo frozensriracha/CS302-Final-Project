@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="1_gt0ui"]
 [ext_resource type="Script" path="res://Rooms/BossRoom/Scripts/gameWinDoor.gd" id="2_urkpi"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="3_uaqyl"]
-[ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="4_fgkex"]
+[ext_resource type="PackedScene" uid="uid://d1tl11apnbma2" path="res://Boss/boss.tscn" id="4_78x0y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8j2k"]
 size = Vector2(1078, 22)
@@ -118,11 +118,11 @@ script = ExtResource("2_urkpi")
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_qpjki")
 
-[node name="Glob" parent="." instance=ExtResource("4_fgkex")]
-position = Vector2(781, 340)
-
 [node name="Player" parent="." instance=ExtResource("3_uaqyl")]
 position = Vector2(1287, 946)
+
+[node name="Boss" parent="." instance=ExtResource("4_78x0y")]
+position = Vector2(970, 468)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
 [connection signal="body_entered" from="Exits/1/1" to="Exits/1/1" method="_on_body_entered"]
