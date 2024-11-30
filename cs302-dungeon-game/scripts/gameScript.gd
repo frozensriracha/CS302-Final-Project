@@ -90,7 +90,7 @@ func doorEntered(doorID: int):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	switchTo(0,0)
-	self.get_child(0).get_node("Player").position = Vector2(960, 540)
+	#self.get_child(0).get_node("Player").position = Vector2(960, 540)
 	#roomGen.printGenMatrix()
 	
 	pass # Replace with function body.
@@ -99,5 +99,5 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	## triggers for room switching can be changed
-	if Input.is_action_just_pressed("debug1"): self.get_child(0).get_node("Player").position = Vector2(900,600)
+	if Input.is_action_just_pressed("debug1"): self.get_child(0).get_node("Player").position = Vector2(960, 540)
 	pass
