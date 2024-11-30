@@ -27,6 +27,8 @@ func switchTo(roomID:int, doorID:int):
 		print("already in room " + str(roomID))
 		return 
 	
+	# Save current player health
+	var oldHealth = self.get_child(0).get_node("Player").player_health
 	
 	# Get room instance
 	var roomData = dungeon[roomID]
@@ -62,6 +64,9 @@ func switchTo(roomID:int, doorID:int):
 	print("Door: ", door.position)
 	
 	player.position = Vector2(door.position) # BUG - player is placed at seemingly random position if room has ever been deloaded 
+	
+	# Transfer player health
+	player.player_health = oldHealth
 	
 	# update currentRoom
 	currentRoomName = roomName
