@@ -7,9 +7,11 @@ var roomsDict = {}
 class room:
 	var type: String
 	var size: Vector2
-	var enterences: Array[Vector3]
+	var enterances: Array[Vector3]
 	var exits: Array[Vector3]
 	var doorDests: Array[Vector2] # doorDests[doorID] = (roomID,doorID)
+	var position:Vector3 = Vector3(0,0,0) # Notation as described in line 24
+	var defeated:bool = false # Set to true when the player defeats all enemies in the instance
 	
 	func _init(name) -> void:
 		type = name
@@ -21,9 +23,9 @@ func longHall():
 	longHall.size = Vector2(5,1)
 	
 	# Doors are described as a 3d Vector containing [xCoord, yCoord, direction] with 0=north, 1=east, 2=south, 3=west
-	longHall.enterences.append(Vector3(0,0,0))
-	longHall.enterences.append(Vector3(0,0,2))
-	longHall.enterences.append(Vector3(0,0,3))  
+	longHall.enterances.append(Vector3(0,0,0))
+	longHall.enterances.append(Vector3(0,0,2))
+	longHall.enterances.append(Vector3(0,0,3))  
 	
 	longHall.exits.append(Vector3(4,0,0))
 	longHall.exits.append(Vector3(4,0,1))
@@ -38,9 +40,9 @@ func normalHall():
 	
 	normalHall.size = Vector2(4,1)
 	
-	normalHall.enterences.append(Vector3(0,0,0))
-	normalHall.enterences.append(Vector3(0,0,2))
-	normalHall.enterences.append(Vector3(0,0,3))  
+	normalHall.enterances.append(Vector3(0,0,0))
+	normalHall.enterances.append(Vector3(0,0,2))
+	normalHall.enterances.append(Vector3(0,0,3))  
 	
 	normalHall.exits.append(Vector3(3,0,0))
 	normalHall.exits.append(Vector3(3,0,1))
@@ -55,7 +57,7 @@ func shortHall():
 	
 	shortHall.size = Vector2(2,1)
 	
-	shortHall.enterences.append(Vector3(0,0,3)) 
+	shortHall.enterances.append(Vector3(0,0,3)) 
 	
 	shortHall.exits.append(Vector3(2,0,1))
 	
@@ -68,7 +70,7 @@ func globRoom():
 	
 	globRoom.size = Vector2(2,2)
 	
-	globRoom.enterences.append(Vector3(1,1,2)) 
+	globRoom.enterances.append(Vector3(1,1,2)) 
 	
 	globRoom.doorDests.resize(1)
 	
@@ -79,9 +81,9 @@ func sniperRoom():
 	
 	sniperRoom.size = Vector2(3,4)
 	
-	sniperRoom.enterences.append(Vector3(0,3,2)) 
-	sniperRoom.enterences.append(Vector3(1,3,2))
-	sniperRoom.enterences.append(Vector3(2,3,2))
+	sniperRoom.enterances.append(Vector3(0,3,2)) 
+	sniperRoom.enterances.append(Vector3(1,3,2))
+	sniperRoom.enterances.append(Vector3(2,3,2))
 	
 	sniperRoom.exits.append(Vector3(0,0,3))
 	sniperRoom.exits.append(Vector3(1,0,0))
@@ -96,8 +98,8 @@ func bruiserRoom():
 	
 	bruiserRoom.size = Vector2(3,4)
 	
-	bruiserRoom.enterences.append(Vector3(1,0,2))
-	bruiserRoom.enterences.append(Vector3(2,0,2))
+	bruiserRoom.enterances.append(Vector3(1,0,2))
+	bruiserRoom.enterances.append(Vector3(2,0,2))
 	
 	bruiserRoom.exits.append(Vector3(0,2,3))
 	bruiserRoom.exits.append(Vector3(0,2,2))
