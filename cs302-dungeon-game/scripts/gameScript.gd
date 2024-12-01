@@ -20,10 +20,10 @@ func switchTo(roomID:int, doorID:int):
 		return
 	switchToLockout = true # Enable lockout to disable infinite switching between doors
 	
-	# do nothing if already in desired room
-	if currentRoomID == roomID: 
-		print("already in room " + str(roomID))
-		return 
+	# DEBUG - Print all doorDests
+	print("All doorDests for roomID " + str(currentRoomID))
+	for n in dungeon[currentRoomID].doorDests:
+		print("  " + str(n))
 	
 	# Save current player health
 	var oldHealth = self.get_child(0).get_node("Player").player_health
@@ -35,10 +35,7 @@ func switchTo(roomID:int, doorID:int):
 	# Remove all child nodes of the roomManager
 	# (should be only one, but you can never be too safe!)
 	for n in self.get_children():
-		self.remove_child(n)
 		n.queue_free()
-		print("Deloaded " + n.name)
-		
 	
 	# load and create a new instance of the desired room
 	await get_tree().create_timer(0.01).timeout
@@ -46,7 +43,6 @@ func switchTo(roomID:int, doorID:int):
 	var instance = scene.instantiate()
 	instance.name = roomName
 	self.add_child(instance)
-	print("Loaded " + roomName)
 	
 	# Deload any unlinked doors
 	
@@ -57,8 +53,6 @@ func switchTo(roomID:int, doorID:int):
 	
 	var door:ColorRect = self.get_child(0).get_node("Enterances/" + str(doorID))
 	if door == null: door = self.get_child(0).get_node("Exits/" + str(doorID))
-	
-	if door == null: print("Null Door (doorID: " + str(doorID) + ")")
 	
 	print("Player: ", player.position) 
 	print("Door: ", door.position)
@@ -71,6 +65,8 @@ func switchTo(roomID:int, doorID:int):
 	# update currentRoom
 	currentRoomName = roomName
 	currentRoomID = roomID
+	
+	print("Switched to RoomID " + str(roomID))
 	
 	return
 
@@ -90,7 +86,8 @@ func doorEntered(doorID: int):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	switchTo(0,0)
+	#switchTo(0,0)
+	switchToLockout = false
 	#roomGen.printGenMatrix()
 	pass
 
@@ -98,5 +95,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	## triggers for room switching can be changed
-	if Input.is_action_just_pressed("debug1"): self.get_child(0).get_node("Player").position = Vector2(960, 540)
+	if Input.is_action_just_pressed("debug1"):
+		self.get_child(0).get_node("Player").position = Vector2(960, 540)
+		switchToLockout = false
 	pass

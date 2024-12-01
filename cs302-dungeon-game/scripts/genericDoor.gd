@@ -3,7 +3,6 @@ extends Area2D
 var type = null
 
 func _on_body_entered(body):
-	print(self.name + " was touched by " + body.name)
 	if body.name == "Player": # Only players should trigger doors
 		# Area2D -> ColorRect -> Enterences/Exits "Folder" -> Room -> Game
 		# 5 Jumps

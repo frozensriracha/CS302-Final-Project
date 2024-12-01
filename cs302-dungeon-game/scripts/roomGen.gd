@@ -66,7 +66,7 @@ func getDoorPosLocal(roomID, doorID):
 	else:
 		return roomInstances[roomID].exits[doorID- numEnterances]
 
-# Outputs a door's coordinates and rotation relative to the map
+# Outputs a door's coordinates and rotation relative to the map - WORKING
 func getDoorPosGlobal(roomID:int, doorID:int):
 	# Get room and door positions
 	var roomPos:Vector3 = roomInstances[roomID].position
@@ -90,14 +90,18 @@ func generateRoom(roomName:String, doorID:int, offOfRoomID:int, offOfDoorID:int,
 	print("Generating " + roomName + "...") # DEBUG
 	
 	# Get room, throw error if roomName isn't a key in the roomsDict
-	var newRoom:Rooms.room = rooms.roomsDict.get(roomName)
+	var newRoom:Rooms.room = Rooms.room.new("roomName" + " " + str(rng.randi()))
+	#Rooms.room.new().copyData()
+	newRoom.copyData(rooms.roomsDict.get(roomName))
+	for n in newRoom.doorDests:
+		n = Vector2(-1,-1)
 	if newRoom == null:
 		print("Given roomType " + roomName + " is not a valid Roomtype (not found in roomsDict)")
 		return false
 	
 	# Get the global positon of the door we want to generate a room off of
-	var offOfDoorPos:Vector3 = getDoorPosGlobal(offOfRoomID, offOfDoorID)
-	print("offOfDoorGlobal: " + str(offOfDoorPos)) # DEBUG
+	var offOfDoorPosGlobal:Vector3 = getDoorPosGlobal(offOfRoomID, offOfDoorID)
+	print("offOfDoorGlobal: " + str(offOfDoorPosGlobal)) # DEBUG
 
 	
 	# Choose a random enterance door from the new room to connect to the offOfDoor
@@ -107,20 +111,21 @@ func generateRoom(roomName:String, doorID:int, offOfRoomID:int, offOfDoorID:int,
 	print("connectingDoorPosRel: " + str(connectingDoorPosRel)) # DEBUG
 	
 	# Calculate the position of the new door
-	var connectingDoorPosGlobal:Vector3 = offOfDoorPos
-	connectingDoorPosGlobal[2] = int(connectingDoorPosGlobal[2] + 4) % 2 # 180deg rotation
-	if offOfDoorPos[2] == 0:   # offOf door facing North - connecting door is one cell up
+	var connectingDoorPosGlobal:Vector3 = offOfDoorPosGlobal
+	connectingDoorPosGlobal[2] = int(connectingDoorPosGlobal[2] + 2) % 4 # 180deg rotation
+	if offOfDoorPosGlobal[2] == 0:   # offOf door facing North - connecting door is one cell up
 		connectingDoorPosGlobal[1] -= 1
-	elif offOfDoorPos[2] == 1: # offOf door facing East - connecting door is one cell right
+	elif offOfDoorPosGlobal[2] == 1: # offOf door facing East - connecting door is one cell right
 		connectingDoorPosGlobal[0] += 1
-	elif offOfDoorPos[2] == 2: # offOf door facing South - connecting door is one cell down
+	elif offOfDoorPosGlobal[2] == 2: # offOf door facing South - connecting door is one cell down
 		connectingDoorPosGlobal[1] += 1
-	elif offOfDoorPos[2] == 3: # offOf door facing West - connecting door is one cell left
+	elif offOfDoorPosGlobal[2] == 3: # offOf door facing West - connecting door is one cell left
 		connectingDoorPosGlobal[0] -= 1
 	print("connectingDoorPosGlobal: " + str(connectingDoorPosGlobal)) # DEBUG
 	
 	# Calculate rotation of the new room
-	newRoom.position[2] = abs(int(connectingDoorPosGlobal[2] - connectingDoorPosRel[2]) % 4)
+	newRoom.position[2] = int(connectingDoorPosGlobal[2] - connectingDoorPosRel[2]) % 4
+	while newRoom.position[2] < 0: newRoom.position[2] += 4 # Workaround b/c modulo doesn't work as expected with negative ints
 	print("newRoom.position[2]: " + str(newRoom.position[2])) # DEBUG
 	
 	# Get the dimensions of the room relative to the map
@@ -236,8 +241,21 @@ func generateDungeon(mainChainLength:int):
 	# Starting room
 	forceGenRoom("startingRoom", Vector3(0,0,0))
 	generateRoom("sniperRoom", 1, 0, 0)
-	generateRoom("bruiserRoom", 0, 1, 4, false)
+	generateRoom("bruiserRoom", 0, 1, 4)
+	generateRoom("normalHall", 0, 2, 5)
+	generateRoom("shortHall", 0, 3, 3)
+	generateRoom("sniperRoom", 0, 4, 1)
+	generateRoom("longHall", 1, 5, 5)
+	generateRoom("globRoom", 0, 6, 3)
+	generateRoom("bossRoom", 0, 6, 4)
 	printGenMatrix()
+	
+	# DEBUG - Print all doorDests
+	for i in [1,5]:
+		print("All doorDests for roomID " + str(i) + " " + roomInstances[i].type)
+		for n in roomInstances[i].doorDests:
+			print("  " + str(n))
+	
 	#for i in range(mainChainLength):
 		#rooms.roomsDict[2]
 		

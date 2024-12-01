@@ -15,123 +15,145 @@ class room:
 	
 	func _init(name) -> void:
 		type = name
+	
+	func copyData(otherRoom:room):
+		self.type = otherRoom.type
+		self.size = otherRoom.size
+		self.enterances = otherRoom.enterances
+		self.exits = otherRoom.exits
+		self.doorDests.resize(otherRoom.doorDests.size())
+		self.doorDests.fill(Vector2(-1,-1))
+		self.position = otherRoom.position
+		self.defeated = false
 
 # Room Definitions
 func longHall():
-	var longHall = room.new("longHall")
+	var newRoomType = room.new("longHall")
 	
-	longHall.size = Vector2(5,1)
+	newRoomType.size = Vector2(5,1)
 	
 	# Doors are described as a 3d Vector containing [xCoord, yCoord, direction] with 0=north, 1=east, 2=south, 3=west
-	longHall.enterances.append(Vector3(0,0,0))
-	longHall.enterances.append(Vector3(0,0,2))
-	longHall.enterances.append(Vector3(0,0,3))  
+	newRoomType.enterances.append(Vector3(0,0,0))
+	newRoomType.enterances.append(Vector3(0,0,2))
+	newRoomType.enterances.append(Vector3(0,0,3))  
 	
-	longHall.exits.append(Vector3(4,0,0))
-	longHall.exits.append(Vector3(4,0,1))
-	longHall.exits.append(Vector3(4,0,2))
+	newRoomType.exits.append(Vector3(4,0,0))
+	newRoomType.exits.append(Vector3(4,0,1))
+	newRoomType.exits.append(Vector3(4,0,2))
 	
-	longHall.doorDests.resize(6)
-	longHall.doorDests.fill(Vector2(-1,-1))
+	newRoomType.doorDests.resize(6)
+	newRoomType.doorDests.fill(Vector2(-1,-1))
 	
-	return longHall
+	return newRoomType
 
 func normalHall():
-	var normalHall = room.new("normalHall")
+	var newRoomType = room.new("normalHall")
 	
-	normalHall.size = Vector2(4,1)
+	newRoomType.size = Vector2(4,1)
 	
-	normalHall.enterances.append(Vector3(0,0,0))
-	normalHall.enterances.append(Vector3(0,0,2))
-	normalHall.enterances.append(Vector3(0,0,3))  
+	newRoomType.enterances.append(Vector3(0,0,0))
+	newRoomType.enterances.append(Vector3(0,0,2))
+	newRoomType.enterances.append(Vector3(0,0,3))  
 	
-	normalHall.exits.append(Vector3(3,0,0))
-	normalHall.exits.append(Vector3(3,0,1))
-	normalHall.exits.append(Vector3(3,0,2))
+	newRoomType.exits.append(Vector3(3,0,0))
+	newRoomType.exits.append(Vector3(3,0,1))
+	newRoomType.exits.append(Vector3(3,0,2))
 	
-	normalHall.doorDests.resize(6)
-	normalHall.doorDests.fill(Vector2(-1,-1))
+	newRoomType.doorDests.resize(6)
+	newRoomType.doorDests.fill(Vector2(-1,-1))
 	
-	return normalHall
+	return newRoomType
 
 func shortHall():
-	var shortHall = room.new("shortHall")
+	var newRoomType = room.new("shortHall")
 	
-	shortHall.size = Vector2(2,1)
+	newRoomType.size = Vector2(3,1)
 	
-	shortHall.enterances.append(Vector3(0,0,3)) 
+	newRoomType.enterances.append(Vector3(0,0,3)) 
 	
-	shortHall.exits.append(Vector3(2,0,1))
+	newRoomType.exits.append(Vector3(2,0,1))
 	
-	shortHall.doorDests.resize(2)
-	shortHall.doorDests.fill(Vector2(-1,-1))
+	newRoomType.doorDests.resize(2)
+	newRoomType.doorDests.fill(Vector2(-1,-1))
 
 	
-	return shortHall
+	return newRoomType
 
 func globRoom():
-	var globRoom = room.new("globRoom")
+	var newRoomType = room.new("globRoom")
 	
-	globRoom.size = Vector2(2,2)
+	newRoomType.size = Vector2(2,2)
 	
-	globRoom.enterances.append(Vector3(1,1,2)) 
+	newRoomType.enterances.append(Vector3(1,1,2)) 
 	
-	globRoom.doorDests.resize(1)
-	globRoom.doorDests.fill(Vector2(-1,-1))
+	newRoomType.doorDests.resize(1)
+	newRoomType.doorDests.fill(Vector2(-1,-1))
 	
-	return globRoom
+	return newRoomType
 
 func sniperRoom():
-	var sniperRoom = room.new("sniperRoom")
+	var newRoomType = room.new("sniperRoom")
 	
-	sniperRoom.size = Vector2(3,4)
+	newRoomType.size = Vector2(3,4)
 	
-	sniperRoom.enterances.append(Vector3(0,3,2)) 
-	sniperRoom.enterances.append(Vector3(1,3,2))
-	sniperRoom.enterances.append(Vector3(2,3,2))
+	newRoomType.enterances.append(Vector3(0,3,2)) 
+	newRoomType.enterances.append(Vector3(1,3,2))
+	newRoomType.enterances.append(Vector3(2,3,2))
 	
-	sniperRoom.exits.append(Vector3(0,0,3))
-	sniperRoom.exits.append(Vector3(1,0,0))
-	sniperRoom.exits.append(Vector3(2,0,1))
+	newRoomType.exits.append(Vector3(0,0,3))
+	newRoomType.exits.append(Vector3(1,0,0))
+	newRoomType.exits.append(Vector3(2,0,1))
 	
-	sniperRoom.doorDests.resize(6)
-	sniperRoom.doorDests.fill(Vector2(-1,-1))
+	newRoomType.doorDests.resize(6)
+	newRoomType.doorDests.fill(Vector2(-1,-1))
 	
-	return sniperRoom
+	return newRoomType
 
 func bruiserRoom():
-	var bruiserRoom = room.new("bruiserRoom")
+	var newRoomType = room.new("bruiserRoom")
 	
-	bruiserRoom.size = Vector2(4,3)
+	newRoomType.size = Vector2(4,3)
 	
-	bruiserRoom.enterances.append(Vector3(1,0,2))
-	bruiserRoom.enterances.append(Vector3(2,0,2))
+	newRoomType.enterances.append(Vector3(1,0,0))
+	newRoomType.enterances.append(Vector3(2,0,0))
 	
-	bruiserRoom.exits.append(Vector3(0,2,3))
-	bruiserRoom.exits.append(Vector3(0,2,2))
-	bruiserRoom.exits.append(Vector3(1,2,2))
-	bruiserRoom.exits.append(Vector3(2,2,2))
-	bruiserRoom.exits.append(Vector3(3,2,2))
-	bruiserRoom.exits.append(Vector3(3,2,1))
+	newRoomType.exits.append(Vector3(0,2,3))
+	newRoomType.exits.append(Vector3(0,2,2))
+	newRoomType.exits.append(Vector3(1,2,2))
+	newRoomType.exits.append(Vector3(2,2,2))
+	newRoomType.exits.append(Vector3(3,2,2))
+	newRoomType.exits.append(Vector3(3,2,1))
 	
-	bruiserRoom.doorDests.resize(8)
-	bruiserRoom.doorDests.fill(Vector2(-1,-1))
+	newRoomType.doorDests.resize(8)
+	newRoomType.doorDests.fill(Vector2(-1,-1))
 	
-	return bruiserRoom
+	return newRoomType
 
 func startingRoom():
-	var startingRoom = room.new("startingRoom")
+	var newRoomType = room.new("startingRoom")
 	
-	startingRoom.size = Vector2(2,2)
+	newRoomType.size = Vector2(2,2)
 	
-	startingRoom.enterances.append(Vector3(1,1,2)) 
+	newRoomType.enterances.append(Vector3(1,1,2)) 
 	
-	startingRoom.doorDests.resize(1)
-	startingRoom.doorDests.fill(Vector2(-1,-1))
+	newRoomType.doorDests.resize(1)
+	newRoomType.doorDests.fill(Vector2(-1,-1))
 	
-	return startingRoom
+	return newRoomType
 
-
+func bossRoom():
+	var newRoomType = room.new("bossRoom")
+	
+	newRoomType.size = Vector2(5,5)
+	
+	newRoomType.enterances.append(Vector3(2,0,0)) 
+	
+	newRoomType.exits.append(Vector3(2,4,2))
+	
+	newRoomType.doorDests.resize(2)
+	newRoomType.doorDests.fill(Vector2(-1,-1))
+	
+	return newRoomType
 
 func _init():
 	# append all rooms to main array in init function
@@ -142,5 +164,6 @@ func _init():
 	roomsDict["sniperRoom"] = sniperRoom()
 	roomsDict["bruiserRoom"] = bruiserRoom()
 	roomsDict["startingRoom"] = startingRoom()
+	roomsDict["bossRoom"] = bossRoom()
 	print("Rooms Dict initialized")
 	
