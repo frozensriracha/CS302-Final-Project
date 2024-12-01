@@ -18,12 +18,18 @@ func _process(delta):
 				queue_free()
 	
 	if type == "Player_Bullet":
-		if object is CharacterBody2D:
+		if attack == true:
+			object.health = object.health - 5
+			attack = false
+			queue_free()
+					
+	if type == "Boss_Bullet":
+		if object == player:
 			if attack == true:
-				object.health = object.health - 5
+				player.player_health = player.player_health - 5
 				attack = false
 				queue_free()
-				
+
 
 func _on_body_entered(body):
 	object = body
