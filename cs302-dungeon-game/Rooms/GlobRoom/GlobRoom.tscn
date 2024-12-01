@@ -1,12 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://dy06c2quh2uw6"]
 
 [ext_resource type="Script" path="res://Rooms/GlobRoom/Scripts/floor.gd" id="2_aomcv"]
-[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://Free Star Overlays 03.png" id="2_i6pug"]
+[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://sprites/Free Star Overlays 03.png" id="2_i6pug"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="2_qq252"]
-[ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://floor1.PNG" id="2_x2enc"]
+[ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://sprites/floor1.PNG" id="2_x2enc"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="3_7i7dy"]
-[ext_resource type="Texture2D" uid="uid://cgt2rscb4n23u" path="res://wall1.PNG" id="3_vreb5"]
+[ext_resource type="Texture2D" uid="uid://cgt2rscb4n23u" path="res://sprites/wall1.PNG" id="3_vreb5"]
 [ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="4_eualq"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yg0e"]
 size = Vector2(23.5, 431.75)

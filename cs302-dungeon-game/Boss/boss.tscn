@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" path="res://Boss/Scripts/boss.gd" id="1_nvgyj"]
 [ext_resource type="Script" path="res://Boss/Scripts/progress_bar.gd" id="2_dcgju"]
-[ext_resource type="Texture2D" uid="uid://du06us77tkh6i" path="res://altbosslol.jpg" id="3_weqb2"]
+[ext_resource type="Texture2D" uid="uid://du06us77tkh6i" path="res://sprites/altbosslol.jpg" id="3_weqb2"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h818x"]
 size = Vector2(69, 70)

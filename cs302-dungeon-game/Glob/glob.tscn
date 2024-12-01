@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Glob/Scripts/glob_progress.gd" id="2_0uwfa"]
 [ext_resource type="Texture2D" uid="uid://cs07mus0viylf" path="res://Glob/glob1.PNG" id="3_yrdxh"]
 
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_m2whc"]
 radius = 13.0
 

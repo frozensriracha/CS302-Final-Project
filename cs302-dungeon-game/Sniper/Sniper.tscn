@@ -8,8 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://doxi7rfax20oh" path="res://Sniper/sniper shoot2.PNG" id="5_twik0"]
 [ext_resource type="Texture2D" uid="uid://iy53ysqiuj7r" path="res://Sniper/sniper shot1.PNG" id="6_1nxkv"]
 [ext_resource type="Texture2D" uid="uid://duttobb4qyyth" path="res://Sniper/sniper shot2.PNG" id="7_cioct"]
-[ext_resource type="Texture2D" uid="uid://cj3j6v7mb2fdp" path="res://sniper shot4.PNG" id="8_fcft6"]
+[ext_resource type="Texture2D" uid="uid://cj3j6v7mb2fdp" path="res://sprites/sniper shot4.PNG" id="8_fcft6"]
 [ext_resource type="Texture2D" uid="uid://ghcl0yubc16l" path="res://Sniper/sniper gun.PNG" id="8_piwg0"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipych"]
 size = Vector2(36, 61)

@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://u84fi8o61ewj"]
 
-[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://Free Star Overlays 03.png" id="1_2hkh8"]
+[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://sprites/Free Star Overlays 03.png" id="1_2hkh8"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_gmsk7"]
-[ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://floor1.PNG" id="2_4alcd"]
-[ext_resource type="Texture2D" uid="uid://cp3kvwmrhhwll" path="res://wall3.PNG" id="3_2x0d5"]
+[ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://sprites/floor1.PNG" id="2_4alcd"]
+[ext_resource type="Texture2D" uid="uid://cp3kvwmrhhwll" path="res://sprites/wall3.PNG" id="3_2x0d5"]
 [ext_resource type="PackedScene" uid="uid://sodonqnoc4el" path="res://Bruiser/bruiser.tscn" id="3_c8vcu"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="8_57bl8"]
 

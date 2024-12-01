@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://b73ja8m14g152" path="res://Bruiser/Images/hit-3.png" id="27_m5br6"]
 [ext_resource type="Script" path="res://Bruiser/progress_bar.gd" id="28_nkpwo"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1tj2v"]
 size = Vector2(15, 23)
 
