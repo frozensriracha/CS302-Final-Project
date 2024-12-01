@@ -1,6 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://u84fi8o61ewj"]
+[gd_scene load_steps=19 format=3 uid="uid://u84fi8o61ewj"]
 
+[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://Free Star Overlays 03.png" id="1_2hkh8"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_gmsk7"]
+[ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://floor1.PNG" id="2_4alcd"]
+[ext_resource type="Texture2D" uid="uid://cp3kvwmrhhwll" path="res://wall3.PNG" id="3_2x0d5"]
 [ext_resource type="PackedScene" uid="uid://sodonqnoc4el" path="res://Bruiser/bruiser.tscn" id="3_c8vcu"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="8_57bl8"]
 
@@ -51,9 +54,20 @@ offset_right = 1392.0
 offset_bottom = 864.0
 color = Color(0, 0, 0, 1)
 
+[node name="Sprite2D2" type="Sprite2D" parent="Floor"]
+position = Vector2(996, 543.5)
+scale = Vector2(2.98, 2.75235)
+texture = ExtResource("1_2hkh8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(961, 544.5)
+scale = Vector2(0.8, 0.597222)
+texture = ExtResource("2_4alcd")
+
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="TopWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 528.0
 offset_top = 216.0
 offset_right = 1392.0
@@ -67,6 +81,7 @@ position = Vector2(431.5, 11.5)
 shape = SubResource("RectangleShape2D_ljf3g")
 
 [node name="LeftWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 528.0
 offset_top = 216.0
 offset_right = 552.0
@@ -80,6 +95,7 @@ position = Vector2(10.5, 323.5)
 shape = SubResource("RectangleShape2D_dhiwv")
 
 [node name="RightWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 1368.0
 offset_top = 216.0
 offset_right = 1392.0
@@ -93,6 +109,7 @@ position = Vector2(14, 323.5)
 shape = SubResource("RectangleShape2D_pwymr")
 
 [node name="BottomWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 528.0
 offset_top = 840.0
 offset_right = 1392.0
@@ -104,6 +121,11 @@ color = Color(0, 1, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall/StaticBody2D"]
 position = Vector2(433, 12.5)
 shape = SubResource("RectangleShape2D_jd67h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls"]
+position = Vector2(962, 541)
+scale = Vector2(0.988889, 0.683333)
+texture = ExtResource("3_2x0d5")
 
 [node name="Enterances" type="Node2D" parent="."]
 
@@ -222,10 +244,37 @@ position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_sw481")
 
 [node name="Player" parent="." instance=ExtResource("1_gmsk7")]
-position = Vector2(971, 521)
+position = Vector2(1312, 530)
 
 [node name="Bruiser" parent="." instance=ExtResource("3_c8vcu")]
 position = Vector2(709, 438)
+
+[node name="Bruiser2" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(670, 655)
+
+[node name="Bruiser3" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(643, 533)
+
+[node name="Bruiser4" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(916, 378)
+
+[node name="Bruiser5" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(821, 556)
+
+[node name="Bruiser6" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(819, 757)
+
+[node name="Bruiser7" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(929, 657)
+
+[node name="Bruiser8" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(974, 513)
+
+[node name="Bruiser9" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(792, 357)
+
+[node name="Bruiser10" parent="." instance=ExtResource("3_c8vcu")]
+position = Vector2(684, 782)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
 [connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]

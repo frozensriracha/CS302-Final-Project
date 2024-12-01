@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://d1tl11apnbma2"]
+[gd_scene load_steps=8 format=3 uid="uid://d1tl11apnbma2"]
 
 [ext_resource type="Script" path="res://Boss/Scripts/boss.gd" id="1_nvgyj"]
 [ext_resource type="Script" path="res://Boss/Scripts/progress_bar.gd" id="2_dcgju"]
+[ext_resource type="Texture2D" uid="uid://du06us77tkh6i" path="res://altbosslol.jpg" id="3_weqb2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h818x"]
 size = Vector2(69, 70)
@@ -44,6 +45,11 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_pmx3y")
 max_value = 120.0
 show_percentage = false
 script = ExtResource("2_dcgju")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.00001, -0.750013)
+scale = Vector2(0.132813, 0.135742)
+texture = ExtResource("3_weqb2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

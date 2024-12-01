@@ -1,6 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://b2vus7mn7awn2"]
+[gd_scene load_steps=19 format=3 uid="uid://b2vus7mn7awn2"]
 
+[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://Free Star Overlays 03.png" id="1_23uop"]
+[ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://floor1.PNG" id="2_5bequ"]
+[ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="3_ttphr"]
+[ext_resource type="PackedScene" uid="uid://sodonqnoc4el" path="res://Bruiser/bruiser.tscn" id="4_74f55"]
+[ext_resource type="PackedScene" uid="uid://b3euy3kbn1tq1" path="res://Sniper/Sniper.tscn" id="5_5j24o"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="6_45syd"]
+[ext_resource type="Texture2D" uid="uid://cgt2rscb4n23u" path="res://wall1.PNG" id="6_j7xhq"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="7_ud0w7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpgy0"]
@@ -39,14 +45,59 @@ size = Vector2(50, 10)
 
 [node name="Floor" type="ColorRect" parent="Floor"]
 offset_left = 420.0
-offset_top = 432.0
+offset_top = 437.0
 offset_right = 1500.0
-offset_bottom = 648.0
+offset_bottom = 645.0
 color = Color(0, 0, 0, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Floor"]
+position = Vector2(966, 549.875)
+scale = Vector2(2.4775, 2.05675)
+texture = ExtResource("1_23uop")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+modulate = Color(0.277528, 0.277528, 0.277528, 1)
+position = Vector2(955.5, 539.5)
+scale = Vector2(1.22685, 0.199074)
+texture = ExtResource("2_5bequ")
+
+[node name="Glob" parent="Floor" instance=ExtResource("3_ttphr")]
+position = Vector2(823, 557)
+
+[node name="Glob2" parent="Floor" instance=ExtResource("3_ttphr")]
+position = Vector2(770, 510)
+
+[node name="Glob3" parent="Floor" instance=ExtResource("3_ttphr")]
+position = Vector2(1063, 553)
+
+[node name="Glob4" parent="Floor" instance=ExtResource("3_ttphr")]
+position = Vector2(992, 599)
+
+[node name="Glob5" parent="Floor" instance=ExtResource("3_ttphr")]
+position = Vector2(887, 605)
+
+[node name="Glob6" parent="Floor" instance=ExtResource("3_ttphr")]
+position = Vector2(987, 509)
+
+[node name="Glob7" parent="Floor" instance=ExtResource("3_ttphr")]
+position = Vector2(940, 557)
+
+[node name="Glob8" parent="Floor" instance=ExtResource("3_ttphr")]
+position = Vector2(888, 505)
+
+[node name="Glob9" parent="Floor" instance=ExtResource("3_ttphr")]
+position = Vector2(772, 603)
+
+[node name="Bruiser" parent="Floor" instance=ExtResource("4_74f55")]
+position = Vector2(1159, 571)
+
+[node name="Sniper" parent="Floor" instance=ExtResource("5_5j24o")]
+position = Vector2(1232, 549)
 
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="TopWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 420.0
 offset_top = 432.0
 offset_right = 1500.0
@@ -60,6 +111,7 @@ position = Vector2(540, 11.5)
 shape = SubResource("RectangleShape2D_qpgy0")
 
 [node name="LeftWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 420.0
 offset_top = 432.0
 offset_right = 444.0
@@ -73,6 +125,7 @@ position = Vector2(11.5, 108)
 shape = SubResource("RectangleShape2D_mln3v")
 
 [node name="RightWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 1476.0
 offset_top = 432.0
 offset_right = 1500.0
@@ -86,6 +139,7 @@ position = Vector2(12.5, 108)
 shape = SubResource("RectangleShape2D_smupl")
 
 [node name="BottomWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 420.0
 offset_top = 624.0
 offset_right = 1500.0
@@ -97,6 +151,11 @@ color = Color(0, 1, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall/StaticBody2D"]
 position = Vector2(540, 12.5)
 shape = SubResource("RectangleShape2D_4res8")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls"]
+position = Vector2(963, 540.5)
+scale = Vector2(1.2537, 0.189815)
+texture = ExtResource("6_j7xhq")
 
 [node name="Enterances" type="Node2D" parent="."]
 
@@ -187,7 +246,7 @@ position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_jr82s")
 
 [node name="Player" parent="." instance=ExtResource("7_ud0w7")]
-position = Vector2(950, 543)
+position = Vector2(560, 546)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
 [connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]

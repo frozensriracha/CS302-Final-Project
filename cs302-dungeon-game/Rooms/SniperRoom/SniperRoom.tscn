@@ -1,13 +1,18 @@
-[gd_scene load_steps=19 format=3 uid="uid://cqch0sdgd1koe"]
+[gd_scene load_steps=24 format=3 uid="uid://cqch0sdgd1koe"]
 
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_cbijb"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/floor.gd" id="1_v76f1"]
+[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://Free Star Overlays 03.png" id="2_e6s5n"]
+[ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://floor1.PNG" id="2_jaalu"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/right_wall.gd" id="2_kyfcx"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/left_wall.gd" id="3_1g2rk"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/top_wall.gd" id="4_sj6b0"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/bottom_wall.gd" id="5_k2ct3"]
+[ext_resource type="Texture2D" uid="uid://dleykb4rcn5dq" path="res://wall2.PNG" id="6_u7s7i"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="8_lrpcw"]
 [ext_resource type="PackedScene" uid="uid://b3euy3kbn1tq1" path="res://Sniper/Sniper.tscn" id="8_u3is1"]
+[ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="9_c5ko0"]
+[ext_resource type="PackedScene" uid="uid://sodonqnoc4el" path="res://Bruiser/bruiser.tscn" id="10_qljp8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tb15k"]
 size = Vector2(24, 864)
@@ -51,9 +56,21 @@ offset_bottom = 972.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("1_v76f1")
 
+[node name="Sprite2D2" type="Sprite2D" parent="Floor"]
+position = Vector2(961.5, 513.5)
+scale = Vector2(2.36125, 2.94747)
+texture = ExtResource("2_e6s5n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+modulate = Color(0.270222, 0.270222, 0.270222, 1)
+position = Vector2(954, 540)
+scale = Vector2(0.707407, 0.914815)
+texture = ExtResource("2_jaalu")
+
 [node name="Borders" type="Node2D" parent="."]
 
 [node name="RightWall" type="ColorRect" parent="Borders"]
+visible = false
 offset_left = 1260.0
 offset_top = 108.0
 offset_right = 1284.0
@@ -69,6 +86,7 @@ position = Vector2(311, 421)
 shape = SubResource("RectangleShape2D_tb15k")
 
 [node name="LeftWall" type="ColorRect" parent="Borders"]
+visible = false
 offset_left = 636.0
 offset_top = 108.0
 offset_right = 660.0
@@ -83,6 +101,7 @@ position = Vector2(12, 427)
 shape = SubResource("RectangleShape2D_ghoyl")
 
 [node name="TopWall" type="ColorRect" parent="Borders"]
+visible = false
 offset_left = 636.0
 offset_top = 108.0
 offset_right = 1284.0
@@ -97,6 +116,7 @@ position = Vector2(323, 11)
 shape = SubResource("RectangleShape2D_kdckx")
 
 [node name="BottomWall" type="ColorRect" parent="Borders"]
+visible = false
 offset_left = 636.0
 offset_top = 948.0
 offset_right = 1284.0
@@ -109,6 +129,11 @@ script = ExtResource("5_k2ct3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/BottomWall/StaticBody2D"]
 position = Vector2(325.5, 12.5)
 shape = SubResource("RectangleShape2D_g67qr")
+
+[node name="PNGWall" type="Sprite2D" parent="Borders"]
+position = Vector2(962, 542)
+scale = Vector2(0.727778, 0.924074)
+texture = ExtResource("6_u7s7i")
 
 [node name="Enterances" type="Node2D" parent="."]
 position = Vector2(1250, 273)
@@ -208,10 +233,46 @@ position = Vector2(332.041, 159)
 shape = SubResource("RectangleShape2D_ryue3")
 
 [node name="Player" parent="." instance=ExtResource("1_cbijb")]
-position = Vector2(963, 507)
+position = Vector2(1016, 840)
 
 [node name="Sniper" parent="." instance=ExtResource("8_u3is1")]
-position = Vector2(801, 198)
+position = Vector2(743, 223)
+
+[node name="Sniper2" parent="." instance=ExtResource("8_u3is1")]
+position = Vector2(857, 222)
+
+[node name="Sniper3" parent="." instance=ExtResource("8_u3is1")]
+position = Vector2(1044, 221)
+
+[node name="Sniper4" parent="." instance=ExtResource("8_u3is1")]
+position = Vector2(1163, 220)
+
+[node name="Glob" parent="." instance=ExtResource("9_c5ko0")]
+position = Vector2(795, 683)
+
+[node name="Glob2" parent="." instance=ExtResource("9_c5ko0")]
+position = Vector2(789, 506)
+
+[node name="Glob3" parent="." instance=ExtResource("9_c5ko0")]
+position = Vector2(893, 587)
+
+[node name="Glob4" parent="." instance=ExtResource("9_c5ko0")]
+position = Vector2(1159, 503)
+
+[node name="Glob5" parent="." instance=ExtResource("9_c5ko0")]
+position = Vector2(1066, 591)
+
+[node name="Glob6" parent="." instance=ExtResource("9_c5ko0")]
+position = Vector2(968, 686)
+
+[node name="Glob7" parent="." instance=ExtResource("9_c5ko0")]
+position = Vector2(1169, 680)
+
+[node name="Glob8" parent="." instance=ExtResource("9_c5ko0")]
+position = Vector2(970, 502)
+
+[node name="Bruiser" parent="." instance=ExtResource("10_qljp8")]
+position = Vector2(968, 388)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
 [connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]

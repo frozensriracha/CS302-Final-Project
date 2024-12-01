@@ -2,16 +2,32 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn")
 @onready var heart_scene = preload("res://Consumables/heart.tscn")
-@onready var laser = get_node("Sniper_Shape").get_node("Sight")
+@onready var laser = get_node("Sight")
+@onready var sprite_animation = get_node("AnimatedSprite2D")
+@onready var gun = get_node("AnimatedSprite2D").get_node("Sprite2D")
+
 #var direction
 #var target_angle
 var counter: int = 1
 var counter_speed: float = 1.0
 var helper
+var helper2
 var health = 40
 var random
+var checkHit
 
 func _process(delta):
+	
+	sprite_animation.play("Idle")
+	if player.position.x < position.x:
+		sprite_animation.flip_h = true
+		gun.flip_h = true
+	else:
+		sprite_animation.flip_h = false
+		gun.flip_h = false
+	
+	
+	
 	counter += counter_speed + delta
 	if health == 0:
 		random = randf()
@@ -30,7 +46,7 @@ func _process(delta):
 		laser.visible = false
 		shoot()
 		counter = 0
-
+	
 
 func shoot():
 	helper = randf()

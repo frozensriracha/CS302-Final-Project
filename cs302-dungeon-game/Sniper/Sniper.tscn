@@ -1,21 +1,60 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3euy3kbn1tq1"]
+[gd_scene load_steps=16 format=3 uid="uid://b3euy3kbn1tq1"]
 
 [ext_resource type="Script" path="res://Sniper/Scripts/sniper.gd" id="1_xq00d"]
 [ext_resource type="Script" path="res://Sniper/Scripts/area_2d.gd" id="2_xd0yw"]
 [ext_resource type="Script" path="res://Sniper/Scripts/sniper_shape.gd" id="3_62wp0"]
 [ext_resource type="Script" path="res://Sniper/Scripts/enemy_progress.gd" id="3_j70db"]
+[ext_resource type="Texture2D" uid="uid://cv3icsnnir5ly" path="res://Sniper/sniper shoot1.PNG" id="4_e0nuo"]
+[ext_resource type="Texture2D" uid="uid://doxi7rfax20oh" path="res://Sniper/sniper shoot2.PNG" id="5_twik0"]
+[ext_resource type="Texture2D" uid="uid://iy53ysqiuj7r" path="res://Sniper/sniper shot1.PNG" id="6_1nxkv"]
+[ext_resource type="Texture2D" uid="uid://duttobb4qyyth" path="res://Sniper/sniper shot2.PNG" id="7_cioct"]
+[ext_resource type="Texture2D" uid="uid://cj3j6v7mb2fdp" path="res://sniper shot4.PNG" id="8_fcft6"]
+[ext_resource type="Texture2D" uid="uid://ghcl0yubc16l" path="res://Sniper/sniper gun.PNG" id="8_piwg0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipych"]
-size = Vector2(14, 15)
+size = Vector2(36, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0xq2"]
-size = Vector2(14, 15)
+size = Vector2(36, 61)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_043mb"]
 bg_color = Color(0.6, 0.6, 0.309804, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scyvr"]
 bg_color = Color(0.686275, 0, 0, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fsx6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fcft6")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e0nuo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_twik0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1nxkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cioct")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Sniper" type="CharacterBody2D"]
 script = ExtResource("1_xq00d")
@@ -24,48 +63,39 @@ script = ExtResource("1_xq00d")
 script = ExtResource("2_xd0yw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 0.5)
+position = Vector2(-1, -1.5)
 shape = SubResource("RectangleShape2D_ipych")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 0.5)
+position = Vector2(-1, -1.5)
 shape = SubResource("RectangleShape2D_m0xq2")
-
-[node name="Sniper_Shape" type="ColorRect" parent="."]
-offset_left = -6.93459
-offset_top = -7.06355
-offset_right = 7.06541
-offset_bottom = 7.93645
-rotation = -6.27509
-pivot_offset = Vector2(7.20825, 7.48495)
-color = Color(1, 1, 0, 1)
-script = ExtResource("3_62wp0")
-
-[node name="ColorRect2" type="ColorRect" parent="Sniper_Shape"]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 6.0
-offset_right = 24.0
-offset_bottom = 9.0
-color = Color(1, 1, 0, 1)
-
-[node name="Sight" type="ColorRect" parent="Sniper_Shape"]
-visible = false
-layout_mode = 0
-offset_left = 23.9306
-offset_top = 6.92816
-offset_right = 2282.93
-offset_bottom = 7.92816
-color = Color(1, 0, 0, 0.352941)
 
 [node name="Enemy_Progress" type="ProgressBar" parent="."]
 offset_left = -35.0
-offset_top = -31.0
+offset_top = -64.0
 offset_right = 35.0
-offset_bottom = -26.0
+offset_bottom = -59.0
 theme_override_styles/background = SubResource("StyleBoxFlat_043mb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_scyvr")
 max_value = 40.0
 value = 40.0
 show_percentage = false
 script = ExtResource("3_j70db")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -4)
+scale = Vector2(0.0613281, 0.0527344)
+sprite_frames = SubResource("SpriteFrames_fsx6b")
+animation = &"Idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="AnimatedSprite2D"]
+position = Vector2(16.3057, 170.667)
+texture = ExtResource("8_piwg0")
+
+[node name="Sight" type="ColorRect" parent="."]
+offset_left = 7.0
+offset_top = -1.0
+offset_right = 2266.0
+offset_bottom = 2.0
+color = Color(1, 0, 0, 0.352941)
+script = ExtResource("3_62wp0")

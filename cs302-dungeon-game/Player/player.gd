@@ -13,11 +13,12 @@ var exited_body
 var take_Sniper_Damage = false
 var take_Glob_Damage = false
 var player_health = 100
+var helper
 
 @onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn")
 #@onready var game_over = preload("res://Rooms/GameOver/game_over.tscn")
 @onready var scene = get_parent()
-
+@onready var sprite_animation = get_node("Sprite2D")
 
 func _physics_process(delta):
 	move()
@@ -40,8 +41,11 @@ func _physics_process(delta):
 	
 func get_XandY():
 	#x position is just dependent on right and left subtractive movements. Same with y position, just up and down
+	
 	input.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
 	input.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
+	
+		
 	return input.normalized() #if this wasn't set to normalized, moving in the diagonal direction would be faster (Pythagorean Theorem)
 
 func move():
@@ -53,9 +57,14 @@ func move():
 			#rotation = weapon_direction.angle()
 	
 	else:
+		var helper = velocity.x
 		velocity += (input * max_speed)
 		weapon_direction = get_global_mouse_position() - global_position
 		#rotation = weapon_direction.angle()
+		if helper > velocity.x:
+			sprite_animation.flip_h = true
+		else:
+			sprite_animation.flip_h = false
 		
 	
 	move_and_slide()

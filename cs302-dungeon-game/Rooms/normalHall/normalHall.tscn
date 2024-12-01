@@ -1,6 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://5ois5wkuw1hv"]
+[gd_scene load_steps=18 format=3 uid="uid://5ois5wkuw1hv"]
 
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_6scjd"]
+[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://Free Star Overlays 03.png" id="1_7qfwi"]
+[ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://floor1.PNG" id="2_1wedh"]
+[ext_resource type="PackedScene" uid="uid://b3euy3kbn1tq1" path="res://Sniper/Sniper.tscn" id="3_dvly2"]
+[ext_resource type="Texture2D" uid="uid://dleykb4rcn5dq" path="res://wall2.PNG" id="4_tpmuv"]
+[ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="7_8xt08"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="7_aq7w3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pun4"]
@@ -38,15 +43,31 @@ size = Vector2(50, 10)
 [node name="Floor" type="Node2D" parent="."]
 
 [node name="Floor" type="ColorRect" parent="Floor"]
+visible = false
 offset_left = 528.0
 offset_top = 432.0
 offset_right = 1392.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
 
+[node name="Sprite2D2" type="Sprite2D" parent="Floor"]
+position = Vector2(939, 538)
+scale = Vector2(2.45, 2.03377)
+texture = ExtResource("1_7qfwi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+modulate = Color(0.423651, 0.423651, 0.423651, 1)
+position = Vector2(963, 539)
+scale = Vector2(0.988889, 0.187037)
+texture = ExtResource("2_1wedh")
+
+[node name="Sniper" parent="Floor" instance=ExtResource("3_dvly2")]
+position = Vector2(1200, 541)
+
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="LeftWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 528.0
 offset_top = 432.0
 offset_right = 552.0
@@ -61,6 +82,7 @@ position = Vector2(539.5, 540)
 shape = SubResource("RectangleShape2D_8pun4")
 
 [node name="RightWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 1368.0
 offset_top = 432.0
 offset_right = 1392.0
@@ -74,6 +96,7 @@ position = Vector2(12.5, 108)
 shape = SubResource("RectangleShape2D_8gxp0")
 
 [node name="TopWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 528.0
 offset_top = 432.0
 offset_right = 1392.0
@@ -87,6 +110,7 @@ position = Vector2(432, 11.5)
 shape = SubResource("RectangleShape2D_vnjnn")
 
 [node name="BottomWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 528.0
 offset_top = 624.0
 offset_right = 1392.0
@@ -98,6 +122,11 @@ color = Color(0, 1, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall/StaticBody2D"]
 position = Vector2(432.5, 12.5)
 shape = SubResource("RectangleShape2D_w6ol6")
+
+[node name="Sprite2D" type="Sprite2D" parent="Walls"]
+position = Vector2(962.5, 541)
+scale = Vector2(0.989815, 0.190741)
+texture = ExtResource("4_tpmuv")
 
 [node name="Enterances" type="Node2D" parent="."]
 
@@ -187,7 +216,22 @@ position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_arai2")
 
 [node name="Player" parent="." instance=ExtResource("1_6scjd")]
-position = Vector2(924, 558)
+position = Vector2(685, 548)
+
+[node name="Glob" parent="." instance=ExtResource("7_8xt08")]
+position = Vector2(886, 512)
+
+[node name="Glob2" parent="." instance=ExtResource("7_8xt08")]
+position = Vector2(951, 547)
+
+[node name="Glob3" parent="." instance=ExtResource("7_8xt08")]
+position = Vector2(886, 578)
+
+[node name="Glob4" parent="." instance=ExtResource("7_8xt08")]
+position = Vector2(952, 607)
+
+[node name="Glob5" parent="." instance=ExtResource("7_8xt08")]
+position = Vector2(954, 488)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
 [connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]

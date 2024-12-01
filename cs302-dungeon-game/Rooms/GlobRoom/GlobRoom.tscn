@@ -1,8 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dy06c2quh2uw6"]
+[gd_scene load_steps=13 format=3 uid="uid://dy06c2quh2uw6"]
 
 [ext_resource type="Script" path="res://Rooms/GlobRoom/Scripts/floor.gd" id="2_aomcv"]
+[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://Free Star Overlays 03.png" id="2_i6pug"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="2_qq252"]
+[ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://floor1.PNG" id="2_x2enc"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="3_7i7dy"]
+[ext_resource type="Texture2D" uid="uid://cgt2rscb4n23u" path="res://wall1.PNG" id="3_vreb5"]
 [ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="4_eualq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yg0e"]
@@ -32,9 +35,21 @@ offset_bottom = 756.0
 color = Color(0, 0, 0, 0.835294)
 script = ExtResource("2_aomcv")
 
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+position = Vector2(1030, 539.5)
+scale = Vector2(1.8425, 1.85553)
+texture = ExtResource("2_i6pug")
+
+[node name="Floor1" type="Sprite2D" parent="Floor"]
+modulate = Color(0.496675, 0.504455, 0.492785, 1)
+position = Vector2(963.5, 540)
+scale = Vector2(0.458333, 0.42037)
+texture = ExtResource("2_x2enc")
+
 [node name="Walls" type="Node2D" parent="."]
 
 [node name="LeftWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 744.0
 offset_top = 324.0
 offset_right = 768.0
@@ -48,6 +63,7 @@ position = Vector2(12.25, 216.125)
 shape = SubResource("RectangleShape2D_1yg0e")
 
 [node name="RightWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 1152.0
 offset_top = 324.0
 offset_right = 1176.0
@@ -61,6 +77,7 @@ position = Vector2(12, 215.5)
 shape = SubResource("RectangleShape2D_h7p6l")
 
 [node name="Top Wall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 744.0
 offset_top = 324.0
 offset_right = 1176.0
@@ -74,6 +91,7 @@ position = Vector2(215.5, 12)
 shape = SubResource("RectangleShape2D_ipbq5")
 
 [node name="BottomWall" type="ColorRect" parent="Walls"]
+visible = false
 offset_left = 744.0
 offset_top = 732.0
 offset_right = 1176.0
@@ -85,6 +103,11 @@ color = Color(0, 1, 0, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall/StaticBody2D"]
 position = Vector2(216.5, 12)
 shape = SubResource("RectangleShape2D_o42s7")
+
+[node name="Wall1" type="Sprite2D" parent="Walls"]
+position = Vector2(961.5, 541)
+scale = Vector2(0.463889, 0.431482)
+texture = ExtResource("3_vreb5")
 
 [node name="Enterances" type="Node2D" parent="."]
 
@@ -103,15 +126,39 @@ position = Vector2(27, 4)
 shape = SubResource("RectangleShape2D_rx3hb")
 
 [node name="Player" parent="." instance=ExtResource("2_qq252")]
-position = Vector2(949, 471)
+position = Vector2(1072, 661)
+
+[node name="Glob4" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(946, 525)
+
+[node name="Glob5" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(1074, 417)
+
+[node name="Glob6" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(834, 392)
 
 [node name="Glob" parent="." instance=ExtResource("4_eualq")]
-position = Vector2(859, 570)
+position = Vector2(843, 605)
 
 [node name="Glob2" parent="." instance=ExtResource("4_eualq")]
-position = Vector2(1034, 602)
+position = Vector2(842, 510)
 
 [node name="Glob3" parent="." instance=ExtResource("4_eualq")]
-position = Vector2(1053, 500)
+position = Vector2(1013, 498)
+
+[node name="Glob7" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(1096, 521)
+
+[node name="Glob8" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(916, 408)
+
+[node name="Glob9" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(992, 405)
+
+[node name="Glob10" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(841, 690)
+
+[node name="Glob11" parent="." instance=ExtResource("4_eualq")]
+position = Vector2(929, 641)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]

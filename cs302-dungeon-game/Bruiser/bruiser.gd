@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var heart_scene = preload("res://Consumables/heart.tscn")
 @onready var sprite_animation = get_node("AnimatedSprite2D")
 
-var speed = 1
+var speed = 2
 #var player_chase = false
 var counter = 0
 var attack = false
@@ -54,7 +54,7 @@ func _physics_process(delta):
 	else:
 		sprite_animation.flip_h = false
 		
-	#move_and_slide()
+	move_and_slide()
 
 
 

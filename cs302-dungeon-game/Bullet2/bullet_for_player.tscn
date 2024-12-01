@@ -1,20 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://dydn6ns18tye5"]
 
 [ext_resource type="Script" path="res://Bullet2/Scripts/bullet_for_player.gd" id="1_ijrvr"]
-[ext_resource type="Texture2D" uid="uid://dqnr4sq3htn0l" path="res://Bullet2/cannon ball_1.png" id="2_1xk1a"]
+[ext_resource type="Texture2D" uid="uid://cc2nhpg1w3ehd" path="res://sniper bullet.PNG" id="2_mvqof"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0e6af"]
-radius = 5.09902
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hwc0h"]
+radius = 0.99999
+height = 7.99992
 
 [node name="bullet_for_player" type="Area2D"]
 script = ExtResource("1_ijrvr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1.19209e-07, 1.78814e-07)
+position = Vector2(-2, 2)
 scale = Vector2(0.0362319, 0.0359712)
-texture = ExtResource("2_1xk1a")
+texture = ExtResource("2_mvqof")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_0e6af")
+rotation = 1.57531
+shape = SubResource("CapsuleShape2D_hwc0h")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

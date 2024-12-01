@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://7w6kfg6jwe7l"]
+[gd_scene load_steps=10 format=3 uid="uid://7w6kfg6jwe7l"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_r2kog"]
 [ext_resource type="Script" path="res://Player/progress_bar.gd" id="2_h1gbm"]
 [ext_resource type="Script" path="res://Player/indicator.gd" id="2_ynjsd"]
 [ext_resource type="Script" path="res://Player/player_collision.gd" id="3_thhf3"]
+[ext_resource type="Texture2D" uid="uid://vxhmo15qo12a" path="res://playeridle.PNG" id="5_f1g22"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y0jn"]
 bg_color = Color(1, 1, 1, 1)
@@ -11,30 +12,24 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4fx0j"]
 bg_color = Color(0.293837, 0.761286, 3.85046e-07, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiqjr"]
-size = Vector2(18.9998, 17.9999)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wq3gk"]
+radius = 7.99993
+height = 39.9996
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehfxs"]
-size = Vector2(20, 21)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_awtnc"]
+radius = 8.0
+height = 40.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_r2kog")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 9.0
-offset_top = -10.0
-offset_right = 28.0
-offset_bottom = 8.0
-rotation = 1.56766
-color = Color(1, 0, 1, 1)
-
 [node name="Player_Progress_Bar" type="ProgressBar" parent="."]
 offset_left = -19.0
-offset_top = -29.0
+offset_top = -38.0
 offset_right = 19.0
-offset_bottom = -26.0
+offset_bottom = -35.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_0y0jn")
@@ -44,9 +39,9 @@ show_percentage = false
 script = ExtResource("2_h1gbm")
 
 [node name="Player_collision" type="CollisionShape2D" parent="."]
-position = Vector2(0.00204664, -0.500009)
-rotation = 1.56469
-shape = SubResource("RectangleShape2D_kiqjr")
+position = Vector2(-9.53674e-07, 2.38419e-07)
+rotation = -0.00424659
+shape = SubResource("CapsuleShape2D_wq3gk")
 script = ExtResource("3_thhf3")
 
 [node name="Indicator" type="ColorRect" parent="Player_collision"]
@@ -120,8 +115,12 @@ zoom = Vector2(2, 2)
 [node name="Damage_Detection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_Detection"]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_ehfxs")
+shape = SubResource("CapsuleShape2D_awtnc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -1)
+scale = Vector2(0.0287964, 0.032019)
+texture = ExtResource("5_f1g22")
 
 [connection signal="area_entered" from="Damage_Detection" to="." method="_on_damage_detection_area_entered"]
 [connection signal="area_exited" from="Damage_Detection" to="." method="_on_damage_detection_area_exited"]
