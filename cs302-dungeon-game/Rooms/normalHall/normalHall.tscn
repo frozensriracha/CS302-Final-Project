@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="7_8xt08"]
 [ext_resource type="Script" path="res://scripts/genericDoor.gd" id="7_aq7w3"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pun4"]
 size = Vector2(23, 216)
 
@@ -61,9 +60,6 @@ modulate = Color(0.423651, 0.423651, 0.423651, 1)
 position = Vector2(963, 539)
 scale = Vector2(0.988889, 0.187037)
 texture = ExtResource("2_1wedh")
-
-[node name="Sniper" parent="Floor" instance=ExtResource("3_dvly2")]
-position = Vector2(1200, 541)
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -233,6 +229,9 @@ position = Vector2(952, 607)
 
 [node name="Glob5" parent="." instance=ExtResource("7_8xt08")]
 position = Vector2(954, 488)
+
+[node name="Sniper" parent="." instance=ExtResource("3_dvly2")]
+position = Vector2(1200, 541)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
 [connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]

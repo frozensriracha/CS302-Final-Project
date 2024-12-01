@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cgt2rscb4n23u" path="res://sprites/wall1.PNG" id="6_j7xhq"]
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="7_ud0w7"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpgy0"]
 size = Vector2(1080, 23)
 
@@ -61,39 +60,6 @@ modulate = Color(0.277528, 0.277528, 0.277528, 1)
 position = Vector2(955.5, 539.5)
 scale = Vector2(1.22685, 0.199074)
 texture = ExtResource("2_5bequ")
-
-[node name="Glob" parent="Floor" instance=ExtResource("3_ttphr")]
-position = Vector2(823, 557)
-
-[node name="Glob2" parent="Floor" instance=ExtResource("3_ttphr")]
-position = Vector2(770, 510)
-
-[node name="Glob3" parent="Floor" instance=ExtResource("3_ttphr")]
-position = Vector2(1063, 553)
-
-[node name="Glob4" parent="Floor" instance=ExtResource("3_ttphr")]
-position = Vector2(992, 599)
-
-[node name="Glob5" parent="Floor" instance=ExtResource("3_ttphr")]
-position = Vector2(887, 605)
-
-[node name="Glob6" parent="Floor" instance=ExtResource("3_ttphr")]
-position = Vector2(987, 509)
-
-[node name="Glob7" parent="Floor" instance=ExtResource("3_ttphr")]
-position = Vector2(940, 557)
-
-[node name="Glob8" parent="Floor" instance=ExtResource("3_ttphr")]
-position = Vector2(888, 505)
-
-[node name="Glob9" parent="Floor" instance=ExtResource("3_ttphr")]
-position = Vector2(772, 603)
-
-[node name="Bruiser" parent="Floor" instance=ExtResource("4_74f55")]
-position = Vector2(1159, 571)
-
-[node name="Sniper" parent="Floor" instance=ExtResource("5_5j24o")]
-position = Vector2(1232, 549)
 
 [node name="Walls" type="Node2D" parent="."]
 
@@ -248,6 +214,39 @@ shape = SubResource("RectangleShape2D_jr82s")
 
 [node name="Player" parent="." instance=ExtResource("7_ud0w7")]
 position = Vector2(560, 546)
+
+[node name="Glob" parent="." instance=ExtResource("3_ttphr")]
+position = Vector2(823, 557)
+
+[node name="Glob2" parent="." instance=ExtResource("3_ttphr")]
+position = Vector2(770, 510)
+
+[node name="Glob3" parent="." instance=ExtResource("3_ttphr")]
+position = Vector2(1063, 553)
+
+[node name="Glob4" parent="." instance=ExtResource("3_ttphr")]
+position = Vector2(992, 599)
+
+[node name="Glob5" parent="." instance=ExtResource("3_ttphr")]
+position = Vector2(887, 605)
+
+[node name="Glob6" parent="." instance=ExtResource("3_ttphr")]
+position = Vector2(987, 509)
+
+[node name="Glob7" parent="." instance=ExtResource("3_ttphr")]
+position = Vector2(940, 557)
+
+[node name="Glob8" parent="." instance=ExtResource("3_ttphr")]
+position = Vector2(888, 505)
+
+[node name="Glob9" parent="." instance=ExtResource("3_ttphr")]
+position = Vector2(772, 603)
+
+[node name="Bruiser" parent="." instance=ExtResource("4_74f55")]
+position = Vector2(1159, 571)
+
+[node name="Sniper" parent="." instance=ExtResource("5_5j24o")]
+position = Vector2(1232, 549)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
 [connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]
