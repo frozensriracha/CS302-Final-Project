@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://world.gd" id="1_i8vju"]
 [ext_resource type="Script" path="res://map_center.gd" id="2_bvuqn"]
-[ext_resource type="PackedScene" uid="uid://cqch0sdgd1koe" path="res://Rooms/sniperRoom/sniperRoom.tscn" id="2_ml2mf"]
+[ext_resource type="PackedScene" uid="uid://cqch0sdgd1koe" path="res://Rooms/SniperRoom/SniperRoom.tscn" id="2_ml2mf"]
 
 
 [node name="World" type="Node2D"]

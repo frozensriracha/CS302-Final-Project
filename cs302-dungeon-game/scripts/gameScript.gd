@@ -2,12 +2,10 @@ extends Node2D
 
 # import scripts
 var roomGen = RoomGen.new()
-var roomGen2 = RoomGen.new()
 var roomTypes = Rooms.new()
 
 # Generate dungeon
-var dungeon: Array[Rooms.room] = roomGen.generateDemoDungeon()
-var dungeon2: Array[Rooms.room] = roomGen2.generateDungeon(10)
+var dungeon: Array[Rooms.room] = roomGen.generateDungeon(10)
 
 var currentRoomName = dungeon[0].type # Should be the name of attached room at start
 var currentRoomID: int = 0            # The current room's index in the room instances vec
@@ -60,6 +58,8 @@ func switchTo(roomID:int, doorID:int):
 	var door:ColorRect = self.get_child(0).get_node("Enterances/" + str(doorID))
 	if door == null: door = self.get_child(0).get_node("Exits/" + str(doorID))
 	
+	if door == null: print("Null Door (doorID: " + str(doorID) + ")")
+	
 	print("Player: ", player.position) 
 	print("Door: ", door.position)
 	
@@ -81,24 +81,18 @@ func doorEntered(doorID: int):
 	print("Current: " + str(currentRoomID) + "," + str(doorID))
 	print("Next: " + str(exit[0]) + "," + str(exit[1]))
 	
-	if exit == Vector2(0,0):
+	if exit == Vector2(-1,-1):
 		print("Door does not have an exit")
 	else:
 		switchTo(exit[0], exit[1])
 	
 	return
 
-#func doorExited(doorID:int):
-	#print("Lock disabled")
-	#switchToLockout = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	switchTo(0,0)
-	#self.get_child(0).get_node("Player").position = Vector2(960, 540)
 	#roomGen.printGenMatrix()
-	
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

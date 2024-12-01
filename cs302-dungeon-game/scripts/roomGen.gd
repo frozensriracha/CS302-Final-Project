@@ -5,7 +5,8 @@ var roomInstances: Array[Rooms.room] # Array that holds the data for each room i
 var rng = RandomNumberGenerator.new()
 
 var generationMatrix: Array[int] # 2d array to check for overlap (Use coord-to-ID conversions)
-var numCols # Used to track the number of columns there are in array2D
+var numCols:int # Used to set and track the dimensions of the 2d array
+var numRows:int # Used to set and track the dimensions of the 2d array
 
 # Changes the cell's expression from the ID format to coordinates
 func toCoords(ID:int):
@@ -55,11 +56,12 @@ func printGenMatrix():
 func connectDoors(room1:int, door1:int, room2:int, door2:int):
 	roomInstances[room1].doorDests[door1] = Vector2(room2, door2) # Door1 -> Door2
 	roomInstances[room2].doorDests[door2] = Vector2(room1, door1) # Door2 -> Door1
+	print("Connected doors (" + str(room1) + "," + str(door1) + ") to (" + str(room2) + "," + str(door2) + ")")
 
 # Returns the position of a door relative to it's parent room
 func getDoorPosLocal(roomID, doorID):
 	var numEnterances = roomInstances[roomID].enterances.size()
-	if doorID <= numEnterances:
+	if doorID <= numEnterances-1:
 		return roomInstances[roomID].enterances[doorID]
 	else:
 		return roomInstances[roomID].exits[doorID- numEnterances]
@@ -84,7 +86,9 @@ func getDoorPosGlobal(roomID:int, doorID:int):
 
 
 # Generates the specified type of room off of the specified room and door
-func generateRoom(roomName:String, offOfRoomID:int, offOfDoorID:int, abortOnConflict:bool = true):
+func generateRoom(roomName:String, doorID:int, offOfRoomID:int, offOfDoorID:int, abortOnConflict:bool = true):
+	print("Generating " + roomName + "...") # DEBUG
+	
 	# Get room, throw error if roomName isn't a key in the roomsDict
 	var newRoom:Rooms.room = rooms.roomsDict.get(roomName)
 	if newRoom == null:
@@ -98,7 +102,7 @@ func generateRoom(roomName:String, offOfRoomID:int, offOfDoorID:int, abortOnConf
 	
 	# Choose a random enterance door from the new room to connect to the offOfDoor
 	#var connectingDoorID:int = rng.randi_range(0,newRoom.enterances.size()-1)
-	var connectingDoorID:int = 1 # DEBUG - change this back to the line above
+	var connectingDoorID:int = doorID # DEBUG - change this back to the line above
 	var connectingDoorPosRel:Vector3 = newRoom.enterances[connectingDoorID]
 	print("connectingDoorPosRel: " + str(connectingDoorPosRel)) # DEBUG
 	
@@ -128,7 +132,7 @@ func generateRoom(roomName:String, offOfRoomID:int, offOfDoorID:int, abortOnConf
 	
 	# Calculate position/origin of the new room AND the top-leftmost cell in that room
 	var topLeftmostCoord:Vector2
-	if newRoom.position[2] == 0:
+	if newRoom.position[2] == 0: # Good by logic - inverse of 2
 		newRoom.position[0] = connectingDoorPosGlobal[0] - connectingDoorPosRel[0]
 		newRoom.position[1] = connectingDoorPosGlobal[1] - connectingDoorPosRel[1]
 		topLeftmostCoord = Vector2(newRoom.position[0], newRoom.position[1])
@@ -136,14 +140,15 @@ func generateRoom(roomName:String, offOfRoomID:int, offOfDoorID:int, abortOnConf
 		newRoom.position[0] = connectingDoorPosGlobal[0] + connectingDoorPosRel[1]
 		newRoom.position[1] = connectingDoorPosGlobal[1] - connectingDoorPosRel[0]
 		topLeftmostCoord = Vector2(newRoom.position[0]-newRoomSizeGlobal[0]+1, newRoom.position[1])
-	elif newRoom.position[2] == 2:
-		newRoom.position[0] = connectingDoorPosGlobal[0] - connectingDoorPosRel[0]
-		newRoom.position[1] = connectingDoorPosGlobal[1] - connectingDoorPosRel[1]
+	elif newRoom.position[2] == 2: # Tested - good
+		newRoom.position[0] = connectingDoorPosGlobal[0] + connectingDoorPosRel[0]
+		newRoom.position[1] = connectingDoorPosGlobal[1] + connectingDoorPosRel[1]
 		topLeftmostCoord = Vector2(newRoom.position[0]-newRoomSizeGlobal[0]+1, newRoom.position[1]-newRoomSizeGlobal[1]+1)
 	elif newRoom.position[2] == 3:
 		newRoom.position[0] = connectingDoorPosGlobal[0] - connectingDoorPosRel[1]
 		newRoom.position[1] = connectingDoorPosGlobal[1] + connectingDoorPosRel[0]
 		topLeftmostCoord = Vector2(newRoom.position[0], newRoom.position[1]-newRoomSizeGlobal[1]+1)
+	print("topLeftmostCoord: " + str(topLeftmostCoord)) # DEBUG
 	
 	# Check if new room conflicts/overlaps with any other rooms in the generationMatrix
 	var roomConflicts:bool = false
@@ -168,6 +173,8 @@ func generateRoom(roomName:String, offOfRoomID:int, offOfDoorID:int, abortOnConf
 		for x in range(newRoomSizeGlobal.x):
 			var coords:Vector2 = topLeftmostCoord + Vector2(x,y)
 			generationMatrix[toID(coords)] = newRoomID
+			
+	print("") # DEBUG
 	return true
 
 # Generates a room without connecting doors - used for generating the starting room
@@ -221,21 +228,21 @@ func generateDemoDungeon():
 
 func generateDungeon(mainChainLength:int):
 	# Init 50x50 matrix
-	for i in range(25*25):
-		generationMatrix.append(-1)
-	#generationMatrix.resize(50 * 50, 0)
+	numRows = 25
 	numCols = 25
+	for i in range(numRows * numCols):
+		generationMatrix.append(-1)
 	
 	# Starting room
-	forceGenRoom("globRoom", Vector3(10,2,0))
-	forceGenRoom("sniperRoom", Vector3(5,10,0))
-	generateRoom("sniperRoom", 0, 0, false)
+	forceGenRoom("startingRoom", Vector3(0,0,0))
+	generateRoom("sniperRoom", 1, 0, 0)
+	generateRoom("bruiserRoom", 0, 1, 4, false)
 	printGenMatrix()
 	#for i in range(mainChainLength):
 		#rooms.roomsDict[2]
 		
 	# Ending room
-	roomInstances.append(rooms.roomsDict.get("bossRoom"))
+	#generateRoom("bossRoom", -1, 2)
 	
 	return roomInstances
 

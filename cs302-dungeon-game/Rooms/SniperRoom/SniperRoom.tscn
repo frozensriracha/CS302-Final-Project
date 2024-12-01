@@ -110,50 +110,50 @@ script = ExtResource("5_k2ct3")
 position = Vector2(325.5, 12.5)
 shape = SubResource("RectangleShape2D_g67qr")
 
-[node name="Entrances" type="Node2D" parent="."]
+[node name="Enterances" type="Node2D" parent="."]
 position = Vector2(1250, 273)
 
-[node name="0" type="ColorRect" parent="Entrances"]
+[node name="0" type="ColorRect" parent="Enterances"]
 offset_left = -465.0
 offset_top = 665.0
 offset_right = -415.0
 offset_bottom = 675.0
 color = Color(0, 0, 1, 1)
 
-[node name="0" type="Area2D" parent="Entrances/0"]
+[node name="0" type="Area2D" parent="Enterances/0"]
 position = Vector2(-788, -941)
 script = ExtResource("8_lrpcw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/0/0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enterances/0/0"]
 position = Vector2(813, 947)
 shape = SubResource("RectangleShape2D_5l6i7")
 
-[node name="1" type="ColorRect" parent="Entrances"]
+[node name="1" type="ColorRect" parent="Enterances"]
 offset_left = -315.0
 offset_top = 665.0
 offset_right = -265.0
 offset_bottom = 675.0
 color = Color(0, 0, 1, 1)
 
-[node name="1" type="Area2D" parent="Entrances/1"]
+[node name="1" type="Area2D" parent="Enterances/1"]
 position = Vector2(-934, -932)
 script = ExtResource("8_lrpcw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/1/1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enterances/1/1"]
 position = Vector2(959, 937)
 shape = SubResource("RectangleShape2D_jwj5r")
 
-[node name="2" type="ColorRect" parent="Entrances"]
+[node name="2" type="ColorRect" parent="Enterances"]
 offset_left = -165.0
 offset_top = 665.0
 offset_right = -115.0
 offset_bottom = 675.0
 color = Color(0, 0, 1, 1)
 
-[node name="2" type="Area2D" parent="Entrances/2"]
+[node name="2" type="Area2D" parent="Enterances/2"]
 script = ExtResource("8_lrpcw")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Entrances/2/2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enterances/2/2"]
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_wvk0y")
 
@@ -213,11 +213,11 @@ position = Vector2(963, 507)
 [node name="Sniper" parent="." instance=ExtResource("8_u3is1")]
 position = Vector2(801, 198)
 
-[connection signal="body_entered" from="Entrances/0/0" to="Entrances/0/0" method="_on_body_entered"]
-[connection signal="body_entered" from="Entrances/1/1" to="Entrances/1/1" method="_on_body_entered"]
-[connection signal="body_entered" from="Entrances/2/2" to="Entrances/2/2" method="_on_body_entered"]
+[connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
+[connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]
+[connection signal="body_entered" from="Enterances/2/2" to="Enterances/2/2" method="_on_body_entered"]
 [connection signal="body_entered" from="Exits/3/3" to="Exits/3/3" method="_on_body_entered"]
-[connection signal="body_entered" from="Exits/4/4" to="Entrances/0/0" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Exits/4/4" to="Enterances/0/0" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Exits/4/4" to="Exits/4/4" method="_on_body_entered"]
 [connection signal="body_entered" from="Exits/5/5" to="Exits/3/3" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Exits/5/5" to="Exits/5/5" method="_on_body_entered"]

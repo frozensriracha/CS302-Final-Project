@@ -32,6 +32,7 @@ func longHall():
 	longHall.exits.append(Vector3(4,0,2))
 	
 	longHall.doorDests.resize(6)
+	longHall.doorDests.fill(Vector2(-1,-1))
 	
 	return longHall
 
@@ -49,6 +50,7 @@ func normalHall():
 	normalHall.exits.append(Vector3(3,0,2))
 	
 	normalHall.doorDests.resize(6)
+	normalHall.doorDests.fill(Vector2(-1,-1))
 	
 	return normalHall
 
@@ -62,6 +64,8 @@ func shortHall():
 	shortHall.exits.append(Vector3(2,0,1))
 	
 	shortHall.doorDests.resize(2)
+	shortHall.doorDests.fill(Vector2(-1,-1))
+
 	
 	return shortHall
 
@@ -73,6 +77,7 @@ func globRoom():
 	globRoom.enterances.append(Vector3(1,1,2)) 
 	
 	globRoom.doorDests.resize(1)
+	globRoom.doorDests.fill(Vector2(-1,-1))
 	
 	return globRoom
 
@@ -90,13 +95,14 @@ func sniperRoom():
 	sniperRoom.exits.append(Vector3(2,0,1))
 	
 	sniperRoom.doorDests.resize(6)
+	sniperRoom.doorDests.fill(Vector2(-1,-1))
 	
 	return sniperRoom
 
 func bruiserRoom():
 	var bruiserRoom = room.new("bruiserRoom")
 	
-	bruiserRoom.size = Vector2(3,4)
+	bruiserRoom.size = Vector2(4,3)
 	
 	bruiserRoom.enterances.append(Vector3(1,0,2))
 	bruiserRoom.enterances.append(Vector3(2,0,2))
@@ -109,8 +115,22 @@ func bruiserRoom():
 	bruiserRoom.exits.append(Vector3(3,2,1))
 	
 	bruiserRoom.doorDests.resize(8)
+	bruiserRoom.doorDests.fill(Vector2(-1,-1))
 	
 	return bruiserRoom
+
+func startingRoom():
+	var startingRoom = room.new("startingRoom")
+	
+	startingRoom.size = Vector2(2,2)
+	
+	startingRoom.enterances.append(Vector3(1,1,2)) 
+	
+	startingRoom.doorDests.resize(1)
+	startingRoom.doorDests.fill(Vector2(-1,-1))
+	
+	return startingRoom
+
 
 
 func _init():
@@ -121,5 +141,6 @@ func _init():
 	roomsDict["globRoom"] = globRoom()
 	roomsDict["sniperRoom"] = sniperRoom()
 	roomsDict["bruiserRoom"] = bruiserRoom()
+	roomsDict["startingRoom"] = startingRoom()
 	print("Rooms Dict initialized")
 	
