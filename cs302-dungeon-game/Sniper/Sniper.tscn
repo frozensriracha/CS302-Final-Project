@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://cj3j6v7mb2fdp" path="res://sprites/sniper shot4.PNG" id="8_fcft6"]
 [ext_resource type="Texture2D" uid="uid://ghcl0yubc16l" path="res://Sniper/sniper gun.PNG" id="8_piwg0"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ipych"]
 size = Vector2(36, 61)
 

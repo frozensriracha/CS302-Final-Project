@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Player/progress_bar.gd" id="2_h1gbm"]
 [ext_resource type="Script" path="res://Player/indicator.gd" id="2_ynjsd"]
 [ext_resource type="Script" path="res://Player/player_collision.gd" id="3_thhf3"]
-[ext_resource type="Texture2D" uid="uid://vxhmo15qo12a" path="res://playeridle.PNG" id="5_f1g22"]
+[ext_resource type="Texture2D" uid="uid://vxhmo15qo12a" path="res://sprites/playeridle.PNG" id="5_f1g22"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y0jn"]
 bg_color = Color(1, 1, 1, 1)

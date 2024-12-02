@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var laser = get_node("Sight")
 @onready var sprite_animation = get_node("AnimatedSprite2D")
 @onready var gun = get_node("AnimatedSprite2D").get_node("Sprite2D")
+@onready var half_heart_scene = preload("res://Consumables/half_heart.tscn")
 
 #var direction
 #var target_angle
@@ -33,9 +34,14 @@ func _process(delta):
 		random = randf()
 		print(random)
 		if random > 0.8:
-			var heart = heart_scene.instantiate()
-			heart.position = position
-			get_parent().add_child(heart)
+			if random > 0.9:
+				var heart = heart_scene.instantiate()
+				heart.position = position
+				get_parent().add_child(heart)
+			else:
+				var half_heart = half_heart_scene.instantiate()
+				half_heart.position = position
+				get_parent().add_child(half_heart)
 		queue_free()
 	#rotation = player.position.angle()
 	#direction = player.position - position  # Calculate the direction vector

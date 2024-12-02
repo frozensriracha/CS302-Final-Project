@@ -2,6 +2,7 @@ extends CharacterBody2D
 @onready var player = $"../Player"
 @onready var heart_scene = preload("res://Consumables/heart.tscn")
 @onready var sprite_animation = get_node("AnimatedSprite2D")
+@onready var half_heart_scene = preload("res://Consumables/half_heart.tscn")
 
 var speed = 2
 #var player_chase = false
@@ -27,10 +28,14 @@ func _physics_process(delta):
 		await get_tree().create_timer(0.50).timeout
 		random = randf()
 		if random > 0.8:
-			var heart = heart_scene.instantiate()
-			heart.position = position
-			get_parent().add_child(heart)
-			
+			if random > 0.9:
+				var heart = heart_scene.instantiate()
+				heart.position = position
+				get_parent().add_child(heart)
+			else:
+				var half_heart = half_heart_scene.instantiate()
+				half_heart.position = position
+				get_parent().add_child(half_heart)
 		queue_free()
 		
 	
