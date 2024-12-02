@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cgt2rscb4n23u" path="res://sprites/wall1.PNG" id="3_vreb5"]
 [ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="4_eualq"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1yg0e"]
 size = Vector2(23.5, 431.75)
 

@@ -24,13 +24,13 @@ func _physics_process(delta):
 	move()
 	counter += counter + delta
 	
-	if player_health == 0:
+	#if player_health == 0:
 		#scene.queue_free()
 		#var end = game_over.instantiate()
 		#get_parent().get_parent().add_child(end)
 		
 		#get_tree().paused = true
-		scene.queue_free()
+		#scene.queue_free()
 	
 	if Input.is_action_just_pressed("ShootBullet"):
 		if counter > 10:
