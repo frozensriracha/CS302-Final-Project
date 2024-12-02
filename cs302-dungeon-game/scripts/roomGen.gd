@@ -64,7 +64,8 @@ func getDoorPosLocal(roomID, doorID):
 	if doorID <= numEnterances-1:
 		return roomInstances[roomID].enterances[doorID]
 	else:
-		return roomInstances[roomID].exits[doorID- numEnterances]
+		if roomInstances[roomID].exits.size() == 0: return roomInstances[roomID].enterances[0] # PATCH - special case for glob room
+		else: return roomInstances[roomID].exits[doorID - numEnterances]
 
 # Outputs a door's coordinates and rotation relative to the map - WORKING
 func getDoorPosGlobal(roomID:int, doorID:int):
@@ -218,6 +219,7 @@ func forceGenRoom(roomName:String, position:Vector3):
 			generationMatrix[toID(coords)] = roomInstances.size()-1
 	return true
 
+# Generates a random roomType off of one of the given room's exits
 func generateRandRoom(roomID:int, roomList:Array, generationAttemptLimit:int = 50):
 		# Loop until a room is generated or if the generation limit is hit
 	var generationAttempts:int = 0
@@ -242,11 +244,11 @@ func generateRandRoom(roomID:int, roomList:Array, generationAttemptLimit:int = 5
 		
 		# Room generation success
 		if genResult == true:
-			prints("Pass:", str(roomID), str(newRoomType), str(generationAttempts))
+			prints(" -Pass:", str(roomID), str(newRoomType), str(generationAttempts), str(roomInstances.size()-1))
 			return true
 		if genResult == false:
 			generationAttempts += 1
-			prints("Fail:", str(roomID), str(newRoomType), str(generationAttempts))
+			prints("  Fail:", str(roomID), str(newRoomType), str(generationAttempts))
 	
 	return false
 
@@ -265,6 +267,7 @@ func generateDemoDungeon():
 	
 	return roomInstances
 
+# Intermediary testing function to test generateRoom()
 func generateRoomTestbed():
 	# Init 50x50 matrix
 	numRows = 25
@@ -292,13 +295,14 @@ func generateRoomTestbed():
 	
 	return roomInstances
 
-func generateDungeon(chainLength:int):
-	# Init 50x50 matrix
+# Generates a dungeon with a starting room, a main path, and a boss room at the end
+func generateDungeon(chainLength:int, falsePathGenerationWeights:PackedFloat32Array):
+	# Init 25x25 matrix
 	numRows = 25
 	numCols = 25
 	for i in range(numRows * numCols):
 		generationMatrix.append(-1)
-		
+	
 	# Create a list of all chainable rooms (all rooms - (dead end rooms + start room + boss room))
 	var chainableRooms:Array = rooms.roomsDict.keys()
 	var indicesToRemove:Array[int]
@@ -307,12 +311,14 @@ func generateDungeon(chainLength:int):
 		if r.isDeadEnd or r.isSpecial:
 			indicesToRemove.append(i)
 	
+	# Create a list of rooms that can be used as a dead end
+	var deadEndRooms:Array[String] = ["sniperRoom", "bruiserRoom", "globRoom"]
+	
 	indicesToRemove.reverse()
 	for index in indicesToRemove:
 		chainableRooms.pop_at(index)
 	
-	print(chainableRooms)
-	
+	# Attempt to generate dungeons until a valid dungeon is produced
 	var generationSuccess:bool = false
 	while generationSuccess == false:
 		# Clear matrix and instances from any previous generation attempts
@@ -340,12 +346,55 @@ func generateDungeon(chainLength:int):
 			print("Restarting generation...")
 			continue
 		
+		print("Generating false paths...")
+		
+		# Generate false paths/dead ends - BUG: This crashed the game a lot during testing and I don't know if I have the issue fixed -ND
+		var startingNumRooms = roomInstances.size()
+		
+		# For every room...
+		for i in range(startingNumRooms):
+			# Get range of exit doorIDs
+			var firstExitID:int = roomInstances[i].enterances.size()
+			var lastExitID:int = firstExitID + (roomInstances[i].exits.size()-1)
+			
+			# For every exit...
+			for j in range(firstExitID, lastExitID):
+				# Choose path length
+				var pathLength:int = rng.rand_weighted(falsePathGenerationWeights)
+				
+				if roomInstances[i].doorDests[j] == Vector2(-1,-1) and pathLength != 0:
+					var abortPathGen:bool = false
+					var RIsizeBeforePathGen = roomInstances.size()
+					
+					print("Generating path " + str(pathLength) + " off of ID " + str(i))
+					
+					# Generate a path of the given length off of the given room
+					var lastRoomInstanceID:int = roomInstances.size()-1
+					var offOfRoomID:int = i
+					for k in range(pathLength):
+						if abortPathGen == true: break
+						
+						var genResult:bool
+						
+						if k != 0: offOfRoomID = lastRoomInstanceID + k
+						if k == pathLength-1: genResult = generateRandRoom(offOfRoomID, deadEndRooms) # Last room in false path should be a dead end room
+						else: genResult = generateRandRoom(offOfRoomID, chainableRooms) # Otherwise, generate a chain room
+						
+						# If generation fails, delete entire path and abort path generation
+						if genResult == false:
+							while roomInstances.size() != RIsizeBeforePathGen:
+								var IDtoDelete:int = roomInstances.size()-1
+								prints("  Deleting roomID", str(IDtoDelete))
+								roomInstances.pop_back() # Delete off of roomInstances
+								for n in range(generationMatrix.size()): # Delete off of genMatrix
+									if generationMatrix[n] == IDtoDelete: generationMatrix[n] = -1
+							abortPathGen = true
+			
+		
+		
 		generationSuccess = true
 	
 	printGenMatrix()
-		
-	# Ending room
-	#generateRoom("bossRoom", -1, 2)
 	
 	return roomInstances
 
