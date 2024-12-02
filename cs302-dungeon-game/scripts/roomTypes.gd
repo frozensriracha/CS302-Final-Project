@@ -12,6 +12,8 @@ class room:
 	var doorDests: Array[Vector2] # doorDests[doorID] = (roomID,doorID)
 	var position:Vector3 = Vector3(0,0,0) # Notation as described in line 24
 	var defeated:bool = false # Set to true when the player defeats all enemies in the instance
+	var isDeadEnd:bool = false # True when room has no exits
+	var isSpecial:bool = false # True for start and end rooms
 	
 	func _init(name) -> void:
 		type = name
@@ -25,6 +27,8 @@ class room:
 		self.doorDests.fill(Vector2(-1,-1))
 		self.position = otherRoom.position
 		self.defeated = false
+		self.isDeadEnd = otherRoom.isDeadEnd
+		self.isSpecial = otherRoom.isSpecial
 
 # Room Definitions
 func longHall():
@@ -89,6 +93,8 @@ func globRoom():
 	newRoomType.doorDests.resize(1)
 	newRoomType.doorDests.fill(Vector2(-1,-1))
 	
+	newRoomType.isDeadEnd = true
+	
 	return newRoomType
 
 func sniperRoom():
@@ -134,10 +140,12 @@ func startingRoom():
 	
 	newRoomType.size = Vector2(2,2)
 	
-	newRoomType.enterances.append(Vector3(1,1,2)) 
+	newRoomType.exits.append(Vector3(1,1,2)) 
 	
 	newRoomType.doorDests.resize(1)
 	newRoomType.doorDests.fill(Vector2(-1,-1))
+	
+	newRoomType.isSpecial = true
 	
 	return newRoomType
 
@@ -152,6 +160,8 @@ func bossRoom():
 	
 	newRoomType.doorDests.resize(2)
 	newRoomType.doorDests.fill(Vector2(-1,-1))
+	
+	newRoomType.isSpecial = true
 	
 	return newRoomType
 

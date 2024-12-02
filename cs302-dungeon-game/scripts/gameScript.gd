@@ -88,14 +88,15 @@ func doorEntered(doorID: int):
 func _ready() -> void:
 	#switchTo(0,0)
 	switchToLockout = false
-	#roomGen.printGenMatrix()
+	print("Dungeon gen:")
 	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	## triggers for room switching can be changed
 	if Input.is_action_just_pressed("debug1"):
 		self.get_child(0).get_node("Player").position = Vector2(960, 540)
 		switchToLockout = false
+	if Input.is_action_just_pressed("debug2"):
+		roomGen.printGenMatrix()
 	pass

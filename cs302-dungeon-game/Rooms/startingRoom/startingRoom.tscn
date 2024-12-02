@@ -85,23 +85,23 @@ color = Color(0, 1, 0, 1)
 position = Vector2(216.5, 12)
 shape = SubResource("RectangleShape2D_o42s7")
 
-[node name="Enterances" type="Node2D" parent="."]
+[node name="Exits" type="Node2D" parent="."]
 
-[node name="0" type="ColorRect" parent="Enterances"]
+[node name="0" type="ColorRect" parent="Exits"]
 offset_left = 1028.0
 offset_top = 724.0
 offset_right = 1082.0
 offset_bottom = 732.0
 color = Color(1, 0, 0, 1)
 
-[node name="0" type="Area2D" parent="Enterances/0"]
+[node name="0" type="Area2D" parent="Exits/0"]
 script = ExtResource("2_cqqww")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enterances/0/0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/0/0"]
 position = Vector2(27, 4)
 shape = SubResource("RectangleShape2D_rx3hb")
 
 [node name="Player" parent="." instance=ExtResource("3_scowy")]
 position = Vector2(949, 471)
 
-[connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/0/0" to="Exits/0/0" method="_on_body_entered"]

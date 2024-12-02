@@ -14,7 +14,7 @@ func toCoords(ID:int):
 
 # Changes the cell's expression from coordinates to the ID format
 func toID(coords:Vector2):
-	return (coords[1]*numCols + coords[0])
+	return (int(coords[1]*numCols + coords[0])%(numCols*numRows))
 
 
 # DEBUG - check if the script was initialized
@@ -56,7 +56,7 @@ func printGenMatrix():
 func connectDoors(room1:int, door1:int, room2:int, door2:int):
 	roomInstances[room1].doorDests[door1] = Vector2(room2, door2) # Door1 -> Door2
 	roomInstances[room2].doorDests[door2] = Vector2(room1, door1) # Door2 -> Door1
-	print("Connected doors (" + str(room1) + "," + str(door1) + ") to (" + str(room2) + "," + str(door2) + ")")
+	#print("Connected doors (" + str(room1) + "," + str(door1) + ") to (" + str(room2) + "," + str(door2) + ")")
 
 # Returns the position of a door relative to it's parent room
 func getDoorPosLocal(roomID, doorID):
@@ -87,7 +87,7 @@ func getDoorPosGlobal(roomID:int, doorID:int):
 
 # Generates the specified type of room off of the specified room and door
 func generateRoom(roomName:String, doorID:int, offOfRoomID:int, offOfDoorID:int, abortOnConflict:bool = true):
-	print("Generating " + roomName + "...") # DEBUG
+	#print("Generating " + roomName + "...") # DEBUG
 	
 	# Get room, throw error if roomName isn't a key in the roomsDict
 	var newRoom:Rooms.room = Rooms.room.new("roomName" + " " + str(rng.randi()))
@@ -101,14 +101,14 @@ func generateRoom(roomName:String, doorID:int, offOfRoomID:int, offOfDoorID:int,
 	
 	# Get the global positon of the door we want to generate a room off of
 	var offOfDoorPosGlobal:Vector3 = getDoorPosGlobal(offOfRoomID, offOfDoorID)
-	print("offOfDoorGlobal: " + str(offOfDoorPosGlobal)) # DEBUG
+	#print("offOfDoorGlobal: " + str(offOfDoorPosGlobal)) # DEBUG
 
 	
 	# Choose a random enterance door from the new room to connect to the offOfDoor
 	#var connectingDoorID:int = rng.randi_range(0,newRoom.enterances.size()-1)
 	var connectingDoorID:int = doorID # DEBUG - change this back to the line above
 	var connectingDoorPosRel:Vector3 = newRoom.enterances[connectingDoorID]
-	print("connectingDoorPosRel: " + str(connectingDoorPosRel)) # DEBUG
+	#print("connectingDoorPosRel: " + str(connectingDoorPosRel)) # DEBUG
 	
 	# Calculate the position of the new door
 	var connectingDoorPosGlobal:Vector3 = offOfDoorPosGlobal
@@ -121,12 +121,12 @@ func generateRoom(roomName:String, doorID:int, offOfRoomID:int, offOfDoorID:int,
 		connectingDoorPosGlobal[1] += 1
 	elif offOfDoorPosGlobal[2] == 3: # offOf door facing West - connecting door is one cell left
 		connectingDoorPosGlobal[0] -= 1
-	print("connectingDoorPosGlobal: " + str(connectingDoorPosGlobal)) # DEBUG
+	#print("connectingDoorPosGlobal: " + str(connectingDoorPosGlobal)) # DEBUG
 	
 	# Calculate rotation of the new room
 	newRoom.position[2] = int(connectingDoorPosGlobal[2] - connectingDoorPosRel[2]) % 4
 	while newRoom.position[2] < 0: newRoom.position[2] += 4 # Workaround b/c modulo doesn't work as expected with negative ints
-	print("newRoom.position[2]: " + str(newRoom.position[2])) # DEBUG
+	#print("newRoom.position[2]: " + str(newRoom.position[2])) # DEBUG
 	
 	# Get the dimensions of the room relative to the map
 	var newRoomSizeGlobal:Vector2
@@ -153,16 +153,17 @@ func generateRoom(roomName:String, doorID:int, offOfRoomID:int, offOfDoorID:int,
 		newRoom.position[0] = connectingDoorPosGlobal[0] - connectingDoorPosRel[1]
 		newRoom.position[1] = connectingDoorPosGlobal[1] + connectingDoorPosRel[0]
 		topLeftmostCoord = Vector2(newRoom.position[0], newRoom.position[1]-newRoomSizeGlobal[1]+1)
-	print("topLeftmostCoord: " + str(topLeftmostCoord)) # DEBUG
+	#print("topLeftmostCoord: " + str(topLeftmostCoord)) # DEBUG
 	
 	# Check if new room conflicts/overlaps with any other rooms in the generationMatrix
 	var roomConflicts:bool = false
 	for y in range(newRoomSizeGlobal.y):
 		for x in range(newRoomSizeGlobal.x):
 			var coords:Vector2 = topLeftmostCoord + Vector2(x,y)
-			if generationMatrix[toID(coords)] != -1:
+			var id:int = toID(coords)
+			if generationMatrix[id] != -1:
 				roomConflicts = true
-				print("Generation of " + roomName + " conflicts with roomID " + str(generationMatrix[toID(coords)]) + " at " + str(coords))
+				#print("Generation of " + roomName + " off of roomID " + str(offOfRoomID) + " conflicts with roomID " + str(generationMatrix[toID(coords)]) + " at " + str(coords))
 	if roomConflicts and abortOnConflict == true:
 		return false
 	
@@ -179,7 +180,7 @@ func generateRoom(roomName:String, doorID:int, offOfRoomID:int, offOfDoorID:int,
 			var coords:Vector2 = topLeftmostCoord + Vector2(x,y)
 			generationMatrix[toID(coords)] = newRoomID
 			
-	print("") # DEBUG
+	#print("") # DEBUG
 	return true
 
 # Generates a room without connecting doors - used for generating the starting room
@@ -217,6 +218,39 @@ func forceGenRoom(roomName:String, position:Vector3):
 			generationMatrix[toID(coords)] = roomInstances.size()-1
 	return true
 
+func generateRandRoom(roomID:int, roomList:Array, generationAttemptLimit:int = 50):
+		# Loop until a room is generated or if the generation limit is hit
+	var generationAttempts:int = 0
+	while generationAttempts < generationAttemptLimit:
+		# Select a random roomType
+		var newRoomType:String = roomList[rng.randi_range(0, roomList.size()-1)]
+		
+		# Get the room data
+		var newRoomData:Rooms.room = rooms.roomsDict.get(newRoomType)
+		
+		# Choose a random exit from the last room
+		var lastRoomFirstExitID:int = roomInstances[roomID-1].enterances.size()
+		var lastRoomLastExitID:int = lastRoomFirstExitID + (roomInstances[roomID-1].exits.size()-1)
+		var exitID:int = rng.randi_range(lastRoomFirstExitID, lastRoomLastExitID)
+		
+		# Choose a random enterance from the current room
+		var enteranceID:int = rng.randi_range(0, newRoomData.enterances.size()-1)
+		
+		# Attempt to generate the given room
+		var genResult:bool = generateRoom(newRoomType, enteranceID, roomID-1, exitID)
+		#print(str(roomID) + " " + str(genResult))
+		
+		# Room generation success
+		if genResult == true:
+			prints("Pass:", str(roomID), str(newRoomType), str(generationAttempts))
+			return true
+		if genResult == false:
+			generationAttempts += 1
+			prints("Fail:", str(roomID), str(newRoomType), str(generationAttempts))
+	
+	return false
+
+
 # Generates a demo dungeon with four connected rooms to test other functions
 func generateDemoDungeon():
 	roomInstances.append(rooms.roomsDict.get("sniperRoom")) #0
@@ -231,7 +265,7 @@ func generateDemoDungeon():
 	
 	return roomInstances
 
-func generateDungeon(mainChainLength:int):
+func generateRoomTestbed():
 	# Init 50x50 matrix
 	numRows = 25
 	numCols = 25
@@ -250,14 +284,65 @@ func generateDungeon(mainChainLength:int):
 	generateRoom("bossRoom", 0, 6, 4)
 	printGenMatrix()
 	
-	# DEBUG - Print all doorDests
-	for i in [1,5]:
-		print("All doorDests for roomID " + str(i) + " " + roomInstances[i].type)
-		for n in roomInstances[i].doorDests:
-			print("  " + str(n))
+	## DEBUG - Print all doorDests
+	#for i in [1,5]:
+		#print("All doorDests for roomID " + str(i) + " " + roomInstances[i].type)
+		#for n in roomInstances[i].doorDests:
+			#print("  " + str(n))
 	
-	#for i in range(mainChainLength):
-		#rooms.roomsDict[2]
+	return roomInstances
+
+func generateDungeon(chainLength:int):
+	# Init 50x50 matrix
+	numRows = 25
+	numCols = 25
+	for i in range(numRows * numCols):
+		generationMatrix.append(-1)
+		
+	# Create a list of all chainable rooms (all rooms - (dead end rooms + start room + boss room))
+	var chainableRooms:Array = rooms.roomsDict.keys()
+	var indicesToRemove:Array[int]
+	for i in range(chainableRooms.size()):
+		var r:Rooms.room = rooms.roomsDict.get(chainableRooms[i])
+		if r.isDeadEnd or r.isSpecial:
+			indicesToRemove.append(i)
+	
+	indicesToRemove.reverse()
+	for index in indicesToRemove:
+		chainableRooms.pop_at(index)
+	
+	print(chainableRooms)
+	
+	var generationSuccess:bool = false
+	while generationSuccess == false:
+		# Clear matrix and instances from any previous generation attempts
+		generationMatrix.fill(-1)
+		roomInstances.clear()
+		
+		# Starting room
+		forceGenRoom("startingRoom", Vector3(10,0,0)) # ID = 0
+		
+		# Generate main chain path
+		var errorOnChainGen:bool = false
+		for i in range(chainLength):
+			if errorOnChainGen == false:
+				var genAttempt = generateRandRoom(i+1, chainableRooms)
+				print(genAttempt)
+				if genAttempt == false:
+					errorOnChainGen = true
+		if errorOnChainGen:
+			print("Restarting generation...")
+			continue
+		
+		# Boss room
+		var genAttempt = generateRandRoom(chainLength+1, ["bossRoom"])
+		if genAttempt == false:
+			print("Restarting generation...")
+			continue
+		
+		generationSuccess = true
+	
+	printGenMatrix()
 		
 	# Ending room
 	#generateRoom("bossRoom", -1, 2)
