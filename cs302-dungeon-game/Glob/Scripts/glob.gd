@@ -29,6 +29,7 @@ func _physics_process(delta):
 				var half_heart = half_heart_scene.instantiate()
 				half_heart.position = position
 				get_parent().add_child(half_heart)
+		get_parent().enemyCount - 1
 		queue_free()
 	
 	if attack == true:

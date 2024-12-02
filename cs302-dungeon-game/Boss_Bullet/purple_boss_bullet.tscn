@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cswlcwqjshhck"]
+
+[ext_resource type="Script" path="res://Boss_Bullet/boss_bullet.gd" id="1_g2a66"]
+[ext_resource type="Texture2D" uid="uid://cfwt40vf5gyx1" path="res://sprites/purpledrone.PNG" id="2_cnuqf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7d4el"]
+radius = 7.07107
+
+[node name="Purple_Boss_Bullet" type="Area2D"]
+script = ExtResource("1_g2a66")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(21, 65)
+scale = Vector2(0.124023, 0.12832)
+texture = ExtResource("2_cnuqf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_7d4el")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

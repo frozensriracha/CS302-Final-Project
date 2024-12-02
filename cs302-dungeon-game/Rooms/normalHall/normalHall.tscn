@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://5ois5wkuw1hv"]
+[gd_scene load_steps=19 format=3 uid="uid://5ois5wkuw1hv"]
 
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_6scjd"]
 [ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://sprites/Free Star Overlays 03.png" id="1_7qfwi"]
+[ext_resource type="Script" path="res://Rooms/normalHall/normal_hall.gd" id="1_kmln7"]
 [ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://sprites/floor1.PNG" id="2_1wedh"]
 [ext_resource type="PackedScene" uid="uid://b3euy3kbn1tq1" path="res://Sniper/Sniper.tscn" id="3_dvly2"]
 [ext_resource type="Texture2D" uid="uid://dleykb4rcn5dq" path="res://sprites/wall2.PNG" id="4_tpmuv"]
@@ -39,6 +40,7 @@ size = Vector2(10, 50)
 size = Vector2(50, 10)
 
 [node name="HallRoom" type="Node2D"]
+script = ExtResource("1_kmln7")
 
 [node name="Floor" type="Node2D" parent="."]
 

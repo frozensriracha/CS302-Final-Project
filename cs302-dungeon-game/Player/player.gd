@@ -4,7 +4,7 @@ extends CharacterBody2D
 const max_speed = 10
 #get_global_mouse_position() just gets the current position of the mouse. "global_position" gets the
 #position of the CharacterBody2D object, which is the player
-var weapon_direction = get_global_mouse_position() - global_position
+var weapon_direction = get_global_mouse_position() - position
 var input = Vector2.ZERO
 var counter = 1
 var entered_body
@@ -24,7 +24,12 @@ func _physics_process(delta):
 	move()
 	counter += counter + delta
 	
-	#if player_health == 0:
+	if player_health  > 100:
+		player_health = 100
+
+
+	if player_health < 1:
+		player_health = 0
 		#scene.queue_free()
 		#var end = game_over.instantiate()
 		#get_parent().get_parent().add_child(end)
@@ -53,13 +58,13 @@ func move():
 	
 	if input == Vector2.ZERO:
 			velocity = Vector2.ZERO
-			weapon_direction = get_global_mouse_position() - global_position
+			weapon_direction = get_global_mouse_position() - position
 			#rotation = weapon_direction.angle()
 	
 	else:
 		var helper = velocity.x
 		velocity += (input * max_speed)
-		weapon_direction = get_global_mouse_position() - global_position
+		weapon_direction = get_global_mouse_position() - position
 		#rotation = weapon_direction.angle()
 		if helper > velocity.x:
 			sprite_animation.flip_h = true

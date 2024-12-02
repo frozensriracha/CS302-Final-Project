@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://cqch0sdgd1koe"]
+[gd_scene load_steps=26 format=3 uid="uid://cqch0sdgd1koe"]
 
 [ext_resource type="PackedScene" uid="uid://7w6kfg6jwe7l" path="res://Player/player.tscn" id="1_cbijb"]
+[ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/sniper_room.gd" id="1_ggmko"]
 [ext_resource type="Script" path="res://Rooms/SniperRoom/Scripts/floor.gd" id="1_v76f1"]
 [ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://sprites/Free Star Overlays 03.png" id="2_e6s5n"]
 [ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://sprites/floor1.PNG" id="2_jaalu"]
@@ -46,6 +47,7 @@ size = Vector2(47.9999, 10)
 size = Vector2(8.97157, 52)
 
 [node name="SniperRoom" type="Node2D"]
+script = ExtResource("1_ggmko")
 
 [node name="Floor" type="Node2D" parent="."]
 

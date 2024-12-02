@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b2vus7mn7awn2"]
+[gd_scene load_steps=20 format=3 uid="uid://b2vus7mn7awn2"]
 
 [ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://sprites/Free Star Overlays 03.png" id="1_23uop"]
+[ext_resource type="Script" path="res://Rooms/longHall/long_hall.gd" id="1_pj88j"]
 [ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://sprites/floor1.PNG" id="2_5bequ"]
 [ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="3_ttphr"]
 [ext_resource type="PackedScene" uid="uid://sodonqnoc4el" path="res://Bruiser/bruiser.tscn" id="4_74f55"]
@@ -40,6 +41,7 @@ size = Vector2(10, 50)
 size = Vector2(50, 10)
 
 [node name="LongHall" type="Node2D"]
+script = ExtResource("1_pj88j")
 
 [node name="Floor" type="Node2D" parent="."]
 

@@ -2,11 +2,16 @@ extends CharacterBody2D
 
 #pound includes
 @onready var player = $"../Player"
-@onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn")
+@onready var blue_bullet_scene = preload("res://Boss_Bullet/blue_boss_bullet.tscn")
+@onready var yellow_bullet_scene = preload("res://Boss_Bullet/yellow_boss_bullet.tscn")
+@onready var red_bullet_scene = preload("res://Boss_Bullet/red_boss_bullet.tscn")
+@onready var purple_bullet_scene = preload("res://Boss_Bullet/purple_boss_bullet.tscn")
+@onready var green_bullet_scene = preload("res://Boss_Bullet/green_boss_bullet.tscn")
 @onready var heart_scene = preload("res://Consumables/heart.tscn")
 
 #variables
 var counter1: int = 1
+var helper
 var counter_speed: float = 1.0
 var health = 120
 var random
@@ -26,11 +31,12 @@ func _process(delta):
 			var heart = heart_scene.instantiate()
 			heart.position = position
 			get_parent().add_child(heart)
+		get_parent().enemyCount - 1
 		queue_free()
 	
 	
 	#function to shoot bullets every once in a while
-	if counter1 == 5:
+	if counter1 == 70:
 		shoot()
 		#reset counter
 		counter1 = 0
@@ -51,13 +57,41 @@ func _process(delta):
 	#move_and_slide()
 
 func shoot():
-	#shoot bullet
-	var bullet = bullet_scene.instantiate()
-	bullet.type = "Boss_Bullet"
-	bullet.position = position
+	helper = randf()
 	
-	bullet.bullet_direction = (position - player.position).normalized()
-	get_parent().add_child(bullet)
+	if helper <= 0.2:
+		var bullet = blue_bullet_scene.instantiate()
+		bullet.type = "Boss_Bullet"
+		bullet.position = position
+		bullet.bullet_direction = (position - player.position).normalized()
+		get_parent().add_child(bullet)
+	if helper > 0.2:
+		if helper <= 0.4:
+			var bullet = yellow_bullet_scene.instantiate()
+			bullet.type = "Boss_Bullet"
+			bullet.position = position
+			bullet.bullet_direction = (position - player.position).normalized()
+			get_parent().add_child(bullet)
+	if helper > 0.4:
+		if helper <= 0.6:
+			var bullet = red_bullet_scene.instantiate()
+			bullet.type = "Boss_Bullet"
+			bullet.position = position
+			bullet.bullet_direction = (position - player.position).normalized()
+			get_parent().add_child(bullet)
+	if helper > 0.6:
+		if helper <= 0.8:
+			var bullet = purple_bullet_scene.instantiate()
+			bullet.type = "Boss_Bullet"
+			bullet.position = position
+			bullet.bullet_direction = (position - player.position).normalized()
+			get_parent().add_child(bullet)
+	if helper > 0.8:
+		var bullet = green_bullet_scene.instantiate()
+		bullet.type = "Boss_Bullet"
+		bullet.position = position
+		bullet.bullet_direction = (position - player.position).normalized()
+		get_parent().add_child(bullet)
 
 
 
