@@ -9,6 +9,8 @@ var dungeon: Array[Rooms.room] = roomGen.generateDungeon(10, [.75, .12, .10, .3]
 var currentRoomName = dungeon[0].type # Should be the name of attached room at start
 var currentRoomID: int = 0            # The current room's index in the room instances vec
 var switchToLockout:bool = false      # Doesn't allow player to switch rooms when true
+var enemyCount: int = 0
+var roomLoaded: bool = true
 
 # Deloads the current room, loads the desired room, and places the player in the correct place
 func switchTo(roomID:int, doorID:int):
@@ -23,6 +25,8 @@ func switchTo(roomID:int, doorID:int):
 	if roomID >= dungeon.size():
 		print("Out-of-index error!")
 		return
+	
+	roomLoaded = false
 	
 	# Save current player health
 	var oldHealth = self.get_child(0).get_node("Player").player_health
@@ -61,6 +65,16 @@ func switchTo(roomID:int, doorID:int):
 	
 	
 	# Deload all enemies if the room is defeated
+	if dungeon[roomID].defeated == true:
+		print("Removing enemies...")
+		var enemyArray:Array[CharacterBody2D]
+		enemyArray.append_array(self.get_child(0).find_children("Glob*", "", false))
+		enemyArray.append_array(self.get_child(0).find_children("Sniper*", "", false))
+		enemyArray.append_array(self.get_child(0).find_children("Bruiser*", "", false))
+		enemyArray.append_array(self.get_child(0).find_children("Boss*", "", false))
+		
+		for enemy in enemyArray:
+			enemy.queue_free()
 	
 	# Place the player at the correct door
 	var player:Node2D = self.get_child(0).get_node("Player")
@@ -77,16 +91,17 @@ func switchTo(roomID:int, doorID:int):
 	currentRoomID = roomID
 	
 	print("Switched to RoomID " + str(roomID))
+	roomLoaded = true
 	
 	return
 
-# Gets the door's destination and calls switchTo if the destination != null
+# Gets the door's destination and calls switchTo if the destination != null and defeated = true
 func doorEntered(doorID: int):
 	var exit: Vector2 = dungeon[currentRoomID].doorDests[doorID]
 	
 	if exit == Vector2(-1,-1):
 		print("Door does not have an exit")
-	else:
+	elif dungeon[currentRoomID].defeated == true:
 		switchTo(exit[0], exit[1])
 	
 	return
@@ -101,10 +116,34 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("debug1"):
-		self.get_child(0).get_node("Player").position = Vector2(960, 540)
-		switchToLockout = false
+		var enemyArray:Array[CharacterBody2D]
+		enemyArray.append_array(self.get_child(0).find_children("Glob*", "", false))
+		enemyArray.append_array(self.get_child(0).find_children("Sniper*", "", false))
+		enemyArray.append_array(self.get_child(0).find_children("Bruiser*", "", false))
+		enemyArray.append_array(self.get_child(0).find_children("Boss*", "", false))
+		
+		for enemy in enemyArray:
+			enemy.queue_free()
+	
 	if Input.is_action_just_pressed("debug2"):
 		roomGen.printGenMatrix()
 		print(dungeon.size())
 		print(currentRoomID)
+	
+	# Check if room is defeated
+	if roomLoaded and self.get_child_count() != 0:
+		var numEnemies:int
+		numEnemies += self.get_child(0).find_children("Glob*", "", false).size()
+		numEnemies += self.get_child(0).find_children("Sniper*", "", false).size()
+		numEnemies += self.get_child(0).find_children("Bruiser*", "", false).size()
+		numEnemies += self.get_child(0).find_children("Boss*", "", false).size()
+		#print(numEnemies)
+		if numEnemies == 0 and dungeon[currentRoomID].defeated == false:
+			print("Room defeated")
+			dungeon[currentRoomID].defeated = true
+			switchToLockout = false
+		
+		
+	
+	
 	pass
