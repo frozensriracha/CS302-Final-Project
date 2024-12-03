@@ -178,11 +178,12 @@ offset_left = 1228.0
 offset_top = 456.0
 offset_right = 1278.0
 offset_bottom = 466.0
+color = Color(0, 0, 1, 1)
 
-[node name="Area2D" type="Area2D" parent="Exits/3"]
+[node name="3" type="Area2D" parent="Exits/3"]
 script = ExtResource("7_aq7w3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/3/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/3/3"]
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_eb530")
 
@@ -191,11 +192,12 @@ offset_left = 1358.0
 offset_top = 515.0
 offset_right = 1368.0
 offset_bottom = 565.0
+color = Color(0, 0, 1, 1)
 
-[node name="Area2D" type="Area2D" parent="Exits/4"]
+[node name="4" type="Area2D" parent="Exits/4"]
 script = ExtResource("7_aq7w3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/4/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/4/4"]
 position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_56c51")
 
@@ -204,11 +206,12 @@ offset_left = 1229.0
 offset_top = 614.0
 offset_right = 1279.0
 offset_bottom = 624.0
+color = Color(0, 0, 1, 1)
 
-[node name="Area2D" type="Area2D" parent="Exits/5"]
+[node name="5" type="Area2D" parent="Exits/5"]
 script = ExtResource("7_aq7w3")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/5/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/5/5"]
 position = Vector2(25, 5)
 shape = SubResource("RectangleShape2D_stdwf")
 
@@ -236,6 +239,6 @@ position = Vector2(1200, 541)
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
 [connection signal="body_entered" from="Enterances/1/1" to="Enterances/1/1" method="_on_body_entered"]
 [connection signal="body_entered" from="Enterances/2/2" to="Enterances/2/2" method="_on_body_entered"]
-[connection signal="body_entered" from="Exits/3/Area2D" to="Exits/3/Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="Exits/4/Area2D" to="Exits/4/Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="Exits/5/Area2D" to="Exits/5/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/3/3" to="Exits/3/3" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/4/4" to="Exits/4/4" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/5/5" to="Exits/5/5" method="_on_body_entered"]

@@ -139,10 +139,10 @@ offset_right = 1260.0
 offset_bottom = 565.0
 color = Color(1, 0, 0, 1)
 
-[node name="Area2D" type="Area2D" parent="Exits/1"]
+[node name="1" type="Area2D" parent="Exits/1"]
 script = ExtResource("2_cmtrm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/1/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exits/1/1"]
 position = Vector2(5, 25)
 shape = SubResource("RectangleShape2D_8t1ee")
 
@@ -162,4 +162,4 @@ position = Vector2(937, 545)
 position = Vector2(1014, 558)
 
 [connection signal="body_entered" from="Enterances/0/0" to="Enterances/0/0" method="_on_body_entered"]
-[connection signal="body_entered" from="Exits/1/Area2D" to="Exits/1/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="Exits/1/1" to="Exits/1/1" method="_on_body_entered"]
