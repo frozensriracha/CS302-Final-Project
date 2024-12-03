@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ktbn3svmen8n"]
 
 [ext_resource type="Script" path="res://scripts/gameScript.gd" id="1_fixe7"]
-[ext_resource type="PackedScene" uid="uid://b4t7a57joc2ol" path="res://Rooms/startingRoom/startingRoom.tscn" id="2_fpdup"]
+[ext_resource type="PackedScene" uid="uid://rgcsuqrfxx06" path="res://Rooms/startingRoom/startingRoom.tscn" id="2_fpdup"]
 
 [node name="roomManager" type="Node2D"]
 script = ExtResource("1_fixe7")
