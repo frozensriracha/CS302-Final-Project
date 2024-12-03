@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 #const bulletPath = preload('res://Bullet/player_bullet1.tscn')
-const max_speed = 10
+const max_speed = 300
 #get_global_mouse_position() just gets the current position of the mouse. "global_position" gets the
 #position of the CharacterBody2D object, which is the player
 var weapon_direction = get_global_mouse_position() - position
@@ -64,6 +64,9 @@ func move():
 	else:
 		var helper = velocity.x
 		velocity += (input * max_speed)
+		if velocity.length() > max_speed:
+			velocity = velocity.normalized() * max_speed
+		move_and_slide()
 		weapon_direction = get_global_mouse_position() - position
 		#rotation = weapon_direction.angle()
 		if helper > velocity.x:

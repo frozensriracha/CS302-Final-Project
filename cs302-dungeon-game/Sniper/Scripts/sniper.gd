@@ -49,7 +49,7 @@ func _process(delta):
 	#target_angle = direction.angle()  # Get the angle towards the player
 	#rotation = target_angle
 	
-	if counter == 50:
+	if counter == 100:
 		laser.visible = false
 		shoot()
 		counter = 0
@@ -57,7 +57,7 @@ func _process(delta):
 
 func shoot():
 	helper = randf()
-	if helper < 0.5:
+	if helper < 0.2:
 	#var bullet = bullet_scene.instantiate()
 	#bullet.position = position
 	#bullet.bullet_direction = (position - player.position)

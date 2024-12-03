@@ -13,10 +13,10 @@ extends CharacterBody2D
 var counter1: int = 1
 var helper
 var counter_speed: float = 1.0
-var health = 120
+var health = 500
 var random
 var attack = false
-var speed = 7
+var speed = 8
 
 #process that allows for damage + shooting
 func _process(delta):
@@ -36,7 +36,7 @@ func _process(delta):
 	
 	
 	#function to shoot bullets every once in a while
-	if counter1 == 70:
+	if counter1 == 20:
 		shoot()
 		#reset counter
 		counter1 = 0
@@ -65,14 +65,24 @@ func shoot():
 		bullet.position = position
 		bullet.bullet_direction = (position - player.position).normalized()
 		get_parent().add_child(bullet)
+		var bullet2 = blue_bullet_scene.instantiate()
+		bullet2.type = "Boss_Bullet"
+		bullet2.position = position
+		bullet2.bullet_direction = (position + player.position).normalized()
+		get_parent().add_child(bullet2)
 	if helper > 0.2:
-		if helper <= 0.4:
+		if helper <= 0.55:
 			var bullet = yellow_bullet_scene.instantiate()
 			bullet.type = "Boss_Bullet"
 			bullet.position = position
 			bullet.bullet_direction = (position - player.position).normalized()
 			get_parent().add_child(bullet)
-	if helper > 0.4:
+			var bullet2 = yellow_bullet_scene.instantiate()
+			bullet2.type = "Boss_Bullet"
+			bullet2.position = position
+			bullet2.bullet_direction = (position + player.position).normalized()
+			get_parent().add_child(bullet2)
+	if helper > 0.55:
 		if helper <= 0.6:
 			var bullet = red_bullet_scene.instantiate()
 			bullet.type = "Boss_Bullet"
@@ -86,12 +96,22 @@ func shoot():
 			bullet.position = position
 			bullet.bullet_direction = (position - player.position).normalized()
 			get_parent().add_child(bullet)
+			var bullet2 = purple_bullet_scene.instantiate()
+			bullet2.type = "Boss_Bullet"
+			bullet2.position = position
+			bullet2.bullet_direction = (position + player.position).normalized()
+			get_parent().add_child(bullet2)
 	if helper > 0.8:
 		var bullet = green_bullet_scene.instantiate()
 		bullet.type = "Boss_Bullet"
 		bullet.position = position
 		bullet.bullet_direction = (position - player.position).normalized()
 		get_parent().add_child(bullet)
+		var bullet2 = green_bullet_scene.instantiate()
+		bullet2.type = "Boss_Bullet"
+		bullet2.position = position
+		bullet2.bullet_direction = (position + player.position).normalized()
+		get_parent().add_child(bullet2)
 
 
 
@@ -100,6 +120,7 @@ func _on_area_2d_body_entered(body):
 	#if body entered, and body is the player, set attack to true
 	if body.name == "Player":
 		attack = true
+
 
 
 #if player exits, set attack to false
