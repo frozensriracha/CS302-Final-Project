@@ -5,7 +5,7 @@ var roomGen = RoomGen.new()
 var roomTypes = Rooms.new()
 
 # Generate dungeon
-var dungeon: Array[Rooms.room] = roomGen.generateDungeon(10, [0,0,0,1])
+var dungeon: Array[Rooms.room] = roomGen.generateDungeon(10, [.75, .12, .10, .3])
 var currentRoomName = dungeon[0].type # Should be the name of attached room at start
 var currentRoomID: int = 0            # The current room's index in the room instances vec
 var switchToLockout:bool = false      # Doesn't allow player to switch rooms when true
@@ -19,10 +19,10 @@ func switchTo(roomID:int, doorID:int):
 		return
 	switchToLockout = true # Enable lockout to disable infinite switching between doors
 	
-	# DEBUG - Print all doorDests
-	print("All doorDests for roomID " + str(currentRoomID))
-	for n in dungeon[currentRoomID].doorDests:
-		print("  " + str(n))
+	# do nothing if trying to access an out-of-index room
+	if roomID >= dungeon.size():
+		print("Out-of-index error!")
+		return
 	
 	# Save current player health
 	var oldHealth = self.get_child(0).get_node("Player").player_health
@@ -43,20 +43,31 @@ func switchTo(roomID:int, doorID:int):
 	instance.name = roomName
 	self.add_child(instance)
 	
+	# Get new room's number of enterances and exits
+	var numEnterences = roomData.enterances.size()
+	var numExits = roomData.exits.size()
+	
 	# Deload any unlinked doors
+	for i in range(roomData.doorDests.size()): # For every door...
+		# Get the door's ColorRect
+		var doorToHide:ColorRect
+		if i < numEnterences: doorToHide = self.get_child(0).get_node("Enterances/" + str(i))
+		else: doorToHide = self.get_child(0).get_node("Exits/" + str(i))
+		
+		prints(str(i), str(roomData.doorDests[i]))
+		if roomData.doorDests[i] == Vector2(-1,-1): # If door doesn't have a connection...
+			prints("Hiding door", str(i), str(doorToHide))
+			doorToHide.queue_free()
+	
 	
 	# Deload all enemies if the room is defeated
 	
 	# Place the player at the correct door
 	var player:Node2D = self.get_child(0).get_node("Player")
-	
-	var door:ColorRect = self.get_child(0).get_node("Enterances/" + str(doorID))
-	if door == null: door = self.get_child(0).get_node("Exits/" + str(doorID))
-	
-	print("Player: ", player.position) 
-	print("Door: ", door.position)
-	
-	player.position = Vector2(door.position) # BUG - player is placed at seemingly random position if room has ever been deloaded 
+	var door:ColorRect
+	if doorID < numEnterences: door = self.get_child(0).get_node("Enterances/" + str(doorID))
+	else: door = self.get_child(0).get_node("Exits/" + str(doorID))
+	player.position = Vector2(door.position)
 	
 	# Transfer player health
 	player.player_health = oldHealth
@@ -72,9 +83,6 @@ func switchTo(roomID:int, doorID:int):
 # Gets the door's destination and calls switchTo if the destination != null
 func doorEntered(doorID: int):
 	var exit: Vector2 = dungeon[currentRoomID].doorDests[doorID]
-	
-	print("Current: " + str(currentRoomID) + "," + str(doorID))
-	print("Next: " + str(exit[0]) + "," + str(exit[1]))
 	
 	if exit == Vector2(-1,-1):
 		print("Door does not have an exit")
