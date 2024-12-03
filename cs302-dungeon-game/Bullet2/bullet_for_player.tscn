@@ -5,14 +5,14 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hwc0h"]
 radius = 0.99999
-height = 13.9999
+height = 27.9997
 
 [node name="bullet_for_player" type="Area2D"]
 script = ExtResource("1_ijrvr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-3.5471, 2)
-scale = Vector2(0.0617924, 0.0382981)
+position = Vector2(-6, 3)
+scale = Vector2(0.115699, 0.0550865)
 texture = ExtResource("2_mvqof")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

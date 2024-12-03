@@ -8,12 +8,13 @@ extends CharacterBody2D
 @onready var purple_bullet_scene = preload("res://Boss_Bullet/purple_boss_bullet.tscn")
 @onready var green_bullet_scene = preload("res://Boss_Bullet/green_boss_bullet.tscn")
 @onready var heart_scene = preload("res://Consumables/heart.tscn")
+@onready var win_screen_scene = preload("res://MenuScreens/win_screen.tscn")
 
 #variables
 var counter1: int = 1
 var helper
 var counter_speed: float = 1.0
-var health = 500
+var health = 5
 var random
 var attack = false
 var speed = 8
@@ -32,7 +33,9 @@ func _process(delta):
 			heart.position = position
 			get_parent().add_child(heart)
 		get_parent().enemyCount - 1
-		queue_free()
+		var win = win_screen_scene.instantiate()
+		get_parent().get_parent().get_parent().add_child(win)
+		get_parent().get_parent().queue_free()
 	
 	
 	#function to shoot bullets every once in a while

@@ -8,7 +8,7 @@ var speed = 2
 #var player_chase = false
 var counter = 0
 var attack = false
-var health = 100
+var health = 10
 var random
 var temporary
 var keep_position
@@ -36,8 +36,6 @@ func _physics_process(delta):
 				var half_heart = half_heart_scene.instantiate()
 				half_heart.position = position
 				get_parent().add_child(half_heart)
-		
-		await get_tree().create_timer(0.50).timeout
 		get_parent().enemyCount - 1
 		queue_free()
 		

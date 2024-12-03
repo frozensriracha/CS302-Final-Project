@@ -19,6 +19,8 @@ var helper
 #@onready var game_over = preload("res://Rooms/GameOver/game_over.tscn")
 @onready var scene = get_parent()
 @onready var sprite_animation = get_node("Sprite2D")
+@onready var game_over_scene = preload("res://Bullet2/bullet_for_player.tscn")
+@onready var game_over = preload("res://MenuScreens/game_over.tscn")
 
 func _physics_process(delta):
 	move()
@@ -30,6 +32,11 @@ func _physics_process(delta):
 
 	if player_health < 1:
 		player_health = 0
+	if player_health == 0:
+		var gameOver = game_over.instantiate()
+		get_parent().get_parent().get_parent().add_child(gameOver)
+		get_parent().get_parent().queue_free()
+		
 		#scene.queue_free()
 		#var end = game_over.instantiate()
 		#get_parent().get_parent().add_child(end)
@@ -66,7 +73,7 @@ func move():
 		velocity += (input * max_speed)
 		#if velocity.length() > max_speed:
 			#velocity = velocity.normalized() * max_speed
-		move_and_slide()
+		
 		weapon_direction = get_global_mouse_position() - position
 		#rotation = weapon_direction.angle()
 		if helper > velocity.x:
