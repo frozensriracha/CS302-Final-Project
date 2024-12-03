@@ -14,7 +14,7 @@ extends CharacterBody2D
 var counter1: int = 1
 var helper
 var counter_speed: float = 1.0
-var health = 5
+var health = 250
 var random
 var attack = false
 var speed = 5

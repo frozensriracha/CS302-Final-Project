@@ -8,10 +8,10 @@ func _process(delta):
 	if hovering == true:
 		sprite_animation.play("Hover_Animation")
 	if Input.is_action_just_pressed("ShootBullet"):
-		var start_game = game_scene.instantiate()
-		get_parent().add_child(start_game)
-		queue_free()
-		#visible = false
+		if hovering == true:
+			var start_game = game_scene.instantiate()
+			get_parent().add_child(start_game)
+			queue_free()
 
 func _on_area_2d_mouse_entered():
 	hovering = true
