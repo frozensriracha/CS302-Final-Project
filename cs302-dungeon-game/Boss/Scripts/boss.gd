@@ -17,7 +17,7 @@ var counter_speed: float = 1.0
 var health = 5
 var random
 var attack = false
-var speed = 8
+var speed = 5
 
 #process that allows for damage + shooting
 func _process(delta):
