@@ -20,12 +20,13 @@ func _process(delta):
 	
 	if type == "Player_Bullet":
 		if attack == true:
-			if object == null:
-				pass
-			else:
-				object.health = object.health - 5
-				attack = false
-				queue_free()
+			if object != player:
+				if object == null:
+					pass
+				else:
+					object.health = object.health - 5
+					attack = false
+					queue_free()
 
 	if type == "Boss_Bullet":
 		if object == player:

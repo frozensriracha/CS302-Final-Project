@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://baktgfmlwoi64"]
+
+[ext_resource type="Script" path="res://MenuScreens/game_over.gd" id="1_h1ubb"]
+[ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://sprites/Free Star Overlays 03.png" id="2_se4gs"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ksbw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_se4gs")
+}],
+"loop": true,
+"name": &"Game_Over",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_se4gs")
+}],
+"loop": true,
+"name": &"text",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m3dgy"]
+font_size = 101
+font_color = Color(1, 0.486275, 0.431373, 1)
+shadow_color = Color(0.177773, 0.291675, 0.0413136, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3uw5m"]
+font_size = 36
+font_color = Color(1, 0, 1, 1)
+
+[node name="Game_Over" type="Node2D"]
+script = ExtResource("1_h1ubb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(960, 544)
+scale = Vector2(2.39875, 2.04315)
+sprite_frames = SubResource("SpriteFrames_ksbw1")
+animation = &"text"
+
+[node name="Label" type="Label" parent="AnimatedSprite2D"]
+offset_left = -291.0
+offset_top = -214.0
+offset_right = 467.0
+offset_bottom = 79.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_m3dgy")
+
+[node name="Label2" type="Label" parent="AnimatedSprite2D"]
+offset_left = -298.489
+offset_top = 176.198
+offset_right = 310.511
+offset_bottom = 226.198
+text = "The Benevolent Dictator Remains..."
+label_settings = SubResource("LabelSettings_3uw5m")

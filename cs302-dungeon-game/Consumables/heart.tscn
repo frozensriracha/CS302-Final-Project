@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://6egjqgfj2wf3" path="res://sprites/heart.PNG" id="2_dr6gb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wm0e"]
-size = Vector2(12, 12)
+size = Vector2(5.5, 5)
 
 [node name="Heart" type="Area2D"]
 script = ExtResource("1_fwdji")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_1wm0e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-1, -1)
-scale = Vector2(0.025, 0.025)
+scale = Vector2(0.0107422, 0.0107422)
 texture = ExtResource("2_dr6gb")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

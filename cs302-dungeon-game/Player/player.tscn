@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://7w6kfg6jwe7l"]
+[gd_scene load_steps=11 format=3 uid="uid://7w6kfg6jwe7l"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_r2kog"]
 [ext_resource type="Script" path="res://Player/progress_bar.gd" id="2_h1gbm"]
 [ext_resource type="Script" path="res://Player/indicator.gd" id="2_ynjsd"]
 [ext_resource type="Script" path="res://Player/player_collision.gd" id="3_thhf3"]
 [ext_resource type="Texture2D" uid="uid://vxhmo15qo12a" path="res://sprites/playeridle.PNG" id="5_f1g22"]
+[ext_resource type="Script" path="res://Player/damage_detection.gd" id="5_xnug1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y0jn"]
 bg_color = Color(1, 1, 1, 1)
@@ -113,6 +114,7 @@ rotation = -0.00764557
 zoom = Vector2(2, 2)
 
 [node name="Damage_Detection" type="Area2D" parent="."]
+script = ExtResource("5_xnug1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Damage_Detection"]
 shape = SubResource("CapsuleShape2D_awtnc")
