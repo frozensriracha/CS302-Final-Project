@@ -5,7 +5,7 @@ var roomGen = RoomGen.new()
 var roomTypes = Rooms.new()
 
 # Generate dungeon
-var dungeon: Array[Rooms.room] = roomGen.generateDungeon(10, [.75, .12, .10, .3])
+var dungeon: Array[Rooms.room] = roomGen.generateDungeon(10, [0,0,0,1])
 var currentRoomName = dungeon[0].type # Should be the name of attached room at start
 var currentRoomID: int = 0            # The current room's index in the room instances vec
 var switchToLockout:bool = false      # Doesn't allow player to switch rooms when true
@@ -87,7 +87,6 @@ func doorEntered(doorID: int):
 func _ready() -> void:
 	#switchTo(0,0)
 	switchToLockout = false
-	print("Dungeon gen:")
 	pass
 
 
@@ -98,5 +97,6 @@ func _process(delta: float) -> void:
 		switchToLockout = false
 	if Input.is_action_just_pressed("debug2"):
 		roomGen.printGenMatrix()
+		print(dungeon.size())
 		print(currentRoomID)
 	pass

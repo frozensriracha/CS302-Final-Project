@@ -295,7 +295,7 @@ func generateRoomTestbed():
 	
 	return roomInstances
 
-# Generates a dungeon with a starting room, a main path, and a boss room at the end
+# Generates a dungeon with a starting room, a main path, dead ends, and a boss room at the end
 func generateDungeon(chainLength:int, falsePathGenerationWeights:PackedFloat32Array):
 	# Init 25x25 matrix
 	numRows = 25
@@ -376,7 +376,7 @@ func generateDungeon(chainLength:int, falsePathGenerationWeights:PackedFloat32Ar
 						
 						var genResult:bool
 						
-						if k != 0: offOfRoomID = lastRoomInstanceID + k
+						if k != 0: offOfRoomID = lastRoomInstanceID + k + 1
 						if k == pathLength-1: genResult = generateRandRoom(offOfRoomID, deadEndRooms) # Last room in false path should be a dead end room
 						else: genResult = generateRandRoom(offOfRoomID, chainableRooms) # Otherwise, generate a chain room
 						
@@ -388,6 +388,13 @@ func generateDungeon(chainLength:int, falsePathGenerationWeights:PackedFloat32Ar
 								roomInstances.pop_back() # Delete off of roomInstances
 								for n in range(generationMatrix.size()): # Delete off of genMatrix
 									if generationMatrix[n] == IDtoDelete: generationMatrix[n] = -1
+								
+								for room in roomInstances: # Delete any room connections
+									for doorDest in room.doorDests:
+										if doorDest[0] == IDtoDelete:
+											print("    Deleted connection to " + str(doorDest))
+											doorDest = Vector2(-1,-1)
+								
 							abortPathGen = true
 			
 		
