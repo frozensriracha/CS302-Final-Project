@@ -1,4 +1,5 @@
 extends CharacterBody2D
+#have sprites, and bullet ready to go
 @onready var player = $"../Player"
 @onready var bullet_scene = preload("res://Bullet2/bullet_for_player.tscn")
 @onready var heart_scene = preload("res://Consumables/heart.tscn")
@@ -7,8 +8,7 @@ extends CharacterBody2D
 @onready var gun = get_node("AnimatedSprite2D").get_node("Sprite2D")
 @onready var half_heart_scene = preload("res://Consumables/half_heart.tscn")
 
-#var direction
-#var target_angle
+#variables
 var counter: int = 1
 var counter_speed: float = 1.0
 var helper
@@ -17,9 +17,13 @@ var health = 40
 var random
 var checkHit
 
+#process function continually called
 func _process(delta):
 	
+	#make player always idle
 	sprite_animation.play("Idle")
+	
+	#Flip sniper to always face towards player
 	if player.position.x < position.x:
 		sprite_animation.flip_h = true
 		gun.flip_h = true
@@ -28,8 +32,10 @@ func _process(delta):
 		gun.flip_h = false
 	
 	
-	
+	#counter so that the sniper does not shoot every second
 	counter += counter_speed + delta
+	
+	#if health 0, randomly generate heart or half heart, and queue_free()
 	if health == 0:
 		random = randf()
 		print(random)
@@ -44,11 +50,8 @@ func _process(delta):
 				get_parent().add_child(half_heart)
 		get_parent().enemyCount - 1
 		queue_free()
-	#rotation = player.position.angle()
-	#direction = player.position - position  # Calculate the direction vector
-	#target_angle = direction.angle()  # Get the angle towards the player
-	#rotation = target_angle
 	
+	#shoot if counter = 100, reset counter
 	if counter == 100:
 		laser.visible = false
 		shoot()
@@ -56,12 +59,11 @@ func _process(delta):
 	
 
 func shoot():
+	
+	#randomly shoot, and instantiate bullet when sniper shoots.
 	helper = randf()
 	if helper < 0.2:
-	#var bullet = bullet_scene.instantiate()
-	#bullet.position = position
-	#bullet.bullet_direction = (position - player.position)
-	#get_parent().add_child(bullet)
+	
 		laser.visible = true
 		var bullet = bullet_scene.instantiate()
 		bullet.type = "Sniper_Bullet"

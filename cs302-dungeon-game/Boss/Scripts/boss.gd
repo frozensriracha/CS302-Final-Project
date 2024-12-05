@@ -22,7 +22,7 @@ var speed = 5
 #process that allows for damage + shooting
 func _process(delta):
 	#counter so that bullets are not shot all the time
-	counter1 += counter_speed + delta
+	counter1 += 1
 	
 	#if health == 0, destroy boss, randomly generate heart
 	if health == 0:
@@ -59,6 +59,8 @@ func _process(delta):
 	
 	#move_and_slide()
 
+
+#code for generating color of bullets. RED bullets track the player at all times (Each has their own script)
 func shoot():
 	helper = randf()
 	

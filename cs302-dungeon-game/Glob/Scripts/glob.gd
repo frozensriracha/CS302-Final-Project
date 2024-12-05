@@ -3,21 +3,20 @@ extends CharacterBody2D
 @onready var heart_scene = preload("res://Consumables/heart.tscn")
 @onready var half_heart_scene = preload("res://Consumables/half_heart.tscn")
 
+#variables
 var speed = 1
-#var player_chase = false
 var counter = 0
 var attack = false
 var health = 15
 var random
 
 
-#func _ready():
-	#var player = get_node("/root/GlobRoom/Player")
 
 func _physics_process(delta):
 	counter += counter + delta
-	#print(player.player_health)
 	
+	
+	#if glob health is zero, randomly generate heart or half-heart, and queue_free()
 	if health == 0:
 		random = randf()
 		if random > 0.8:
@@ -32,14 +31,15 @@ func _physics_process(delta):
 		get_parent().enemyCount - 1
 		queue_free()
 	
+	#if attack true, take health from player and move slightly away from player (So player does not get trapped)
 	if attack == true:
 		position -= ((player.position - position).normalized()) * (speed)
 		if counter > 10000:
-			#print("HERE2")
 			player.player_health = player.player_health - 1 
 			counter = 0
-		#if player.name == "Player":
-		
+
+
+	#if attack false, just move towards player
 	else:
 		position += ((player.position - position).normalized()) * (speed)
 	
@@ -47,18 +47,14 @@ func _physics_process(delta):
 
 
 
-
+#Functions to send signal if glob enters the player or not
 func _on_area_2d_body_entered(body):
-	
 	if body.name == "Player":
-		#print("ENTERED")
-		#player.health = player.health - 1
 		attack = true
 
 
 func _on_area_2d_body_exited(body):
 	if body.name == "Player":
-		#print("EXITED")
 		attack = false
 	
 	

@@ -1,7 +1,7 @@
 extends ProgressBar
 @onready var bruiser = get_parent()
 
-# Called when the node enters the scene tree for the first time.
 
+#progress bar equals health of bruiser
 func _physics_process(delta):
 	value = bruiser.health

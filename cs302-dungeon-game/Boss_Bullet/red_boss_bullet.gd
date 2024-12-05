@@ -9,12 +9,15 @@ var type = null
 var attack = false
 var curve = true
 
+#This code is IDENTICAL to the other bullet scenes, however, this one continually tracks and follows the player, since its the red bullet
 func _process(delta):
 	position -= bullet_direction * speed * delta
 	rotation = bullet_direction.angle()
+	
+	#this is the code to always track the position of the player!
 	position += (player.position - position).normalized() * speed2
 	
-
+#take away health if bullet enters player
 	if type == "Boss_Bullet":
 		if object == player:
 			if attack == true:
@@ -22,7 +25,7 @@ func _process(delta):
 				attack = false
 				queue_free()
 
-
+#functions to send signal if it hits player
 func _on_body_entered(body):
 	object = body
 	if object != player:

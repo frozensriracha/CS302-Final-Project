@@ -7,10 +7,12 @@ var bullet_direction
 var type = null
 var attack = false
 
+#Generic bullet script for sniper and player
 func _process(delta):
 	position -= bullet_direction * speed * delta
 	rotation = bullet_direction.angle()
 	
+	#if area2D's type is sniper_bullet, it cannot take health from sniper, but takes health from player
 	if type == "Sniper_Bullet":
 		if object == player:
 			if attack == true:
@@ -18,6 +20,7 @@ func _process(delta):
 				attack = false
 				queue_free()
 	
+	#if area2D's type is player_bullet, it cannot take health from player, but takes health from any characterbody that is not the player
 	if type == "Player_Bullet":
 		if attack == true:
 			if object != player:
@@ -35,7 +38,7 @@ func _process(delta):
 				attack = false
 				queue_free()
 
-
+#function to figure out if bullet enters a body
 func _on_body_entered(body):
 	object = body
 	if object != player:
