@@ -1,0 +1,13 @@
+Mabry's Logged time (Excluded from group meet up time):
+
+November 8: Worked on learning godot and some basic player code -> 3 Hours
+November 11: Worked on all of the Rooms using colorRect built in godot -> 4 Hours
+November 15: Worked on glob dynamics, and chasing player -> 2 Hours
+November 16: Worked on bullet2 along with Ryan Wolpert, got it working -> 2 Hours
+November 18: Worked on Sniper, used bullet2 with sniper as well -> 3 Hours
+November 21: Worked on health system for player, implemented for Ryan's Bruiser as well -> 3 Hours
+November 23: Worked on implementing Jules Prater's art into game -> 2 hours
+November 24: Worked on Boss movement -> 2 Hours
+November 25: Helped with menu screens, worked with boss bullets -> 4 Hours
+
+TOTAL APART FROM GROUP MEETUP TIMES: 25 Hours
