@@ -9,6 +9,16 @@ globs (light enemies), snipers (medium, long range enemies), bruisers (heavy but
 enemies,) and the boss. The game is won by defeating all enemies including the boss.
 If enemies deal enough damage to the player, they die and the game is lost.
 
+	There are two ways the game can be played. In the GAME folder, there is a
+downloadable version of the game. However, there is a chance the game crashes. If so,
+you will need to download godot 4.0, and create a new project that has the path to
+where you save our GitHub folder. To play the game in the debugger menu, you will
+need to go to the bottom left hand panel, and make sure that “start.tcsn” is selected
+as the main scene (if it is highlighted blue, it is already set as the main scene).
+To play the game, at the top right of the screen, there is a “play” button icon, where
+if it sis pressed, will pull up another screen where the game can be played.
+
+
 	Use the W, S, A and D keys to move your character up, down, left, and right,
 respectively. To shoot, press the left button on your mouse. To move to the next room,
 all enemies must be defeated. A random number of entrances and exits are generated in
