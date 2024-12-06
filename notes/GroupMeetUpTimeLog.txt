@@ -1,10 +1,31 @@
 GROUP MEET UP TIMES:
 
 September 30: 2 Hours
+	Here, we discussed our ideas for the final project. All four of us attended.
+
+November 7: 2 Hours
+	Here we discussed the exact ideas we wanted to implement, and split up tasks. Nic was tasked with room generation, Jules was tasked with art,
+	Mabry and Ryan were tasked with implementing the game physics. Everyone attended the meeting.
+
 November 12: 1.5 Hours
+	Here, we met up to discuss progress, showing each other things we learned about Godot, and implementation strategies for the enemies. Everyone 	attended the meeting.
+
 November 14: 1 Hour
+	Brief meeting, touch up on some more of each other's progress, and more ideas that we wanted to implement, such as ideas on what our boss should
+	look like, and what the art for the game should look like. Everyone attended the meeting.
+
 November 16: Virtual Meeting 1 Hour
+	Virtual meeting to show the progress with game physics. Also, we touched up on some ideas for Nic and the room generation and how it should be 	implemented. Everyone attended the meeting.
+
 November 22: 2 Hours
+	Room generation semi-working, game physics pretty much finished by this point. Art almost done and almost ready to put into code. Everyone attended 	the meeting.
+
 November 24: Virtual Meeting 1 Hour
+	Art is done, but not implemented yet. More of a touch-up meeting before lab-demo day, and explain how to show TA's the progress. Everyone attended 	the meeting.
+
 November 29: 2 Hours
+	Art implemented, room generation working. Final meeting before the DEMO day. Everyone attended the meeting.
+
 December 2: 2 Hours
+	Final game finished. Cannot leave room until all enemies defeated, Game makes sure the room is empty after all enemies are destroyed if
+	you enter back into it. Boss is finished, and so are the boss's projectiles. Game is done. Everyone attended the meeting.
