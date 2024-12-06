@@ -23,4 +23,9 @@ if it sis pressed, will pull up another screen where the game can be played.
 respectively. To shoot, press the left button on your mouse. To move to the next room,
 all enemies must be defeated. A random number of entrances and exits are generated in
 each room, with some leading to dead ends. The player is able to backtrack and return
-to a previously visited room. In that case, enemies will not respawn.
+to a previously visited room. In that case, enemies will not respawn. There are two
+types of doors in the game. The blue doors are where the player comes from, and the red
+is where the player is going. Since it’s a maze, the player may hit dead ends and will
+need to backtrack through blue doors and back into red ones. The point of the two color
+doors is to keep the player from getting too lost in the maze, and finishing the game
+is much easier as well.
