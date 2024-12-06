@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://sprites/floor1.PNG" id="2_4alcd"]
 [ext_resource type="Texture2D" uid="uid://cp3kvwmrhhwll" path="res://sprites/wall3.PNG" id="3_2x0d5"]
 [ext_resource type="PackedScene" uid="uid://sodonqnoc4el" path="res://Bruiser/bruiser.tscn" id="3_c8vcu"]
-[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="8_57bl8"]
+[ext_resource type="Script" path="res://Scripts/genericDoor.gd" id="8_57bl8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljf3g"]
 size = Vector2(863, 23)

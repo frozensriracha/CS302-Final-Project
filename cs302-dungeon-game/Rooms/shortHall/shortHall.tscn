@@ -4,10 +4,11 @@
 [ext_resource type="Script" path="res://Rooms/shortHall/short_hall.gd" id="1_mcp7i"]
 [ext_resource type="Texture2D" uid="uid://8n1nx56o3kan" path="res://sprites/Free Star Overlays 03.png" id="1_xqak6"]
 [ext_resource type="Texture2D" uid="uid://3gsvl5huwsnk" path="res://sprites/floor1.PNG" id="2_3ivaa"]
-[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="2_cmtrm"]
+[ext_resource type="Script" path="res://Scripts/genericDoor.gd" id="2_cmtrm"]
 [ext_resource type="Texture2D" uid="uid://cgt2rscb4n23u" path="res://sprites/wall1.PNG" id="3_64sy1"]
 [ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="6_ts18u"]
 [ext_resource type="PackedScene" uid="uid://sodonqnoc4el" path="res://Bruiser/bruiser.tscn" id="7_0o7t1"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxkl4"]
 size = Vector2(23, 216)

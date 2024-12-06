@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3euy3kbn1tq1" path="res://Sniper/Sniper.tscn" id="3_dvly2"]
 [ext_resource type="Texture2D" uid="uid://dleykb4rcn5dq" path="res://sprites/wall2.PNG" id="4_tpmuv"]
 [ext_resource type="PackedScene" uid="uid://bcubcuoywpvip" path="res://Glob/glob.tscn" id="7_8xt08"]
-[ext_resource type="Script" path="res://scripts/genericDoor.gd" id="7_aq7w3"]
+[ext_resource type="Script" path="res://Scripts/genericDoor.gd" id="7_aq7w3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pun4"]
 size = Vector2(23, 216)
