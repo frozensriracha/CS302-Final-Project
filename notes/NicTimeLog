@@ -1,0 +1,30 @@
+Hours Log - Nic Dawson
+
+5  hrs - completed and logged in challenge 5
+1  hr  - Learning basics of Godot
+1  hr  - Meeting on Nov 7 (Godot discussion and game organisation)
+4  hrs - SwitchTo function and start of gameScript
+1  hr  - Meeting on Nov 12 (Touch-base and presentation discussion)
+1  hr  - Solo prep for presentation
+1  hr  - Meeting on Nov 14 (Final group presentation prep)
+1  hr  - Meeting on Nov 19
+.5 hrs - Meeting on Nov 20
+2  hrs - Work on getting doors to communicate with the gameScript
+1  hr  - Work on replacing all individual door scripts with genericDoor.gd
+1.5hrs - Work on adding room specifications to the generation script
+4.5hrs - Work on getting simple room traversal working
+1  hr  - Meeting on Nov 25
+2  hrs - Starting room generation work
+2.5hrs - Continued work on room gen and smooth room traversal
+1.5hrs - Continued work on room generation
+.5 hrs - Meeting on Nov 30
+.25hrs - Added preservation of health when switching between rooms
+.75hrs - Continued work on room generation
+2.5hrs - Finishing individual room generation functions
+2.5hrs - Work on full dungeon generation
+1  hr  - Finishing dungeon main path generation - 39
+1.5hrs - Work on false path and dead end generation
+1  hr  - Meeting on Dec 2
+1.5hrs - Work on room culling (false path gen) and empty door culling
+1  hr  - Work on the room defeated mechanic
+Total: 44 hours
