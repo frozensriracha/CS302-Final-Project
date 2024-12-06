@@ -1,0 +1,20 @@
+Final Project Time Log - Ryan Wolpert
+
+2 hours - September 28th - Group meeting via Discord to discuss project topic
+2 hours - September 29th - Brainstorming session for enemy ideas
+1 hour - September 30th - Lab period
+1 hour - September 30th - In-person group meeting to finalize project tasks and details
+2 hours - November 2nd - Began learning Godot with online tutorials and experimenting with scripts
+2 hours - November 3rd - Continued learning and experimenting with Godot
+1.5 hours - November 13th - Started working on bullet
+2.5 hours - November 14th - Continued working on bullet, prepared for presentation
+2 hours - November 16th - Worked on bullet2 with Mabry, got it working
+2 hours - November 18th - Worked on animating Bruiser
+2 hours - November 20th - Worked on Bruiser scripts
+1.5 hours - November 21st - Began to tweak some values to balance the game
+1.5 hours - November 23rd - Continued game balancing - experimenting with player damage values
+1.5 hours - November 25th - game balancing - experimenting with Bruiser health values
+2 hours - December 2nd - Finalized game balancing with rest of group at group meeting
+
+Total (excluding most group meetings) - 26.5 hours
+
