@@ -1,7 +1,8 @@
 COSC302 FINAL PROJECT TIME LOG
 Julianna Prater 
 9/30/2024: Created initial room generation algorithm (roomgen.cpp) - 3 HOURS
-11/7/2024: Created initial draft of main menu file - 1 HOUR
+11/7/2024: Spent time learning Godot - 4 HOURS
+11/8/2024: Created initial draft of main menu file - 1 HOUR
 11/12/2024 - Created idle sprites for player and enemies - 2 HOURS
 11/14/2024: Drew art for start screen and buttons - 2 HOURS
 11/20/2024: Wrote code for user interface and aided with relevant player variables - 1 HOUR
@@ -11,4 +12,4 @@ Julianna Prater
 11/27/2024: Continued animations for player, boss, and bruiser - 3 HOURS
 12/1/2024: Finished player, boss, and bruiser animations, along with win/loss screens - 4 HOURS
 12/5/2024: Created tutorial and updated main menu with quit button - 1 HOUR
-TOTAL - 23 hours 
+TOTAL - 27 hours 
