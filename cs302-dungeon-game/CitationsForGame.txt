@@ -1,0 +1,7 @@
+For Citing References:
+
+-The player movement code was a modification of DevWorm's "How to Create SMOOTH Player Movement in Godot 4.0" Youtube video.
+
+-The bruiser sprite used in our game is from a website. Here is the link: szadiart.itch.io/hero-and-opponents-animation
+
+-The night sky background in all of our rooms is from FixThePhoto.com. Here is the link: https://fixthephoto.com/night-sky-png
