@@ -1,0 +1,16 @@
+TUTORIAL
+
+	Battle for Benevolence is a single-player RPG that uses graphs to generate
+a series of rooms with different types of enemies. To win, the player needs to defeat
+all the enemies in each of the rooms. There will be 10 rooms generated, ending with
+a boss room, but the map can create any number of dead ends and false paths as well.
+There are multiple different types of enemies the player will encounter, those being
+globs (light enemies), snipers (medium, long range enemies), bruisers (heavy but slow
+enemies,) and the boss. The game is won by defeating all enemies including the boss.
+If enemies deal enough damage to the player, they die and the game is lost.
+
+	Use the W, S, A and D keys to move your character up, down, left, and right,
+respectively. To shoot, press the left button on your mouse. To move to the next room,
+all enemies must be defeated. A random number of entrances and exits are generated in
+each room, with some leading to dead ends. The player is able to backtrack and return
+to a previously visited room. In that case, enemies will not respawn.
